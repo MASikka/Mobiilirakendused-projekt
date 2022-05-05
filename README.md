@@ -2,10 +2,12 @@
 
 An Android app to find PC games, read information about them and read/write reviews.
 
-### Contributors
+## Contributors
 
 - Roald Välja
 - Marek Antero Sikka
 - Tõnu Koll
+
+## MVP
 
 
