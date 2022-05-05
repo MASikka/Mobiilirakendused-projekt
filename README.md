@@ -1,4 +1,4 @@
 # Mobiilirakendused-projekt
 
-# Videomängude ülevaadete äpp
-# Video game review app
+## Videomängude ülevaadete äpp
+## Video game review app
