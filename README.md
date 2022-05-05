@@ -10,4 +10,8 @@ An Android app to find PC games, read information about them and read/write revi
 
 ## MVP
 
+### User Stories
+
+- Registering an account https://www.pivotaltracker.com/story/show/182073564
+
 
