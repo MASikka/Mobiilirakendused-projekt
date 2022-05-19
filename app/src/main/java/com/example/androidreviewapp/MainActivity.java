@@ -3,6 +3,7 @@ package com.example.androidreviewapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,5 +13,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // Comment by Roald login test
         // This is a new comment
+    }
+
+    public void conflictText(){
+        String text = "Hello!";
+        Log.i("Introduction", text);
     }
 }
