@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         // Comment by Roald login test
         // This is a new comment
     }
+  
     public void conflictText(){
         Log.i("Conflict","This is to test a conflict");
     }
