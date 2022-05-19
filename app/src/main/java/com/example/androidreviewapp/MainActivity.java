@@ -15,8 +15,9 @@ public class MainActivity extends AppCompatActivity {
         // This is a new comment
     }
 
+  
     public void conflictText(){
-        String text = "Hello!";
-        Log.i("Introduction", text);
+        Log.i("Conflict","This is to test a conflict");
+
     }
 }
