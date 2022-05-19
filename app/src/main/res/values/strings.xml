@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">AndroidReviewApp</string>
+    <string name="search">Search</string>
+    <string name="search_helper">E.g.Half-Life</string>
+    <string name="search_hint">Enter game name</string>
 </resources>
