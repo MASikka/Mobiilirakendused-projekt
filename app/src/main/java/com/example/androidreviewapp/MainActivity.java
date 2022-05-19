@@ -3,6 +3,7 @@ package com.example.androidreviewapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,5 +18,6 @@ public class MainActivity extends AppCompatActivity {
     public void conflictText(){
         int v = 1;
         v++;
+
     }
 }
