@@ -14,7 +14,10 @@ public class MainActivity extends AppCompatActivity {
         // Comment by Roald login test
         // This is a new comment
     }
+
     public void conflictText(){
-        Log.i("C","conflictions are upon us");
+        int v = 1;
+        v++;
+
     }
 }
