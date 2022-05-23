@@ -1,4 +1,4 @@
-package com.example.androidreviewapp;
+package com.example.androidreviewapp.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.androidreviewapp.R;
+import com.example.androidreviewapp.model.Game;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;

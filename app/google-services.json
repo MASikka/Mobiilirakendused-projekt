@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "502901546812",
+    "project_id": "gamereviewapp-da59d",
+    "storage_bucket": "gamereviewapp-da59d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502901546812:android:8f837adf601d135e504839",
+        "android_client_info": {
+          "package_name": "com.example.androidreviewapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "502901546812-7pe76kc4at0bboc8hda2hlnnooi2ocen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjNHtg31GBFYJ7QJdtH2mWtzPlIBcl3S8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "502901546812-7pe76kc4at0bboc8hda2hlnnooi2ocen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

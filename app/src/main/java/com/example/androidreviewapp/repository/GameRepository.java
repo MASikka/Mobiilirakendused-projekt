@@ -1,14 +1,13 @@
-package com.example.androidreviewapp;
+package com.example.androidreviewapp.repository;
 
 import android.app.Application;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.androidreviewapp.model.Game;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Locale;
