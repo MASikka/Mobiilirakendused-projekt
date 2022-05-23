@@ -19,8 +19,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.androidreviewapp.GameAdapter;
+import com.example.androidreviewapp.adapter.GameAdapter;
 import com.example.androidreviewapp.R;
+import com.example.androidreviewapp.viewmodel.SearchViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Locale;

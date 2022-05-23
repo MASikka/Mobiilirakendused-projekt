@@ -1,4 +1,4 @@
-package com.example.androidreviewapp;
+package com.example.androidreviewapp.model;
 
 public class Game {
 
