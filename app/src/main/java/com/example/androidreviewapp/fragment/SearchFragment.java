@@ -40,7 +40,6 @@ public class SearchFragment extends Fragment {
         View view = inflater.inflate(R.layout.search_fragment, container, false);
 
         requireActivity().setTitle("Games Search");
-
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_search);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);
@@ -87,4 +86,5 @@ public class SearchFragment extends Fragment {
         searchViewModel.getGameSearch(game);
         searchViewModel.getGameLiveData().observe(this, games -> gameAdapter.setGameList(games));
     }
+
 }

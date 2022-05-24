@@ -4,4 +4,18 @@
     <string name="search_helper">E.g.Half-Life</string>
     <string name="search_hint">Enter game name</string>
     <string name="error">Error! %1$s</string>
+    <string name="missing">Missing field entries!</string>
+    <string name="passLength">Password must be at least 6 characters long!</string>
+    <string name="noMatch">Passwords do not match!</string>
+    <string name="enter_username">Enter username</string>
+    <string name="ex_email">example@gmail.com</string>
+    <string name="enter_password">Enter password</string>
+    <string name="ex_password">qwerty123</string>
+    <string name="login">login</string>
+    <string name="nur">new user registration</string>
+    <string name="reg_user">Register user</string>
+    <string name="user_info">User details</string>
+    <string name="logout">Logout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
