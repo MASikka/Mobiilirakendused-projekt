@@ -25,4 +25,6 @@ public class RegisterViewModel extends AndroidViewModel {
         return userMutableLiveData;
     }
     public void logOut(){ firebaseRepository.logout(); }
+
+    
 }
