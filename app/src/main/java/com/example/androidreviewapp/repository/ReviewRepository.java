@@ -16,9 +16,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class ReviewRepository {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = "Review Firebase";
 
+
+    //return array?
     public void GetReviews(String gameId){
         db.collection("reviews")
                 .whereEqualTo("gameId", gameId)
