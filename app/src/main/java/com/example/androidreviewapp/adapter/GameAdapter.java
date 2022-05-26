@@ -1,15 +1,21 @@
 package com.example.androidreviewapp.adapter;
 
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -31,7 +37,15 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     @Override
     public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
         Game game = gameList.get(position);
-        holder.name.setText(game.getName());
+        String gameId = game.getId();
+
+        Bundle args = new Bundle();
+        args.putString("gameId", gameId);
+
+        holder.nameButton.setText(game.getName());
+        holder.nameButton.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_searchFragment_to_gameDetails2Fragment, args)
+        );
     }
 
     public void setGameList(final ArrayList<Game> gameList) {
@@ -45,11 +59,11 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     }
 
     static class GameViewHolder extends RecyclerView.ViewHolder{
-        private final TextInputEditText name;
+        private final Button nameButton;
 
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.etGameName);
+            nameButton = itemView.findViewById(R.id.btnGameDetails);
         }
     }
 }
