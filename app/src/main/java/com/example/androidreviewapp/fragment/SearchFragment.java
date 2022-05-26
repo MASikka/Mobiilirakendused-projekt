@@ -39,7 +39,12 @@ public class SearchFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.search_fragment, container, false);
 
-        requireActivity().setTitle("Games Search");
+        if (getArguments() != null){
+            requireActivity().setTitle("Games Search - '" + getArguments().getString("gameName") + "'");
+        } else {
+            requireActivity().setTitle("Games Search");
+        }
+        //requireActivity().setTitle("Games Search");
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_search);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_searchFragment_self"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_gameDetails2Fragment"
+            app:destination="@id/gameDetails2Fragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -51,4 +54,9 @@
             android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/gameDetails2Fragment"
+        android:name="com.example.androidreviewapp.fragment.GameDetailsFragment"
+        android:label="game_details2_fragment"
+        tools:layout="@layout/game_details_fragment" />
 </navigation>
