@@ -10,6 +10,7 @@
     <string name="enter_username">Enter username</string>
     <string name="ex_email">example@gmail.com</string>
     <string name="enter_password">Enter password</string>
+    <string name="confirm_password">Confirm password</string>
     <string name="ex_password">qwerty123</string>
     <string name="login">login</string>
     <string name="nur">new user registration</string>
