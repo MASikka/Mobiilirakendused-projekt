@@ -41,6 +41,13 @@ public class GameDetailsFragment extends Fragment {
 
         recyclerView.setAdapter(gameDetailsAdapter);
 
+        //View gameTagView = inflater.inflate(R.layout.layout_game_details, container, false);
+        //        RecyclerView tagRecyclerView = gameTagView.findViewById(R.id.recyclerview_game_tags);
+
+
+        //LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
+        //        layoutManager.setReverseLayout(true);
+
         return view;
     }
 
