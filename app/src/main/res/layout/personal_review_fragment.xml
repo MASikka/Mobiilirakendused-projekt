@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:gravity="top"
+        android:hint="Write review here..."
         android:inputType="text|textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,9 +21,25 @@
         android:id="@+id/btn_submit_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_personal_review" />
 
+    <Button
+        android:id="@+id/btn_delete_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DELETE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_personal_review" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <CheckBox
+        android:id="@+id/checkBox_recommend"
+        android:layout_width="146dp"
+        android:layout_height="51dp"
+        android:text="Recommended"
+        app:layout_constraintEnd_toStartOf="@+id/btn_submit_review"
+        app:layout_constraintTop_toBottomOf="@+id/txt_personal_review" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

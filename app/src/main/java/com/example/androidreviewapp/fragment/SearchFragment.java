@@ -111,7 +111,7 @@ public class SearchFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
 
 
-        case R.id.about:
+        case R.id.settings:
 
             return(true);
 

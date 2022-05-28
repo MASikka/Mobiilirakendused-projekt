@@ -61,5 +61,22 @@
         android:id="@+id/gameDetails2Fragment"
         android:name="com.example.androidreviewapp.fragment.GameDetailsFragment"
         android:label="game_details2_fragment"
-        tools:layout="@layout/game_details_fragment" />
+        tools:layout="@layout/game_details_fragment" >
+        <action
+            android:id="@+id/action_gameDetails2Fragment_to_personalreviewFragment"
+            app:destination="@id/personalReviewFragment" />
+        <action
+            android:id="@+id/action_gameDetails2Fragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalReviewFragment"
+        android:name="com.example.androidreviewapp.PersonalReviewFragment"
+        android:label="PersonalReviewFragment"
+        tools:layout="@layout/personal_review_fragment" >
+
+        <action
+            android:id="@+id/action_personalReviewFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

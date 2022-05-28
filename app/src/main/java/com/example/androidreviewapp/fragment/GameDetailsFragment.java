@@ -7,11 +7,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -20,6 +25,7 @@ import android.widget.Toast;
 import com.example.androidreviewapp.adapter.GameDetailsAdapter;
 import com.example.androidreviewapp.viewmodel.GameDetailsViewModel;
 import com.example.androidreviewapp.R;
+import com.example.androidreviewapp.viewmodel.SearchViewModel;
 
 public class GameDetailsFragment extends Fragment {
 
@@ -28,12 +34,13 @@ public class GameDetailsFragment extends Fragment {
     private GameDetailsViewModel gameDetailsViewModel;
     private String detailedDescription;
     public GameDetailsAdapter gameDetailsAdapter;
+    NavController navController;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.game_details_fragment, container, false);
-
+        setHasOptionsMenu(true);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_game_details);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);
@@ -54,7 +61,13 @@ public class GameDetailsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        GameDetailsViewModel gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
+        gameDetailsViewModel.getLoggedOutMutableLiveData().observe(this, loggedOut -> {
+            if (loggedOut){
+                if (getView() != null)Navigation.findNavController(getView())
+                        .navigate(R.id.action_gameDetails2Fragment_to_loginFragment);
+            }
+        });
         if (getArguments() != null){
             gameId = getArguments().getString("gameId");
         } else Toast.makeText(getActivity(), "No game id provided, arguments null", Toast.LENGTH_SHORT).show();
@@ -63,6 +76,11 @@ public class GameDetailsFragment extends Fragment {
         gameDetailsViewModel.getGameDetails(gameId);
         gameDetailsViewModel.getGameLiveData().observe(this, games -> gameDetailsAdapter.setGameDetailsList(games));
 
+    }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_gamedetails,menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -73,5 +91,25 @@ public class GameDetailsFragment extends Fragment {
         //txtGameId.setText(gameId);
         //Log.i("description-got", detailedDescription);
         //txtGameId.setText(detailedDescription);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+
+        case R.id.personalreview:
+            navController = Navigation.findNavController(getView());
+            Bundle args = new Bundle();
+            args.putString("gameId",gameId);
+            navController.navigate(R.id.action_gameDetails2Fragment_to_personalreviewFragment, args);
+
+        case R.id.settings:
+            return(true);
+
+        case R.id.logout:
+            GameDetailsViewModel gameDetailsViewModel1 = new ViewModelProvider(this).get(GameDetailsViewModel.class);
+            gameDetailsViewModel1.logOut();
+    }
+        return(super.onOptionsItemSelected(item));
     }
 }

@@ -41,7 +41,7 @@ public class ReviewRepository {
                     }
                 });
     }
-    public void GetUserReview(String userEmail){
+    public void GetUserReview(String userEmail){ //TODO add game id
         db.collection("reviews")
                 .whereEqualTo("userEmail", userEmail)
                 .get()
@@ -69,7 +69,7 @@ public class ReviewRepository {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         //TODO what to do when review posted
-                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                        Log.i(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
