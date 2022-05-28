@@ -2,6 +2,8 @@ package com.example.androidreviewapp.repository;
 
 import android.app.Application;
 import android.util.Log;
+import android.webkit.WebView;
+import android.widget.TextView;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -56,6 +58,8 @@ public class GameRepository {
 
         String detailedDescription = data.get("detailed_description").toString();
         detailedDescription = removeAbles(detailedDescription);
+
+
 
         detailedDescription = detailedDescription.replaceAll("\\\\t", "");
         detailedDescription = detailedDescription.replaceAll("\\\\n", "");
