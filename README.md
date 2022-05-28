@@ -23,4 +23,9 @@ An Android app to find PC games, read information about them and read/write revi
 - Open project with Android Studio
 - Run the project (Shift + F10)
 
+## Sequence Diagram
+
+### Getting game details
+<img src="/svg/Sequence diagram.svg">
+
 
