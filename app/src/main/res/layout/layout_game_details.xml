@@ -5,15 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <WebView
-        android:id="@+id/wvDetailedDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </WebView>
 
     <WebView
         android:id="@+id/wvShortDescription"
@@ -24,12 +15,45 @@
         app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
 
     <WebView
+        android:id="@+id/wvDetailedDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </WebView>
+
+
+    <WebView
         android:id="@+id/wvSupportedLanguages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wvShortDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/wvShortDescription"
+        app:layout_constraintVertical_bias="0.0">
+
+    </WebView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_game_tags"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wvSupportedLanguages"
+        app:reverseLayout="true"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <WebView
+        android:id="@+id/wvGameGenres"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview_game_tags" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

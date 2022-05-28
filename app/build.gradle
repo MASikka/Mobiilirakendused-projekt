@@ -38,11 +38,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-fragment:2.4.2'
     implementation 'androidx.navigation:navigation-ui:2.4.2'
+    implementation 'androidx.support:preference-v7:26.1.0'
 
     //custom
     implementation 'com.koushikdutta.ion:ion:3.1.0'
     implementation 'com.google.firebase:firebase-firestore:24.1.1'
     implementation 'com.google.firebase:firebase-auth:21.0.4'
+    implementation 'androidx.preference:preference:1.1.1'
 
     //test
     testImplementation 'junit:junit:4.13.2'
