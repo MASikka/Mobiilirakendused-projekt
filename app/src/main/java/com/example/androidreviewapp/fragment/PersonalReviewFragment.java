@@ -64,8 +64,8 @@ public class PersonalReviewFragment extends Fragment {
         if (getArguments() != null){
             gameId = getArguments().getString("gameId");
         } else Toast.makeText(getActivity(), "No game provided", Toast.LENGTH_SHORT).show();
-
         PersonalReviewViewModel personalReviewViewModel = new ViewModelProvider(this).get(PersonalReviewViewModel.class);
+
         personalReviewViewModel.getLoggedOutMutableLiveData().observe(this, loggedOut -> {
             if (loggedOut){
                 if (getView() != null) Navigation.findNavController(getView())
@@ -73,6 +73,15 @@ public class PersonalReviewFragment extends Fragment {
             }
         });
         userEmail=personalReviewViewModel.getUserEmail();
+        personalReviewViewModel.checkIfReviewExists(userEmail,gameId);
+        personalReviewViewModel.getReviewExistsMutableLiveData().observe(this, exists -> {
+            Log.i("search",".observe"+exists.toString());
+            if (exists==false){
+                Log.i("tag","does not exist");
+            }else{
+                Log.i("tag","exists");
+            }
+        });
     }
 
 //TODO create menu

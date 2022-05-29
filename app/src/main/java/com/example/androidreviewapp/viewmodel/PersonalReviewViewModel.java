@@ -18,13 +18,19 @@ public class PersonalReviewViewModel extends AndroidViewModel {
     private MutableLiveData<FirebaseUser> userMutableLiveData;
     private MutableLiveData<Boolean> loggedOutMutableLiveData;
     private ReviewRepository reviewRepository;
+    private MutableLiveData<Review> reviewMutableLiveData;
+    private MutableLiveData<Boolean> reviewExistsMutableLiveData;
 
     public PersonalReviewViewModel(@NonNull Application application) {
         super(application);
-        reviewRepository = new ReviewRepository();
+        reviewRepository = new ReviewRepository(application);
         firebaseRepository = new FirebaseRepository(application);
         userMutableLiveData = firebaseRepository.getUserMutableLiveData();
         loggedOutMutableLiveData = firebaseRepository.getLoggedOutMutableLiveData();
+
+        reviewMutableLiveData = reviewRepository.getReviewMutableLiveData();
+        reviewExistsMutableLiveData = reviewRepository.getReviewExistsMutableLiveData();
+
     }
 
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
@@ -33,8 +39,21 @@ public class PersonalReviewViewModel extends AndroidViewModel {
 
     public MutableLiveData<Boolean> getLoggedOutMutableLiveData() { return loggedOutMutableLiveData;}
 
+    public MutableLiveData<Review> getReviewMutableLiveData() {
+        return reviewMutableLiveData;
+    }
+
+    public MutableLiveData<Boolean> getReviewExistsMutableLiveData() {
+        return reviewExistsMutableLiveData;
+    }
+
     public void postReview(Review review){
         reviewRepository.PostReview(review);
+    }
+    public void checkIfReviewExists(String userEmail, String gameId){
+        Log.i("t",userEmail+gameId);
+        reviewRepository.GetUserReview(userEmail,gameId);
+        Log.i("tag","siia");
     }
     public String getUserEmail(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
