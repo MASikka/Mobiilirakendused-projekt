@@ -104,10 +104,12 @@ public class GameRepository {
         String minimumRequirements = null;
         if (pcRequirements.get("minimum") != null){
             minimumRequirements = pcRequirements.get("minimum").toString();
+            minimumRequirements = cleanBackslashes(minimumRequirements);
         }
         String recommendedRequirements = null;
         if(pcRequirements.get("recommended") != null){
             recommendedRequirements = pcRequirements.get("recommended").toString();
+            recommendedRequirements = cleanBackslashes(recommendedRequirements);
         }
 
         ArrayList<String> developersList = new ArrayList<>();

@@ -49,6 +49,12 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         String detailedDescription = game.getDetailedDescription();
         String shortDescription = game.getShortDescription();
         String supportedLanguages = game.getSupportedLanguages();
+        String gameName = game.getName();
+        //ArrayList<String> developer = game.getDevelopersList();
+        ArrayList<String> publisher = game.getPublishersList();
+        String systemReq = game.getRecommendedPCRequirements();
+        String systemReqMin = game.getMinimumPCRequirements();
+        String releaseDate = game.getReleaseDate();
         ArrayList<String> genresList = game.getGenresList();
         Log.i("Tags: ", String.valueOf(genresList));
         //holder.txtDetailedDescription.setText(detailedDescription);
@@ -57,10 +63,23 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.wvDetailedDescription.loadData(detailedDescription, "text/html", "UTF-8");
         holder.wvShortDescription.loadData(shortDescription, "text/html", "UTF-8");
         //holder.wvGameGenres.loadData(genresList.get(position), "text/html", "UTF-8");
+        holder.wvGameName.loadData(gameName, "text/html", "UTF-8");
+        //holder.wvDeveloper.loadData(String.valueOf(developer), "text/html", "UTF-8");
+        holder.wvPublisher.loadData(String.valueOf(publisher), "text/html", "UTF-8");
+        holder.wvSystemReq.loadData(systemReq, "text/html", "UTF-8");
+        holder.wvSystemReqMin.loadData(systemReqMin, "text/html", "UTF-8");
+        holder.wvReleaseDate.loadData(releaseDate, "text/html", "UTF-8");
 
+        //genre layout
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 holder.genreRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false
         );
+        //dev layout
+        LinearLayoutManager layoutManager1 = new LinearLayoutManager(
+                holder.devRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
+
+
+        //genre
         layoutManager.setInitialPrefetchItemCount(game.getGenresList().size());
         GenreAdapter genreAdapter = new GenreAdapter();
         genreAdapter.setGenreList(game.getGenresList());
@@ -68,7 +87,13 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.genreRecyclerView.setAdapter(genreAdapter);
         holder.genreRecyclerView.setRecycledViewPool(viewPool);
 
-        
+        //developers
+        layoutManager1.setInitialPrefetchItemCount(game.getDevelopersList().size());
+        DeveloperAdapter developerAdapter = new DeveloperAdapter();
+        developerAdapter.setDeveloperList(game.getDevelopersList());
+        holder.devRecyclerView.setLayoutManager(layoutManager1);
+        holder.devRecyclerView.setAdapter(developerAdapter);
+        holder.devRecyclerView.setRecycledViewPool(viewPool);
 
 
 
@@ -91,8 +116,15 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final WebView wvSupportedLanguages;
         private final WebView wvDetailedDescription;
         private final WebView wvShortDescription;
-        private final WebView wvGameGenres;
+        //private final WebView wvGameGenres;
         private final RecyclerView genreRecyclerView;
+        private final RecyclerView devRecyclerView;
+        private final WebView wvGameName;
+       // private final WebView wvDeveloper;
+        private final WebView wvPublisher;
+        private final WebView wvSystemReq;
+        private final WebView wvSystemReqMin;
+        private final WebView wvReleaseDate;
 
         public GameDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,8 +133,15 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             wvSupportedLanguages = itemView.findViewById(R.id.wvSupportedLanguages);
             wvDetailedDescription = itemView.findViewById(R.id.wvDetailedDescription);
             wvShortDescription = itemView.findViewById(R.id.wvShortDescription);
-            wvGameGenres = itemView.findViewById(R.id.wvGameGenres);
+            //wvGameGenres = itemView.findViewById(R.id.wvGameGenres);
             genreRecyclerView = itemView.findViewById(R.id.recyclerview_game_genres);
+            devRecyclerView = itemView.findViewById(R.id.recyclerview_game_dev);
+            wvGameName = itemView.findViewById(R.id.wvGameName);
+            //wvDeveloper = itemView.findViewById(R.id.wvDeveloper);
+            wvPublisher = itemView.findViewById(R.id.wvPublisher);
+            wvSystemReq = itemView.findViewById(R.id.wvSystemReq);
+            wvSystemReqMin = itemView.findViewById(R.id.wvSystemReqMin);
+            wvReleaseDate = itemView.findViewById(R.id.wvReleaseDate);
 
         }
     }
