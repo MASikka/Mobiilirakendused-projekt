@@ -104,7 +104,6 @@ public class GameDetailsFragment extends Fragment {
         if (getArguments() != null){
             gameId = getArguments().getString("gameId");
         } else Toast.makeText(getActivity(), "No game id provided, arguments null", Toast.LENGTH_SHORT).show();
-        //GameDetailsViewModel gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
         gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
         if (!gameDetailsViewModel.hasGameDetails()){
             gameDetailsViewModel.getGameDetails(gameId);
