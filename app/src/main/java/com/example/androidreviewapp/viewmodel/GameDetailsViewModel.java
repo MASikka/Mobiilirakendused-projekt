@@ -43,5 +43,9 @@ public class GameDetailsViewModel extends AndroidViewModel {
         return userMutableLiveData;
     }
 
+    public boolean hasGameDetails(){
+        return gameRepository.isNotEmptyArrayList();
+    }
+
     public MutableLiveData<Boolean> getLoggedOutMutableLiveData() { return loggedOutMutableLiveData;}
 }

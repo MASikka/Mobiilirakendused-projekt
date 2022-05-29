@@ -45,6 +45,9 @@ public class SearchViewModel extends AndroidViewModel {
         return userMutableLiveData;
     }
 
+    public boolean hasGameNames(){
+        return gameRepository.isNotEmptyArrayList();
+    }
     public MutableLiveData<Boolean> getLoggedOutMutableLiveData() { return loggedOutMutableLiveData;}
 
 }
