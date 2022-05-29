@@ -48,6 +48,10 @@ public class SearchViewModel extends AndroidViewModel {
     public boolean hasGameNames(){
         return gameRepository.isNotEmptyArrayList();
     }
+
+    public int getGameNamesAmount(){
+        return gameRepository.getArrayListSize();
+    }
     public MutableLiveData<Boolean> getLoggedOutMutableLiveData() { return loggedOutMutableLiveData;}
 
 }

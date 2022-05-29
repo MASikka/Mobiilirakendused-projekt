@@ -1,5 +1,6 @@
 package com.example.androidreviewapp.repository;
 
+import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 import android.webkit.WebView;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -37,7 +39,12 @@ public class GameRepository {
         return false;
     }
 
+    public int getArrayListSize(){
+        return arrayList.size();
+    }
+
     public void getGameSearch(String name){
+        Log.i("api search", "tehakse game search");
         Ion.with(application)
                 .load(SEARCH_URL)
                 .asJsonObject()
@@ -47,6 +54,7 @@ public class GameRepository {
     }
 
     public void getGameDetails(String gameId){
+        Log.i("api search", "tehakse game details search");
         Ion.with(application)
                 .load(String.format(DETAILS_URL, gameId))
                 .asJsonObject()
