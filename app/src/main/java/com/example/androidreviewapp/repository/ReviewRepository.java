@@ -3,11 +3,13 @@ package com.example.androidreviewapp.repository;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -18,6 +20,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class ReviewRepository {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = "Review Firebase";
+    private MutableLiveData<Review> reviewMutableLiveData;
 
 
     //return array?
@@ -41,18 +44,16 @@ public class ReviewRepository {
                     }
                 });
     }
-    public void GetUserReview(String userEmail){ //TODO add game id
+    public void GetUserReview(String userEmail, String gameId){
         db.collection("reviews")
                 .whereEqualTo("userEmail", userEmail)
+                .whereEqualTo("gameId", gameId)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                //TODO do something with received reviews
-
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                             }
                         } else {

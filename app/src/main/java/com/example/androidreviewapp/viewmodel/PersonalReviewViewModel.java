@@ -34,7 +34,6 @@ public class PersonalReviewViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> getLoggedOutMutableLiveData() { return loggedOutMutableLiveData;}
 
     public void postReview(Review review){
-        Log.i("a","siin");
         reviewRepository.PostReview(review);
     }
     public String getUserEmail(){
@@ -43,7 +42,7 @@ public class PersonalReviewViewModel extends AndroidViewModel {
             String userEmail = user.getEmail();
             return userEmail;
         } else {
-            return "nothing";
+            return "";
         }
     }
 }

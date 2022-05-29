@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,9 +34,6 @@ public class PersonalReviewFragment extends Fragment {
     private TextView ETReviewText;
     private CheckBox CBRecommended;
 
-    /*public static PersonalReviewFragment newInstance() {
-        return new PersonalReviewFragment();
-    }*/
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -47,10 +45,15 @@ public class PersonalReviewFragment extends Fragment {
         CBRecommended = view.findViewById(R.id.checkBox_recommend);
         reviewText = ETReviewText.getText().toString().trim();
         recommended = CBRecommended.isChecked();
+        if(TextUtils.isEmpty(reviewText)){
+            Toast.makeText(getActivity(), "Review cannot be empty", Toast.LENGTH_SHORT).show();
+        }else{
             PersonalReviewViewModel personalReviewViewModel = new ViewModelProvider(this).get(PersonalReviewViewModel.class);
             Review review = new Review(reviewText,recommended,userEmail,gameId);
-            Log.i("t",review.toString());
             personalReviewViewModel.postReview(review);
+            Toast.makeText(getActivity(), "Review posted", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(getView())
+                    .navigate(R.id.action_personalReviewFragment_to_searchFragment);}
         });
         return view;
     }
