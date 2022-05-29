@@ -57,6 +57,7 @@ public class GameRepository {
     }
 
     private void parseDetailsResults(JsonObject result, String gameId) {
+        arrayList.clear();
         Log.i("parseResults-gameDetails", gameId);
         JsonObject app = result.getAsJsonObject(gameId);
         JsonObject data = app.getAsJsonObject("data");
