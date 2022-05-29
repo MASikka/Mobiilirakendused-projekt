@@ -14,6 +14,7 @@ import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
 
 public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.GameDetailsViewHolder>{
 

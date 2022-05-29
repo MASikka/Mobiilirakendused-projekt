@@ -69,8 +69,28 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        searchButton = view.findViewById(R.id.btnSearch);
         gameText = view.findViewById(R.id.etGameNameInput);
+
+        if (getArguments() != null){
+            game = getArguments().getString("gameName");
+            gameText.setText(game);
+        }
+
+        SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+        searchViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
+            if (loggedOut){
+                if (getView() != null)Navigation.findNavController(getView())
+                        .navigate(R.id.action_searchFragment_to_loginFragment);
+            }
+        });
+        if (!searchViewModel.hasGameNames()){
+            searchViewModel.getGameSearch(game);
+        }
+        searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameAdapter.setGameList(games));
+
+
+        searchButton = view.findViewById(R.id.btnSearch);
+
         searchButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -92,11 +112,19 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState == null){
+            Log.i("savedInstanceState", "not saved");
+        } else {
+            Log.i("savedInstanceState", "saved");
+        }
+
         if (getArguments() != null){
             game = getArguments().getString("gameName");
             Log.i("SearchFragment", game);
         } else Toast.makeText(getActivity(), "No game name provided, arguments null", Toast.LENGTH_SHORT).show();
 
+/*
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         searchViewModel.getLoggedOutMutableLiveData().observe(this, loggedOut -> {
             if (loggedOut){
@@ -106,7 +134,10 @@ public class SearchFragment extends Fragment {
         });
         searchViewModel.getGameSearch(game);
         searchViewModel.getGameLiveData().observe(this, games -> gameAdapter.setGameList(games));
+
+ */
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
 

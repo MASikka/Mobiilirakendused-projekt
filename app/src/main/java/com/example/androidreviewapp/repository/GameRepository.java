@@ -30,6 +30,13 @@ public class GameRepository {
         this.gameLiveData = new MutableLiveData<>();
     }
 
+    public boolean isNotEmptyArrayList(){
+        if (arrayList.size() > 0){
+            return true;
+        }
+        return false;
+    }
+
     public void getGameSearch(String name){
         Ion.with(application)
                 .load(SEARCH_URL)
@@ -57,6 +64,7 @@ public class GameRepository {
     }
 
     private void parseDetailsResults(JsonObject result, String gameId) {
+        arrayList.clear();
         Log.i("parseResults-gameDetails", gameId);
         JsonObject app = result.getAsJsonObject(gameId);
         JsonObject data = app.getAsJsonObject("data");
@@ -121,16 +129,20 @@ public class GameRepository {
                 publishersList.add(publisher);
             }
         }
-
-        JsonObject priceOverview = data.getAsJsonObject("price_overview");
         String initialPrice = "";
-        if (priceOverview.get("initial_formatted") != null){
-            initialPrice = priceOverview.get("initial_formatted").toString();
-        }
         String finalPrice = "";
-        if (priceOverview.get("final_formatted") != null){
-            finalPrice = priceOverview.get("final_formatted").toString();
+        if (data.getAsJsonObject("price_overview") != null){
+            JsonObject priceOverview = data.getAsJsonObject("price_overview");
+
+            if (priceOverview.get("initial_formatted") != null){
+                initialPrice = priceOverview.get("initial_formatted").toString();
+            }
+
+            if (priceOverview.get("final_formatted") != null){
+                finalPrice = priceOverview.get("final_formatted").toString();
+            }
         }
+
 
         JsonObject platforms = data.getAsJsonObject("platforms");
         Boolean isWindows = false;
@@ -157,6 +169,7 @@ public class GameRepository {
         for (int i = 0; i < genres.size(); i++){
             JsonObject genre = (JsonObject) genres.get(i);
             String genreName = genre.get("description").toString();
+            genreName = removeAbles(genreName);
             genresList.add(genreName);
         }
 

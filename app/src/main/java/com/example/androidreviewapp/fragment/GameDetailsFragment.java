@@ -61,6 +61,7 @@ public class GameDetailsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         GameDetailsViewModel gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
         gameDetailsViewModel.getLoggedOutMutableLiveData().observe(this, loggedOut -> {
             if (loggedOut){
@@ -76,6 +77,8 @@ public class GameDetailsFragment extends Fragment {
         gameDetailsViewModel.getGameDetails(gameId);
         gameDetailsViewModel.getGameLiveData().observe(this, games -> gameDetailsAdapter.setGameDetailsList(games));
 
+
+         */
     }
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -91,6 +94,22 @@ public class GameDetailsFragment extends Fragment {
         //txtGameId.setText(gameId);
         //Log.i("description-got", detailedDescription);
         //txtGameId.setText(detailedDescription);
+        GameDetailsViewModel gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
+        gameDetailsViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
+            if (loggedOut){
+                if (getView() != null)Navigation.findNavController(getView())
+                        .navigate(R.id.action_gameDetails2Fragment_to_loginFragment);
+            }
+        });
+        if (getArguments() != null){
+            gameId = getArguments().getString("gameId");
+        } else Toast.makeText(getActivity(), "No game id provided, arguments null", Toast.LENGTH_SHORT).show();
+        //GameDetailsViewModel gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
+        gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
+        if (!gameDetailsViewModel.hasGameDetails()){
+            gameDetailsViewModel.getGameDetails(gameId);
+        }
+        gameDetailsViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameDetailsAdapter.setGameDetailsList(games));
     }
 
 
@@ -112,4 +131,6 @@ public class GameDetailsFragment extends Fragment {
     }
         return(super.onOptionsItemSelected(item));
     }
+
+
 }
