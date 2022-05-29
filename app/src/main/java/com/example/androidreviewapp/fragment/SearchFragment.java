@@ -83,7 +83,9 @@ public class SearchFragment extends Fragment {
                         .navigate(R.id.action_searchFragment_to_loginFragment);
             }
         });
-        searchViewModel.getGameSearch(game);
+        if (!searchViewModel.hasGameNames()){
+            searchViewModel.getGameSearch(game);
+        }
         searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameAdapter.setGameList(games));
 
 

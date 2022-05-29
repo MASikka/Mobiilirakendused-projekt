@@ -106,7 +106,9 @@ public class GameDetailsFragment extends Fragment {
         } else Toast.makeText(getActivity(), "No game id provided, arguments null", Toast.LENGTH_SHORT).show();
         //GameDetailsViewModel gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
         gameDetailsViewModel = new ViewModelProvider(this).get(GameDetailsViewModel.class);
-        gameDetailsViewModel.getGameDetails(gameId);
+        if (!gameDetailsViewModel.hasGameDetails()){
+            gameDetailsViewModel.getGameDetails(gameId);
+        }
         gameDetailsViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameDetailsAdapter.setGameDetailsList(games));
     }
 

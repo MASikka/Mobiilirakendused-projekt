@@ -30,6 +30,13 @@ public class GameRepository {
         this.gameLiveData = new MutableLiveData<>();
     }
 
+    public boolean isNotEmptyArrayList(){
+        if (arrayList.size() > 0){
+            return true;
+        }
+        return false;
+    }
+
     public void getGameSearch(String name){
         Ion.with(application)
                 .load(SEARCH_URL)
