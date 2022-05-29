@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,9 +34,6 @@ public class PersonalReviewFragment extends Fragment {
     private TextView ETReviewText;
     private CheckBox CBRecommended;
 
-    /*public static PersonalReviewFragment newInstance() {
-        return new PersonalReviewFragment();
-    }*/
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -47,11 +45,17 @@ public class PersonalReviewFragment extends Fragment {
         CBRecommended = view.findViewById(R.id.checkBox_recommend);
         reviewText = ETReviewText.getText().toString().trim();
         recommended = CBRecommended.isChecked();
+        if(TextUtils.isEmpty(reviewText)){
+            Toast.makeText(getActivity(), "Review cannot be empty", Toast.LENGTH_SHORT).show();
+        }else{
             PersonalReviewViewModel personalReviewViewModel = new ViewModelProvider(this).get(PersonalReviewViewModel.class);
             Review review = new Review(reviewText,recommended,userEmail,gameId);
-            Log.i("t",review.toString());
             personalReviewViewModel.postReview(review);
+            Toast.makeText(getActivity(), "Review posted", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(getView())
+                    .navigate(R.id.action_personalReviewFragment_to_searchFragment);}
         });
+
         return view;
     }
 
@@ -61,8 +65,8 @@ public class PersonalReviewFragment extends Fragment {
         if (getArguments() != null){
             gameId = getArguments().getString("gameId");
         } else Toast.makeText(getActivity(), "No game provided", Toast.LENGTH_SHORT).show();
-
         PersonalReviewViewModel personalReviewViewModel = new ViewModelProvider(this).get(PersonalReviewViewModel.class);
+
         personalReviewViewModel.getLoggedOutMutableLiveData().observe(this, loggedOut -> {
             if (loggedOut){
                 if (getView() != null) Navigation.findNavController(getView())
@@ -70,6 +74,18 @@ public class PersonalReviewFragment extends Fragment {
             }
         });
         userEmail=personalReviewViewModel.getUserEmail();
+        personalReviewViewModel.checkIfReviewExists(gameId);
+        personalReviewViewModel.getReviewExistsMutableLiveData().observe(this, exists -> {
+            if (exists==false){
+                Log.i("tag","does not exist");
+            }else{
+                personalReviewViewModel.getReviewMutableLiveData().observe(this, data -> {
+                    Log.i("noooh",data.toString());
+                });
+            }
+        });
+
+
     }
 
 //TODO create menu

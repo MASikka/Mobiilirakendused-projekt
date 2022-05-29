@@ -127,6 +127,7 @@ public class SearchFragment extends Fragment {
 /*
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         searchViewModel.getLoggedOutMutableLiveData().observe(this, loggedOut -> {
+            Log.i("search",".observe"+loggedOut.toString());
             if (loggedOut){
                 if (getView() != null)Navigation.findNavController(getView())
                         .navigate(R.id.action_searchFragment_to_loginFragment);

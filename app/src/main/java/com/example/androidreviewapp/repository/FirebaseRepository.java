@@ -40,6 +40,8 @@ public class FirebaseRepository {
             userMutableLiveData.postValue(firebaseAuth.getCurrentUser());
             loggedOutMutableLiveData.postValue(false);
             loadUserData();
+        }else{
+            loggedOutMutableLiveData.postValue(true);
         }
     }
 
