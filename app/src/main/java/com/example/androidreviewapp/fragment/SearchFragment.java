@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class SearchFragment extends Fragment {
     TextInputEditText gameText;
     TextView searchAmount;
     Button searchButton;
+    ProgressBar searchLoading;
     private GameAdapter gameAdapter;
 
     @Override
@@ -73,11 +75,17 @@ public class SearchFragment extends Fragment {
 
         gameText = view.findViewById(R.id.etGameNameInput);
         searchAmount = view.findViewById(R.id.txtSearchAmount);
+        searchLoading = view.findViewById(R.id.searchLoading);
+        searchLoading.setVisibility(View.VISIBLE);
 
         if (getArguments() != null){
             game = getArguments().getString("gameName");
             gameText.setText(game);
+        } else {
+            searchLoading.setVisibility(View.GONE);
         }
+
+
 
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         searchViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
@@ -92,8 +100,15 @@ public class SearchFragment extends Fragment {
         searchAmount.setText(String.format(getString(R.string.search_amount), "0"));
         //searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameAdapter.setGameList(games));
         searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
+            Log.i("observe", "game search");
             gameAdapter.setGameList(games);
             searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(games.size())));
+            /*if (games.size() > 0){
+                searchLoading.setVisibility(View.GONE);
+            }
+
+             */
+            searchLoading.setVisibility(View.GONE);
         });
 
         //searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(searchViewModel.getGameNamesAmount())));
@@ -110,6 +125,8 @@ public class SearchFragment extends Fragment {
                         Log.i("gameText", gameText.getText().toString());
                         name = gameText.getText().toString().toLowerCase(Locale.getDefault()).trim();
 
+
+                        //searchLoading.setVisibility(View.VISIBLE);
                         Bundle args = new Bundle();
                         args.putString("gameName", name);
                         navController.navigate(R.id.action_searchFragment_self, args);
