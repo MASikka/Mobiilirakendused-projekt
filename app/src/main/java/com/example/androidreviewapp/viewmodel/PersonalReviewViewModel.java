@@ -21,6 +21,7 @@ public class PersonalReviewViewModel extends AndroidViewModel {
     private MutableLiveData<Review> reviewMutableLiveData;
     private MutableLiveData<Boolean> reviewExistsMutableLiveData;
 
+
     public PersonalReviewViewModel(@NonNull Application application) {
         super(application);
         reviewRepository = new ReviewRepository(application);
@@ -50,10 +51,8 @@ public class PersonalReviewViewModel extends AndroidViewModel {
     public void postReview(Review review){
         reviewRepository.PostReview(review);
     }
-    public void checkIfReviewExists(String userEmail, String gameId){
-        Log.i("t",userEmail+gameId);
-        reviewRepository.GetUserReview(userEmail,gameId);
-        Log.i("tag","siia");
+    public void checkIfReviewExists(String gameId){
+        reviewRepository.GetUserReview(gameId);
     }
     public String getUserEmail(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

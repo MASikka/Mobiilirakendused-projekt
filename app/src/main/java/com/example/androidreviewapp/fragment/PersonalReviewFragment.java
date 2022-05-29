@@ -55,6 +55,7 @@ public class PersonalReviewFragment extends Fragment {
             Navigation.findNavController(getView())
                     .navigate(R.id.action_personalReviewFragment_to_searchFragment);}
         });
+
         return view;
     }
 
@@ -73,15 +74,18 @@ public class PersonalReviewFragment extends Fragment {
             }
         });
         userEmail=personalReviewViewModel.getUserEmail();
-        personalReviewViewModel.checkIfReviewExists(userEmail,gameId);
+        personalReviewViewModel.checkIfReviewExists(gameId);
         personalReviewViewModel.getReviewExistsMutableLiveData().observe(this, exists -> {
-            Log.i("search",".observe"+exists.toString());
             if (exists==false){
                 Log.i("tag","does not exist");
             }else{
-                Log.i("tag","exists");
+                personalReviewViewModel.getReviewMutableLiveData().observe(this, data -> {
+                    Log.i("noooh",data.toString());
+                });
             }
         });
+
+
     }
 
 //TODO create menu
