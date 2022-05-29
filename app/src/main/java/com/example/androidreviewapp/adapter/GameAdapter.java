@@ -39,7 +39,10 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         Game game = gameList.get(position);
         String gameId = game.getId();
 
+        Log.i("onbindviewholder", "teeb onbindviewholderit");
+
         Bundle args = new Bundle();
+
         args.putString("gameId", gameId);
 
         holder.nameButton.setText(game.getName());

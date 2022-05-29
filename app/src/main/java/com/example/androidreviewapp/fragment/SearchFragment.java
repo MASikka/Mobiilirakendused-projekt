@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidreviewapp.adapter.GameAdapter;
@@ -35,6 +36,7 @@ public class SearchFragment extends Fragment {
     String game;
     NavController navController;
     TextInputEditText gameText;
+    TextView searchAmount;
     Button searchButton;
     private GameAdapter gameAdapter;
 
@@ -70,6 +72,7 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         gameText = view.findViewById(R.id.etGameNameInput);
+        searchAmount = view.findViewById(R.id.txtSearchAmount);
 
         if (getArguments() != null){
             game = getArguments().getString("gameName");
@@ -86,8 +89,14 @@ public class SearchFragment extends Fragment {
         if (!searchViewModel.hasGameNames()){
             searchViewModel.getGameSearch(game);
         }
-        searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameAdapter.setGameList(games));
+        searchAmount.setText(String.format(getString(R.string.search_amount), "0"));
+        //searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameAdapter.setGameList(games));
+        searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
+            gameAdapter.setGameList(games);
+            searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(games.size())));
+        });
 
+        //searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(searchViewModel.getGameNamesAmount())));
 
         searchButton = view.findViewById(R.id.btnSearch);
 
@@ -124,7 +133,7 @@ public class SearchFragment extends Fragment {
             Log.i("SearchFragment", game);
         } else Toast.makeText(getActivity(), "No game name provided, arguments null", Toast.LENGTH_SHORT).show();
 
-/*
+        /*
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         searchViewModel.getLoggedOutMutableLiveData().observe(this, loggedOut -> {
             if (loggedOut){
