@@ -1,4 +1,4 @@
-package com.example.androidreviewapp;
+package com.example.androidreviewapp.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -19,11 +19,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Review;
-import com.example.androidreviewapp.viewmodel.SearchViewModel;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.androidreviewapp.viewmodel.PersonalReviewViewModel;
 
 public class PersonalReviewFragment extends Fragment {
 
@@ -74,11 +72,12 @@ public class PersonalReviewFragment extends Fragment {
         userEmail=personalReviewViewModel.getUserEmail();
     }
 
-    @Override
+//TODO create menu
+    /*@Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_gamedetails,menu); //TODO create menu
+        inflater.inflate(R.menu.menu_gamedetails,menu);
         super.onCreateOptionsMenu(menu, inflater);
-    }
+    }*/
 
 
 

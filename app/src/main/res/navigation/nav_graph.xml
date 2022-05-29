@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/personalReviewFragment"
-        android:name="com.example.androidreviewapp.PersonalReviewFragment"
+        android:name="com.example.androidreviewapp.fragment.PersonalReviewFragment"
         android:label="PersonalReviewFragment"
         tools:layout="@layout/personal_review_fragment" >
 

@@ -1,4 +1,4 @@
-package com.example.androidreviewapp;
+package com.example.androidreviewapp.viewmodel;
 
 import android.app.Application;
 import android.util.Log;
