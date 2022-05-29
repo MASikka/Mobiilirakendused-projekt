@@ -23,8 +23,7 @@
         <SwitchPreferenceCompat
             android:id="@+id/toggle_color_mode"
             app:defaultValue="false"
-            app:key="sync"
-            app:title="@string/switch_color" />
+            app:key="sync" />
 
     </PreferenceCategory>
 

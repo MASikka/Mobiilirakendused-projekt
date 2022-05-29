@@ -41,6 +41,26 @@ public class ReviewRepository {
                     }
                 });
     }
+    public void GetUserReview(String userEmail){ //TODO add game id
+        db.collection("reviews")
+                .whereEqualTo("userEmail", userEmail)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                //TODO do something with received reviews
+
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
 
     public void PostReview(Review review){
         db.collection("reviews")
@@ -49,7 +69,7 @@ public class ReviewRepository {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         //TODO what to do when review posted
-                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                        Log.i(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -58,11 +78,6 @@ public class ReviewRepository {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
-    }
-
-    public void LikeReview(String Id){
-        DocumentReference documentRef = db.collection("reviews").document(Id);
-        documentRef.update("likeAmount", FieldValue.increment(1));
     }
 
     public void DeleteReview(String Id){

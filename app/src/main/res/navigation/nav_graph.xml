@@ -17,8 +17,8 @@
             android:id="@+id/action_searchFragment_to_gameDetails2Fragment"
             app:destination="@id/gameDetails2Fragment" />
         <action
-            android:id="@+id/action_searchFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            android:id="@+id/action_searchFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -63,32 +63,20 @@
         android:label="game_details2_fragment"
         tools:layout="@layout/game_details_fragment" >
         <action
-            android:id="@+id/action_gameDetails2Fragment_to_gameReviewFragment"
-            app:destination="@id/gameReviewFragment" />
-        <action
-            android:id="@+id/action_gameDetails2Fragment_to_personalReviewFragment"
+            android:id="@+id/action_gameDetails2Fragment_to_personalreviewFragment"
             app:destination="@id/personalReviewFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/gameReviewFragment"
-        android:name="com.example.androidreviewapp.fragment.GameReviewFragment"
-        android:label="game_review_fragment"
-        tools:layout="@layout/game_review_fragment" >
         <action
-            android:id="@+id/action_gameReviewFragment_to_personalReviewFragment"
-            app:destination="@id/personalReviewFragment" />
+            android:id="@+id/action_gameDetails2Fragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalReviewFragment"
-        android:name="com.example.androidreviewapp.PersonalReviewFragment"
-        android:label="personal_review_fragment"
-        tools:layout="@layout/personal_review_fragment" />
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.androidreviewapp.SettingsFragment"
-        android:label="SettingsFragment" >
+        android:name="com.example.androidreviewapp.fragment.PersonalReviewFragment"
+        android:label="PersonalReviewFragment"
+        tools:layout="@layout/personal_review_fragment" >
+
         <action
-            android:id="@+id/action_settingsFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            android:id="@+id/action_personalReviewFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

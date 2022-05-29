@@ -1,47 +1,49 @@
 package com.example.androidreviewapp.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.androidreviewapp.model.Game;
+import com.example.androidreviewapp.model.Review;
 import com.example.androidreviewapp.repository.FirebaseRepository;
-import com.example.androidreviewapp.repository.GameRepository;
+import com.example.androidreviewapp.repository.ReviewRepository;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
-
-public class GameDetailsViewModel extends AndroidViewModel {
-    private final GameRepository gameRepository;
-    private final MutableLiveData<ArrayList<Game>> gameLiveData;
-
+public class PersonalReviewViewModel extends AndroidViewModel {
     private FirebaseRepository firebaseRepository;
     private MutableLiveData<FirebaseUser> userMutableLiveData;
     private MutableLiveData<Boolean> loggedOutMutableLiveData;
+    private ReviewRepository reviewRepository;
 
-    public GameDetailsViewModel(@NonNull Application application) {
+    public PersonalReviewViewModel(@NonNull Application application) {
         super(application);
-        gameRepository = new GameRepository(application);
-        gameLiveData = gameRepository.getGameLiveData();
-
+        reviewRepository = new ReviewRepository();
         firebaseRepository = new FirebaseRepository(application);
         userMutableLiveData = firebaseRepository.getUserMutableLiveData();
         loggedOutMutableLiveData = firebaseRepository.getLoggedOutMutableLiveData();
     }
 
-    public MutableLiveData<ArrayList<Game>> getGameLiveData(){
-        return gameLiveData;
-    }
-
-    public void getGameDetails(String gameId){
-        gameRepository.getGameDetails(gameId);
-    }
-    public void logOut(){firebaseRepository.logout();}
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
         return userMutableLiveData;
     }
 
     public MutableLiveData<Boolean> getLoggedOutMutableLiveData() { return loggedOutMutableLiveData;}
+
+    public void postReview(Review review){
+        Log.i("a","siin");
+        reviewRepository.PostReview(review);
+    }
+    public String getUserEmail(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String userEmail = user.getEmail();
+            return userEmail;
+        } else {
+            return "nothing";
+        }
+    }
 }

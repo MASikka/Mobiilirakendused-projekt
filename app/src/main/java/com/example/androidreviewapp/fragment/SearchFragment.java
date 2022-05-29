@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.androidreviewapp.adapter.GameAdapter;
 import com.example.androidreviewapp.R;
+import com.example.androidreviewapp.repository.FirebaseRepository;
 import com.example.androidreviewapp.viewmodel.SearchViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -38,7 +42,7 @@ public class SearchFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.search_fragment, container, false);
-
+        setHasOptionsMenu(true);
         if (getArguments() != null){
             requireActivity().setTitle("Games Search - '" + getArguments().getString("gameName") + "'");
         } else {
@@ -54,6 +58,12 @@ public class SearchFragment extends Fragment {
 
         return view;
     }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -88,8 +98,28 @@ public class SearchFragment extends Fragment {
         } else Toast.makeText(getActivity(), "No game name provided, arguments null", Toast.LENGTH_SHORT).show();
 
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+        searchViewModel.getLoggedOutMutableLiveData().observe(this, loggedOut -> {
+            if (loggedOut){
+                if (getView() != null)Navigation.findNavController(getView())
+                        .navigate(R.id.action_searchFragment_to_loginFragment);
+            }
+        });
         searchViewModel.getGameSearch(game);
         searchViewModel.getGameLiveData().observe(this, games -> gameAdapter.setGameList(games));
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+
+
+        case R.id.settings:
+
+            return(true);
+
+        case R.id.logout:
+            SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+            searchViewModel.logOut();
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
 }
