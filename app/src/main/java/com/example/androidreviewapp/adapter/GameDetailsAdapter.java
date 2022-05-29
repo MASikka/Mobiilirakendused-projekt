@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +18,9 @@ import java.util.ArrayList;
 public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.GameDetailsViewHolder>{
 
     private ArrayList<Game> gameList;
+
+    private RecyclerView.RecycledViewPool viewPool =
+            new RecyclerView.RecycledViewPool();
 
     public GameDetailsAdapter(){
         this.gameList = new ArrayList<>();
@@ -54,8 +55,17 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.wvSupportedLanguages.loadData(supportedLanguages, "text/html", "UTF-8");
         holder.wvDetailedDescription.loadData(detailedDescription, "text/html", "UTF-8");
         holder.wvShortDescription.loadData(shortDescription, "text/html", "UTF-8");
-        holder.wvGameGenres.loadData(genresList.get(position), "text/html", "UTF-8");
+        //holder.wvGameGenres.loadData(genresList.get(position), "text/html", "UTF-8");
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                holder.genreRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false
+        );
+        layoutManager.setInitialPrefetchItemCount(game.getGenresList().size());
+        GenreAdapter genreAdapter = new GenreAdapter();
+        genreAdapter.setGenreList(game.getGenresList());
+        holder.genreRecyclerView.setLayoutManager(layoutManager);
+        holder.genreRecyclerView.setAdapter(genreAdapter);
+        holder.genreRecyclerView.setRecycledViewPool(viewPool);
 
 
 
@@ -79,6 +89,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final WebView wvDetailedDescription;
         private final WebView wvShortDescription;
         private final WebView wvGameGenres;
+        private final RecyclerView genreRecyclerView;
 
         public GameDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +99,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             wvDetailedDescription = itemView.findViewById(R.id.wvDetailedDescription);
             wvShortDescription = itemView.findViewById(R.id.wvShortDescription);
             wvGameGenres = itemView.findViewById(R.id.wvGameGenres);
+            genreRecyclerView = itemView.findViewById(R.id.recyclerview_game_genres);
 
         }
     }

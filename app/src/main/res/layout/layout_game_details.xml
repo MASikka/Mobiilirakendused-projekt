@@ -38,22 +38,30 @@
 
     </WebView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_game_tags"
+    <LinearLayout
+        android:id="@+id/linearlayout_genre_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layoutDirection="ltr"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wvSupportedLanguages"
-        app:reverseLayout="true"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wvSupportedLanguages">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_game_genres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+            app:reverseLayout="true" />
+    </LinearLayout>
     <WebView
         android:id="@+id/wvGameGenres"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerview_game_tags" />
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_genre_recycler" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

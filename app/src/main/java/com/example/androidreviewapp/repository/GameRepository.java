@@ -48,6 +48,14 @@ public class GameRepository {
                 });
     }
 
+    private String cleanBackslashes(String text){
+        text = text.replaceAll("\\\\t", "");
+        text = text.replaceAll("\\\\n", "");
+        text = text.replaceAll("\\\\r", "");
+        text = text.replaceAll("\\\\\"", "\"");
+        return text;
+    }
+
     private void parseDetailsResults(JsonObject result, String gameId) {
         Log.i("parseResults-gameDetails", gameId);
         JsonObject app = result.getAsJsonObject(gameId);
@@ -56,24 +64,32 @@ public class GameRepository {
         String name = data.get("name").toString();
         Log.i("parseResults-gameDetails", type);
 
-        String detailedDescription = data.get("detailed_description").toString();
-        detailedDescription = removeAbles(detailedDescription);
+        String detailedDescription = "";
+        if (data.get("detailed_description") != null){
+            detailedDescription = data.get("detailed_description").toString();
+            detailedDescription = removeAbles(detailedDescription);
+            detailedDescription = cleanBackslashes(detailedDescription);
+        }
 
+        String shortDescription = "";
+        if (data.get("short_description") != null){
+            shortDescription = data.get("short_description").toString();
+            shortDescription = removeAbles(shortDescription);
+            shortDescription = cleanBackslashes(shortDescription);
+        }
 
+        String aboutTheGame = "";
+        if (data.get("about_the_game") != null){
+            aboutTheGame = data.get("about_the_game").toString();
+            aboutTheGame = removeAbles(aboutTheGame);
+            aboutTheGame = cleanBackslashes(aboutTheGame);
+        }
 
-        detailedDescription = detailedDescription.replaceAll("\\\\t", "");
-        detailedDescription = detailedDescription.replaceAll("\\\\n", "");
-        detailedDescription = detailedDescription.replaceAll("\\\\r", "");
-        detailedDescription = detailedDescription.replaceAll("\\\\\"", "\"");
-
-        String shortDescription = data.get("short_description").toString();
-        shortDescription = removeAbles(shortDescription);
-
-        String aboutTheGame = data.get("about_the_game").toString();
-        aboutTheGame = removeAbles(aboutTheGame);
-
-        String supportedLanguages = data.get("supported_languages").toString();
-        supportedLanguages = removeAbles(supportedLanguages);
+        String supportedLanguages = "";
+        if (data.get("supported_languages") != null){
+            supportedLanguages = data.get("supported_languages").toString();
+            supportedLanguages = removeAbles(supportedLanguages);
+        }
 
 
         JsonObject pcRequirements = data.getAsJsonObject("pc_requirements");
@@ -105,13 +121,28 @@ public class GameRepository {
         }
 
         JsonObject priceOverview = data.getAsJsonObject("price_overview");
-        String initialPrice = priceOverview.get("initial_formatted").toString();
-        String finalPrice = priceOverview.get("final_formatted").toString();
+        String initialPrice = "";
+        if (priceOverview.get("initial_formatted") != null){
+            initialPrice = priceOverview.get("initial_formatted").toString();
+        }
+        String finalPrice = "";
+        if (priceOverview.get("final_formatted") != null){
+            finalPrice = priceOverview.get("final_formatted").toString();
+        }
 
         JsonObject platforms = data.getAsJsonObject("platforms");
-        Boolean isWindows = platforms.get("windows").getAsBoolean();
-        Boolean isMac = platforms.get("mac").getAsBoolean();
-        Boolean isLinux = platforms.get("linux").getAsBoolean();
+        Boolean isWindows = false;
+        Boolean isMac = false;
+        Boolean isLinux = false;
+        if (platforms.get("windows") != null){
+            isWindows = platforms.get("windows").getAsBoolean();
+        }
+        if (platforms.get("mac") != null){
+            isMac = platforms.get("mac").getAsBoolean();
+        }
+        if (platforms.get("linux") != null){
+            isLinux = platforms.get("linux").getAsBoolean();
+        }
 
         String metacriticScore = null;
         if (data.getAsJsonObject("metacritic") != null){
