@@ -55,7 +55,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.wvSupportedLanguages.loadData(supportedLanguages, "text/html", "UTF-8");
         holder.wvDetailedDescription.loadData(detailedDescription, "text/html", "UTF-8");
         holder.wvShortDescription.loadData(shortDescription, "text/html", "UTF-8");
-        //holder.wvGameGenres.loadData(genresList.get(position), "text/html", "UTF-8");
+        holder.wvGameGenres.loadData(genresList.get(position), "text/html", "UTF-8");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 holder.genreRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false
