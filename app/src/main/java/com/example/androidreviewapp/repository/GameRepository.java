@@ -119,16 +119,20 @@ public class GameRepository {
                 publishersList.add(publisher);
             }
         }
-
-        JsonObject priceOverview = data.getAsJsonObject("price_overview");
         String initialPrice = "";
-        if (priceOverview.get("initial_formatted") != null){
-            initialPrice = priceOverview.get("initial_formatted").toString();
-        }
         String finalPrice = "";
-        if (priceOverview.get("final_formatted") != null){
-            finalPrice = priceOverview.get("final_formatted").toString();
+        if (data.getAsJsonObject("price_overview") != null){
+            JsonObject priceOverview = data.getAsJsonObject("price_overview");
+
+            if (priceOverview.get("initial_formatted") != null){
+                initialPrice = priceOverview.get("initial_formatted").toString();
+            }
+
+            if (priceOverview.get("final_formatted") != null){
+                finalPrice = priceOverview.get("final_formatted").toString();
+            }
         }
+
 
         JsonObject platforms = data.getAsJsonObject("platforms");
         Boolean isWindows = false;
@@ -155,6 +159,7 @@ public class GameRepository {
         for (int i = 0; i < genres.size(); i++){
             JsonObject genre = (JsonObject) genres.get(i);
             String genreName = genre.get("description").toString();
+            genreName = removeAbles(genreName);
             genresList.add(genreName);
         }
 
