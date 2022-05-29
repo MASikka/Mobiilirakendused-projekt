@@ -98,21 +98,12 @@ public class SearchFragment extends Fragment {
             searchViewModel.getGameSearch(game);
         }
         searchAmount.setText(String.format(getString(R.string.search_amount), "0"));
-        //searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameAdapter.setGameList(games));
         searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
             Log.i("observe", "game search");
             gameAdapter.setGameList(games);
             searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(games.size())));
-            /*if (games.size() > 0){
-                searchLoading.setVisibility(View.GONE);
-            }
-
-             */
             searchLoading.setVisibility(View.GONE);
         });
-
-        //searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(searchViewModel.getGameNamesAmount())));
-
         searchButton = view.findViewById(R.id.btnSearch);
 
         searchButton.setOnClickListener(
@@ -125,8 +116,6 @@ public class SearchFragment extends Fragment {
                         Log.i("gameText", gameText.getText().toString());
                         name = gameText.getText().toString().toLowerCase(Locale.getDefault()).trim();
 
-
-                        //searchLoading.setVisibility(View.VISIBLE);
                         Bundle args = new Bundle();
                         args.putString("gameName", name);
                         navController.navigate(R.id.action_searchFragment_self, args);
