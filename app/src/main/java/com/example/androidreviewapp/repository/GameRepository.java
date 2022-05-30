@@ -16,6 +16,7 @@ import com.koushikdutta.ion.Ion;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -107,16 +108,19 @@ public class GameRepository {
             supportedLanguages = removeAbles(supportedLanguages);
         }
 
-
-        JsonObject pcRequirements = data.getAsJsonObject("pc_requirements");
+        JsonObject pcRequirements = null;
         String minimumRequirements = null;
-        if (pcRequirements.get("minimum") != null){
-            minimumRequirements = pcRequirements.get("minimum").toString();
-        }
         String recommendedRequirements = null;
-        if(pcRequirements.get("recommended") != null){
-            recommendedRequirements = pcRequirements.get("recommended").toString();
+        if (data.getAsJsonObject("pc_requirements") != null){
+            pcRequirements = data.getAsJsonObject("pc_requirements");
+            if (pcRequirements.get("minimum") != null){
+                minimumRequirements = pcRequirements.get("minimum").toString();
+            }
+            if(pcRequirements.get("recommended") != null){
+                recommendedRequirements = pcRequirements.get("recommended").toString();
+            }
         }
+
 
         ArrayList<String> developersList = new ArrayList<>();
         if (data.getAsJsonArray("developers") != null){
@@ -280,6 +284,14 @@ public class GameRepository {
                         if (tempList.contains(appName)){
                             continue;
                         }
+                        // Only include apps that begin with the name
+                        /*
+                        int nameLen = name.length();
+
+                        if (!appName.substring(1, nameLen+1).toLowerCase(Locale.getDefault()).equals(name)){
+                            continue;
+                        }
+                        */
                         Log.i("parseResults-found-contains", appName);
                         Log.i("parseResults-found-contains", Integer.toString(appId));
                         Game game = new Game(Integer.toString(appId), removeAbles(appName));
@@ -294,6 +306,9 @@ public class GameRepository {
         }
 
         Collections.sort(arrayList, (g1, g2) -> g1.getName().compareTo(g2.getName()));
+
+        // Sort list by name length, so that smallest names start at top
+        //Collections.sort(arrayList, (g1, g2) -> g1.getName().length() - g2.getName().length());
         for(int i = 0; i < arrayList.size(); i++){
             Log.i("arraylist-details2", i + " - " + arrayList.get(i).getName());
         }
