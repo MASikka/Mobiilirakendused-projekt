@@ -15,6 +15,11 @@ public class Review {
         this.userEmail = userEmail;
         this.gameId = gameId;
     }
+    public Review(String reviewText, String userEmail,Boolean recommends ){
+        this.reviewText = reviewText;
+        this.userEmail = userEmail;
+        this.recommends = recommends;
+    }
     public String getReviewText(){
         return reviewText;
     }

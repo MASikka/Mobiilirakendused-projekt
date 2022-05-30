@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
 import com.google.android.material.textfield.TextInputEditText;
@@ -23,6 +25,8 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
 
     private ArrayList<Game> gameList;
 
+
+
     public GameAdapter() {
         this.gameList = new ArrayList<>();
     }
@@ -31,6 +35,10 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     @Override
     public GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_search, parent, false);
+
+
+
+
         return new GameViewHolder(view);
     }
 

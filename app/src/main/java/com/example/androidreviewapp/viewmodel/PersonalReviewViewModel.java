@@ -18,13 +18,20 @@ public class PersonalReviewViewModel extends AndroidViewModel {
     private MutableLiveData<FirebaseUser> userMutableLiveData;
     private MutableLiveData<Boolean> loggedOutMutableLiveData;
     private ReviewRepository reviewRepository;
+    private MutableLiveData<Review> reviewMutableLiveData;
+    private MutableLiveData<Boolean> reviewExistsMutableLiveData;
+
 
     public PersonalReviewViewModel(@NonNull Application application) {
         super(application);
-        reviewRepository = new ReviewRepository();
+        reviewRepository = new ReviewRepository(application);
         firebaseRepository = new FirebaseRepository(application);
         userMutableLiveData = firebaseRepository.getUserMutableLiveData();
         loggedOutMutableLiveData = firebaseRepository.getLoggedOutMutableLiveData();
+
+        reviewMutableLiveData = reviewRepository.getReviewMutableLiveData();
+        reviewExistsMutableLiveData = reviewRepository.getReviewExistsMutableLiveData();
+
     }
 
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
@@ -33,9 +40,22 @@ public class PersonalReviewViewModel extends AndroidViewModel {
 
     public MutableLiveData<Boolean> getLoggedOutMutableLiveData() { return loggedOutMutableLiveData;}
 
+    public MutableLiveData<Review> getReviewMutableLiveData() {
+        return reviewMutableLiveData;
+    }
+
+    public MutableLiveData<Boolean> getReviewExistsMutableLiveData() {
+        return reviewExistsMutableLiveData;
+    }
+    public void logOut(){firebaseRepository.logout();}
+    public void deleteReview(String gameId){
+        reviewRepository.DeleteReview(gameId);
+    }
     public void postReview(Review review){
-        Log.i("a","siin");
         reviewRepository.PostReview(review);
+    }
+    public void checkIfReviewExists(String gameId){
+        reviewRepository.GetUserReview(gameId);
     }
     public String getUserEmail(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -43,7 +63,7 @@ public class PersonalReviewViewModel extends AndroidViewModel {
             String userEmail = user.getEmail();
             return userEmail;
         } else {
-            return "nothing";
+            return "";
         }
     }
 }

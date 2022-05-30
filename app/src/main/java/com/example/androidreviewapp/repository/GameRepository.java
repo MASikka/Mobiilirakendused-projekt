@@ -115,9 +115,11 @@ public class GameRepository {
             pcRequirements = data.getAsJsonObject("pc_requirements");
             if (pcRequirements.get("minimum") != null){
                 minimumRequirements = pcRequirements.get("minimum").toString();
+                minimumRequirements = cleanBackslashes(minimumRequirements);
             }
             if(pcRequirements.get("recommended") != null){
                 recommendedRequirements = pcRequirements.get("recommended").toString();
+                recommendedRequirements = cleanBackslashes(recommendedRequirements);
             }
         }
 
