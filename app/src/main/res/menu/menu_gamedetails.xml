@@ -3,8 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item
-        android:id="@+id/personalreview" android:icon="@android:drawable/ic_dialog_info" app:showAsAction="never" android:title="My Review">
+        android:id="@+id/allreviews"  app:showAsAction="never" android:title="Reviews">
     </item>
+    <item
+        android:id="@+id/personalreview"
+        android:title="My Review"
+        app:showAsAction="never"></item>
     <item
         android:id="@+id/settings" android:icon="@android:drawable/ic_dialog_info" app:showAsAction="never" android:title="Settings">
     </item>

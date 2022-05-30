@@ -154,11 +154,12 @@ public class PersonalReviewFragment extends Fragment {
 
         case R.id.settings:
 
-            return(true);
+            break;
 
         case R.id.logout:
             PersonalReviewViewModel personalReviewViewModel = new ViewModelProvider(this).get(PersonalReviewViewModel.class);
             personalReviewViewModel.logOut();
+            break;
     }
         return(super.onOptionsItemSelected(item));
     }
