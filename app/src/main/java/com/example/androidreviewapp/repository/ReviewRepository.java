@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.androidreviewapp.model.Game;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -20,18 +21,23 @@ import com.example.androidreviewapp.model.Review;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+
 public class ReviewRepository {
     private Application application;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = "Review Firebase";
     private MutableLiveData<Review> reviewMutableLiveData;
-    private  MutableLiveData<Boolean> reviewExistsMutableLiveData;
+    private MutableLiveData<Boolean> reviewExistsMutableLiveData;
+    private MutableLiveData<ArrayList<Review>> reviewsLiveData;
+    private final ArrayList<Review> reviewArrayList = new ArrayList<>();
     private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     public ReviewRepository(Application application) {
         this.application = application;
         reviewMutableLiveData = new MutableLiveData<>();
         reviewExistsMutableLiveData = new MutableLiveData<>();
+        reviewsLiveData = new MutableLiveData<>();
 
     }
     public ReviewRepository(){}
@@ -43,8 +49,10 @@ public class ReviewRepository {
     public MutableLiveData<Boolean> getReviewExistsMutableLiveData() {
         return reviewExistsMutableLiveData;
     }
+    public MutableLiveData<ArrayList<Review>> getReviewsLiveData(){
+        return reviewsLiveData;
+    }
 
-    //return array?
     public void GetReviews(String gameId){
         db.collection("reviews")
                 .whereEqualTo("gameId", gameId)
@@ -54,13 +62,13 @@ public class ReviewRepository {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                //TODO do something with received reviews
-
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.i(TAG, document.getId() + " => " + document.getData());
+                                Review review = new Review(document.get("reviewText").toString(),document.get("userEmail").toString(),Boolean.valueOf(document.get("recommends").toString()));
+                                reviewArrayList.add(review);
+                                reviewsLiveData.setValue(reviewArrayList);
                             }
                         } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
+                            Log.i(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });

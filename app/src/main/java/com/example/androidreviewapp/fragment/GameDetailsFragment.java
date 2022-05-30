@@ -114,19 +114,25 @@ public class GameDetailsFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
-
         case R.id.personalreview:
             navController = Navigation.findNavController(getView());
             Bundle args = new Bundle();
             args.putString("gameId",gameId);
-            navController.navigate(R.id.action_gameDetails2Fragment_to_personalreviewFragment, args);
+            navController.navigate(R.id.action_gameDetails2Fragment_to_personalReviewFragment, args);
+            break;
 
+        case R.id.allreviews:
+            navController = Navigation.findNavController(getView());
+            Bundle arguments = new Bundle();
+            arguments.putString("gameId",gameId);
+            navController.navigate(R.id.action_gameDetails2Fragment_to_reviewsFragment, arguments);
+            break;
         case R.id.settings:
-            return(true);
-
+            break;
         case R.id.logout:
             GameDetailsViewModel gameDetailsViewModel1 = new ViewModelProvider(this).get(GameDetailsViewModel.class);
             gameDetailsViewModel1.logOut();
+            break;
     }
         return(super.onOptionsItemSelected(item));
     }

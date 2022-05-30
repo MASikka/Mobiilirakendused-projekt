@@ -160,11 +160,12 @@ public class SearchFragment extends Fragment {
 
         case R.id.settings:
 
-            return(true);
+            break;
 
         case R.id.logout:
             SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
             searchViewModel.logOut();
+            break;
     }
         return(super.onOptionsItemSelected(item));
     }
