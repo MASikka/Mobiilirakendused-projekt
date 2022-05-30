@@ -47,7 +47,10 @@ public class PersonalReviewViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> getReviewExistsMutableLiveData() {
         return reviewExistsMutableLiveData;
     }
-
+    public void logOut(){firebaseRepository.logout();}
+    public void deleteReview(String gameId){
+        reviewRepository.DeleteReview(gameId);
+    }
     public void postReview(Review review){
         reviewRepository.PostReview(review);
     }
