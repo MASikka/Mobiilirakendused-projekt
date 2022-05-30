@@ -88,27 +88,6 @@ public class ReviewRepository {
                 }
             }
         });
-       /* db.collection("reviews")
-                .whereEqualTo("userEmail", userEmail)
-                .whereEqualTo("gameId", gameId)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                reviewExistsMutableLiveData.setValue(true);
-                                reviewMutableLiveData.setValue(document.toObject(Review.class));
-                                Log.i("test",getReviewExistsMutableLiveData().toString());
-                                Log.i("test",getReviewMutableLiveData().toString());
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                            }
-                        } else {
-                            reviewExistsMutableLiveData.setValue(false);
-                            Log.i(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });*/
     }
 
     public void PostReview(Review review){
@@ -116,30 +95,17 @@ public class ReviewRepository {
         String userId = user.getUid();
         String id = review.getGameId()+userId;
         db.collection("reviews").document(id).set(review);
-        /*db.collection("reviews")
-                .add(review)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        //TODO what to do when review posted
-                        Log.i(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });*/
     }
 
-    public void DeleteReview(String Id){
-        db.collection("reviews").document(Id)
+    public void DeleteReview(String gameId){
+        FirebaseUser user = auth.getCurrentUser();
+        String userId = user.getUid();
+        String id = gameId+userId;
+        db.collection("reviews").document(id)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        //TODO what to do when review deleted
                         Log.d(TAG, "DocumentSnapshot successfully deleted!");
                     }
                 })

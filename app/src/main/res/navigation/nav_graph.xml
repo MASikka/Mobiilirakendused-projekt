@@ -81,5 +81,8 @@
         <action
             android:id="@+id/action_personalReviewFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_personalReviewFragment_self"
+            app:destination="@id/personalReviewFragment" />
     </fragment>
 </navigation>
