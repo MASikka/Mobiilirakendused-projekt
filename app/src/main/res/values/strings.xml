@@ -24,13 +24,15 @@
 
 
     <!-- Preference Titles -->
-    <string name="settings_header">Review</string>
+    <string name="settings_header">Reviews</string>
     <string name="settings_header2">Game search</string>
-    <!-- Messages Preferences -->
+    <!-- Preferences -->
     <string name="language_title">Review language</string>
     <string name="alphabet_sort">Sort alphabetically</string>
     <string name="namelength_sort">Sort by name length</string>
     <string name="onlystartwith_sort">Results start with query</string>
+
+
     <!-- View Titles -->
     <string name="search_view_title">Games Search</string>
     <string name="search_view_title_game">Games Search - \'%1$s\'</string>

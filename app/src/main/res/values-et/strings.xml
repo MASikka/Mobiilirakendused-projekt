@@ -25,4 +25,13 @@
     <string name="register_title">Registreeri kasutaja</string>
     <string name="forgot_password_title">Unustasin salasõna</string>
     <string name="reg_user">Registreeri</string>
+
+    <!-- Preference Titles -->
+    <string name="settings_header">Arvustused</string>
+    <string name="settings_header2">Otsingutulemused</string>
+    <!-- Preferences -->
+    <string name="language_title">Arvustuse keel</string>
+    <string name="alphabet_sort">Tähestiku järjekorras</string>
+    <string name="namelength_sort">Nime pikkuse järjekorras</string>
+    <string name="onlystartwith_sort">Algab otsinguterminiga</string>
 </resources>
