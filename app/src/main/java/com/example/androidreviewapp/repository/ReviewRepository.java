@@ -54,6 +54,7 @@ public class ReviewRepository {
     }
 
     public void GetReviews(String gameId){
+        reviewArrayList.clear();
         db.collection("reviews")
                 .whereEqualTo("gameId", gameId)
                 .get()
