@@ -21,9 +21,7 @@ import android.widget.Toast;
 
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.adapter.AppReviewAdapter;
-import com.example.androidreviewapp.adapter.SteamReviewAdapter;
 import com.example.androidreviewapp.model.Review;
-import com.example.androidreviewapp.viewmodel.GameDetailsViewModel;
 import com.example.androidreviewapp.viewmodel.GameReviewViewModel;
 
 import java.util.ArrayList;
@@ -33,7 +31,6 @@ public class GameReviewFragment extends Fragment {
     private GameReviewViewModel gameReviewViewModel;
     private AppReviewAdapter appReviewAdapter;
     private AppReviewAdapter steamReviewAdapter;
-    //private SteamReviewAdapter steamReviewAdapter;
     private ArrayList<Review> reviewList;
     private String gameId;
     private Button reviewSwitchButton;
