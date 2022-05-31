@@ -12,8 +12,8 @@
     <string name="enter_password">Enter password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="ex_password">qwerty123</string>
-    <string name="login">login</string>
-    <string name="nur">new user registration</string>
+    <string name="login">Login</string>
+    <string name="nur">New user registration</string>
     <string name="reg_user">Register</string>
     <string name="user_info">User details</string>
     <string name="logout">Logout</string>
@@ -26,8 +26,8 @@
     <string name="steam_reviews">Check Steam Reviews</string>
     <string name="app_reviews">Check App Reviews</string>
     <string name="all">All</string>
-    <string name="forgot_password">forgot password</string>
-    <string name="send_password">reset password</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="send_password">Reset password</string>
     <!-- Preference Titles -->
     <string name="settings_header">Reviews</string>
     <string name="settings_header2">Game search</string>

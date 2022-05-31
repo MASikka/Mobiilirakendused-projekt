@@ -24,7 +24,7 @@ import java.util.Set;
 
 public class GameRepository {
     private static final String SEARCH_URL = "http://api.steampowered.com/ISteamApps/GetAppList/v2/?format=json";
-    private static final String DETAILS_URL = "https://store.steampowered.com/api/appdetails?appids=%s";
+    private static final String DETAILS_URL = "https://store.steampowered.com/api/appdetails?appids=%s&language=english";
     private final Application application;
     private final MutableLiveData<ArrayList<Game>> gameLiveData;
     private final MutableLiveData<ArrayList<Game>> searchResultLiveData;
