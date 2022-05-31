@@ -47,7 +47,8 @@ public class SteamReviewRepository {
             String reviewerId = author.getAsJsonPrimitive("steamid").getAsString();
             String reviewText = review.getAsJsonPrimitive("review").getAsString();
             Boolean recommendation = review.getAsJsonPrimitive("voted_up").getAsBoolean();
-            Review newReview = new Review(removeAbles(reviewText), recommendation, removeAbles(reviewerId), appId);
+            //Review newReview = new Review(removeAbles(reviewText), recommendation, removeAbles(reviewerId), appId);
+            Review newReview = new Review(reviewText, recommendation, reviewerId, appId);
             arrayList.add(newReview);
         }
         steamReviewLiveData.setValue(arrayList);
