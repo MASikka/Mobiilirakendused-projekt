@@ -45,13 +45,13 @@ public class GameRepository {
         return arrayList.size();
     }
 
-    public void getGameSearch(String name){
+    public void getGameSearch(String name, Boolean alphabetPref, Boolean lengthPref, Boolean startPref){
         Log.i("api search", "tehakse game search");
         Ion.with(application)
                 .load(SEARCH_URL)
                 .asJsonObject()
                 .setCallback(((e, result) -> {
-                    parseResults(result, name);
+                    parseResults(result, name, alphabetPref, lengthPref, startPref);
                 }));
     }
 
@@ -269,7 +269,7 @@ public class GameRepository {
         gameLiveData.setValue(arrayList);
     }
 
-    private void parseResults(JsonObject result, String name) {
+    private void parseResults(JsonObject result, String name, Boolean alphabetPref, Boolean lengthPref, Boolean startPref) {
         if (name == null || name.equals("")){
             return;
         }
@@ -297,6 +297,14 @@ public class GameRepository {
                             continue;
                         }
                         */
+                        if (startPref){
+                            int nameLen = name.length();
+
+                            if (!appName.substring(1, nameLen+1).toLowerCase(Locale.getDefault()).equals(name)){
+                                continue;
+                            }
+                        }
+
                         Log.i("parseResults-found-contains", appName);
                         Log.i("parseResults-found-contains", Integer.toString(appId));
                         Game game = new Game(Integer.toString(appId), removeAbles(appName));
@@ -310,10 +318,16 @@ public class GameRepository {
             Log.i("arraylist-details1", i + " - " + arrayList.get(i).getName());
         }
 
-        Collections.sort(arrayList, (g1, g2) -> g1.getName().compareTo(g2.getName()));
+        if (alphabetPref){
+            Collections.sort(arrayList, (g1, g2) -> g1.getName().compareTo(g2.getName()));
+        }
+        //Collections.sort(arrayList, (g1, g2) -> g1.getName().compareTo(g2.getName()));
 
         // Sort list by name length, so that smallest names start at top
         //Collections.sort(arrayList, (g1, g2) -> g1.getName().length() - g2.getName().length());
+        if (lengthPref){
+            Collections.sort(arrayList, (g1, g2) -> g1.getName().length() - g2.getName().length());
+        }
         for(int i = 0; i < arrayList.size(); i++){
             Log.i("arraylist-details2", i + " - " + arrayList.get(i).getName());
         }

@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
-import com.bumptech.glide.Glide;
+//import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -37,8 +37,8 @@ public class SearchViewModel extends AndroidViewModel {
         return gameLiveData;
     }
 
-    public void getGameSearch(String name) {
-        gameRepository.getGameSearch(name);
+    public void getGameSearch(String name, Boolean alphabetPref, Boolean lengthPref, Boolean startPref) {
+        gameRepository.getGameSearch(name, alphabetPref, lengthPref, startPref);
     }
     public void logOut(){firebaseRepository.logout();}
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
