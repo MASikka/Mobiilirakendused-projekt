@@ -52,7 +52,7 @@ public class RegisterFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.register_fragment,container,false);
         setHasOptionsMenu(true);
-        requireActivity().setTitle(getString(R.string.reg_user));
+        requireActivity().setTitle(getString(R.string.register_title));
         contained = view.findViewById(R.id.register_coordinator);
         register_email = view.findViewById(R.id.etEmailRegister);
         register_password =view.findViewById(R.id.etPasswordRegister);

@@ -114,7 +114,7 @@ public class GameDetailsFragment extends Fragment {
         }
         gameDetailsViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
             gameDetailsAdapter.setGameDetailsList(games);
-            requireActivity().setTitle(games.get(0).getName() + " details");
+            requireActivity().setTitle(String.format(getString(R.string.details_view_title), games.get(0).getName()));
             gameDetailsLoading.setVisibility(View.GONE);
         });
     }
