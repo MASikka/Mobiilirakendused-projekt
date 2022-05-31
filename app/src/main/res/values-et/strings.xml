@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidReviewApp</string>
+    <string name="search">Otsi</string>
+    <string name="search_helper">nt Half-Life</string>
+    <string name="search_hint">Sisesta mängu nimi</string>
+    <string name="error">Viga! %1$s</string>
+    <string name="passLength">Parool peab sisaldama vähemalt 6 tähemärki!</string>
+    <string name="noMatch">Paroolid ei ühti!</string>
+    <string name="enter_username">Sisesta kasutajanimi</string>
+    <string name="ex_email">näidis@gmail.com</string>
+    <string name="enter_password">Sisesta salasõna</string>
+    <string name="confirm_password">Kinnita salasõna</string>
+    <string name="ex_password">qwerty123</string>
+    <string name="search_amount">%1$s äppi leiti</string>
+    <string name="steam_reviews_found_count">%1$s Steami arvustust leiti</string>
+    <string name="app_reviews_found_count">%1$s äppi arvustust leiti</string>
+    <string name="search_view_title">Mängude otsing</string>
+    <string name="search_view_title_game">Otsitav mäng - \'%1$s\'</string>
+    <string name="details_view_title">%1$s detailid</string>
+    <string name="steam_reviews_recent_title">Hiljutised Steami arvustused</string>
+    <string name="app_reviews_title">Äppi arvustused</string>
+    <string name="personal_review_title">Minu äppi arvustus</string>
+    <string name="login_title">Logi sisse</string>
+    <string name="register_title">Registreeri kasutaja</string>
+    <string name="forgot_password_title">Unustasin salasõna</string>
+    <string name="reg_user">Registreeri</string>
+</resources>

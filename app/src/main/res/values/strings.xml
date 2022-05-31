@@ -14,12 +14,12 @@
     <string name="ex_password">qwerty123</string>
     <string name="login">login</string>
     <string name="nur">new user registration</string>
-    <string name="reg_user">Register user</string>
+    <string name="reg_user">Register</string>
     <string name="user_info">User details</string>
     <string name="logout">Logout</string>
     <string name="search_amount">%1$s apps found</string>
     <string name="switch_reviews_button">Switch reviews</string>
-    <string name="steam_reviews_found_count">%1$s steam reviews found</string>
+    <string name="steam_reviews_found_count">%1$s Steam reviews found</string>
     <string name="app_reviews_found_count">%1$s app reviews found</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -37,4 +37,15 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- View Titles -->
+    <string name="search_view_title">Games Search</string>
+    <string name="search_view_title_game">Games Search - \'%1$s\'</string>
+    <string name="details_view_title">%1$s Details</string>
+    <string name="steam_reviews_recent_title">Recent Steam Reviews</string>
+    <string name="app_reviews_title">App Reviews</string>
+    <string name="personal_review_title">My App Review</string>
+    <string name="login_title">Log in</string>
+    <string name="register_title">Register User</string>
+    <string name="forgot_password_title">Forgot Password</string>
 </resources>

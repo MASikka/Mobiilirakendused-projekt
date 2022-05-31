@@ -37,7 +37,7 @@ public class ForgotPasswordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_forgot_password,container,false);
-        requireActivity().setTitle("Forgot Password");
+        requireActivity().setTitle(getString(R.string.forgot_password_title));
 
         recovery_email = view.findViewById(R.id.email_text_forgot);
         userButton = view.findViewById(R.id.btnForgot);

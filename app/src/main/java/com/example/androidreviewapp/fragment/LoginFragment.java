@@ -43,7 +43,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment,container,false);
-        requireActivity().setTitle(getString(R.string.app_name));
+        requireActivity().setTitle(getString(R.string.login_title));
         contained = view.findViewById(R.id.login_coordinator);
         login_email = view.findViewById(R.id.email_text);
         login_password =view.findViewById(R.id.etPasswordLogin);

@@ -2,6 +2,7 @@ package com.example.androidreviewapp.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -48,11 +49,10 @@ public class SearchFragment extends Fragment {
         View view = inflater.inflate(R.layout.search_fragment, container, false);
         setHasOptionsMenu(true);
         if (getArguments() != null){
-            requireActivity().setTitle("Games Search - '" + getArguments().getString("gameName") + "'");
+            requireActivity().setTitle(String.format(getString(R.string.search_view_title_game), getArguments().getString("gameName")));
         } else {
-            requireActivity().setTitle("Games Search");
+            requireActivity().setTitle(getString(R.string.search_view_title));
         }
-        //requireActivity().setTitle("Games Search");
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_search);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);

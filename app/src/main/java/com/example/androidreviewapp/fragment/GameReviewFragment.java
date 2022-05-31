@@ -79,7 +79,7 @@ public class GameReviewFragment extends Fragment {
         reviewSwitchButton = view.findViewById(R.id.btnSwitchReviews);
         reviewCounterTextView = view.findViewById(R.id.txtReviewCounter);
         reviewCounterTextView.setText(String.format(getString(R.string.steam_reviews_found_count), "0"));
-        requireActivity().setTitle("Recent Steam Reviews");
+        requireActivity().setTitle(getString(R.string.steam_reviews_recent_title));
 
         GameReviewViewModel gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
 
@@ -113,14 +113,14 @@ public class GameReviewFragment extends Fragment {
                             appRecyclerView.setVisibility(View.VISIBLE);
                             steamRecyclerView.setVisibility(View.GONE);
                             reviewCounterTextView.setText(String.format(getString(R.string.app_reviews_found_count), String.valueOf(appReviewCounter)));
-                            requireActivity().setTitle("App Reviews");
+                            requireActivity().setTitle(getString(R.string.app_reviews_title));
                         } else {
                             isSteamReviews = true;
                             reviewSwitchButton.setText("Check App Reviews");
                             appRecyclerView.setVisibility(View.GONE);
                             steamRecyclerView.setVisibility(View.VISIBLE);
                             reviewCounterTextView.setText(String.format(getString(R.string.steam_reviews_found_count), String.valueOf(steamReviewCounter)));
-                            requireActivity().setTitle("Recent Steam Reviews");
+                            requireActivity().setTitle(getString(R.string.steam_reviews_recent_title));
                         }
                     }
                 }
