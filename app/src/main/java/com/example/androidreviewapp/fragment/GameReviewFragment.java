@@ -85,6 +85,9 @@ public class GameReviewFragment extends Fragment {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
         String langPref = sharedPref.getString(SettingsActivity.LANGUAGE_PREF_CHOICE,"-1");
+        String filterPref = sharedPref.getString(SettingsActivity.FILTER_PREF_CHOICE, "-1");
+
+
         gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
         gameReviewViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
             if (loggedOut){
@@ -113,7 +116,7 @@ public class GameReviewFragment extends Fragment {
             appReviewCounter = reviews.size();
         });
 
-        gameReviewViewModel.getSteamReviews(gameId, langPref);
+        gameReviewViewModel.getSteamReviews(gameId, langPref, filterPref);
 
         gameReviewViewModel.getSteamReviewsLiveData().observe(getViewLifecycleOwner(), steamReviews -> {
             steamReviewAdapter.setReviewList(steamReviews);
@@ -151,8 +154,9 @@ public class GameReviewFragment extends Fragment {
         super.onResume();
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
         String langPref = sharedPref.getString(SettingsActivity.LANGUAGE_PREF_CHOICE,"-1");
+        String filterPref = sharedPref.getString(SettingsActivity.FILTER_PREF_CHOICE, "-1");
         GameReviewViewModel gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
-        gameReviewViewModel.getSteamReviews(gameId, langPref);
+        gameReviewViewModel.getSteamReviews(gameId, langPref, filterPref);
         gameReviewViewModel.getSteamReviewsLiveData().observe(getViewLifecycleOwner(), steamReviews -> {
             steamReviewAdapter.setReviewList(steamReviews);
             steamReviewCounter = steamReviews.size();
