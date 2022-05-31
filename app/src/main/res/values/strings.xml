@@ -25,7 +25,9 @@
     <string name="recommends">Recommends</string>
     <string name="steam_reviews">Check Steam Reviews</string>
     <string name="app_reviews">Check App Reviews</string>
-
+    <string name="all">All</string>
+    <string name="forgot_password">forgot password</string>
+    <string name="send_password">reset password</string>
     <!-- Preference Titles -->
     <string name="settings_header">Reviews</string>
     <string name="settings_header2">Game search</string>
