@@ -21,23 +21,15 @@
     <string name="switch_reviews_button">Switch reviews</string>
     <string name="steam_reviews_found_count">%1$s Steam reviews found</string>
     <string name="app_reviews_found_count">%1$s app reviews found</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
+    <string name="settings_header">Review</string>
+    <string name="settings_header2">Game search</string>
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-
+    <string name="language_title">Review language</string>
+    <string name="alphabet_sort">Sort alphabetically</string>
+    <string name="namelength_sort">Sort by name length</string>
+    <string name="onlystartwith_sort">Results start with query</string>
     <!-- View Titles -->
     <string name="search_view_title">Games Search</string>
     <string name="search_view_title_game">Games Search - \'%1$s\'</string>
