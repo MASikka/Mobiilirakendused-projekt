@@ -25,7 +25,10 @@
     <string name="register_title">Registreeri kasutaja</string>
     <string name="forgot_password_title">Unustasin salasõna</string>
     <string name="reg_user">Registreeri</string>
-
+    <string name="settings">Seaded</string>
+    <string name="recommends">Soovitab</string>
+    <string name="steam_reviews">Vaata Steami arvustusi</string>
+    <string name="app_reviews">Vaata äppi arvustusi</string>
     <!-- Preference Titles -->
     <string name="settings_header">Arvustused</string>
     <string name="settings_header2">Otsingutulemused</string>
@@ -34,4 +37,9 @@
     <string name="alphabet_sort">Tähestiku järjekorras</string>
     <string name="namelength_sort">Nime pikkuse järjekorras</string>
     <string name="onlystartwith_sort">Algab otsinguterminiga</string>
+
+    <!-- Menu  -->
+    <string name="menu_reviews">Arvustused</string>
+    <string name="menu_my_review">Minu arvustus</string>
+    <string name="menu_logout">Logi välja</string>
 </resources>
