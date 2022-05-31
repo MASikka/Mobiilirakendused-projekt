@@ -32,10 +32,13 @@ import android.widget.Toast;
 import com.example.androidreviewapp.SettingsActivity;
 import com.example.androidreviewapp.adapter.GameAdapter;
 import com.example.androidreviewapp.R;
+import com.example.androidreviewapp.model.Game;
 import com.example.androidreviewapp.repository.FirebaseRepository;
+import com.example.androidreviewapp.viewmodel.GameReviewViewModel;
 import com.example.androidreviewapp.viewmodel.SearchViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class SearchFragment extends Fragment {
@@ -142,6 +145,32 @@ public class SearchFragment extends Fragment {
                     }
                 }
         );
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Boolean alphabetPref = sharedPref.getBoolean(SettingsActivity.ALPHABET_PREF_MODE_SWITCH, false);
+        Boolean lengthPref = sharedPref.getBoolean(SettingsActivity.LENGTH_PREF_MODE_SWITCH,false);
+        Boolean startPref = sharedPref.getBoolean(SettingsActivity.STARTING_PREF_MODE_SWITCH, false);
+
+        SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+
+        //searchViewModel.getGameSearch(game, alphabetPref, lengthPref, startPref);
+        searchViewModel.getSearchResultLiveData().observe(getViewLifecycleOwner(), searches -> {
+            searchViewModel.sortGameSearch(game, alphabetPref, lengthPref, startPref, searches);
+
+            searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
+                Log.i("observe", "game search");
+                gameAdapter.setGameList(games);
+                searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(games.size())));
+                searchLoading.setVisibility(View.GONE);
+            });
+        });
+
+
+
     }
 
     @Override

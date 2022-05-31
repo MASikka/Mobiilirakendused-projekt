@@ -27,11 +27,14 @@ public class GameRepository {
     private static final String DETAILS_URL = "https://store.steampowered.com/api/appdetails?appids=%s";
     private final Application application;
     private final MutableLiveData<ArrayList<Game>> gameLiveData;
+    private final MutableLiveData<ArrayList<Game>> searchResultLiveData;
     private final ArrayList<Game> arrayList = new ArrayList<>();
+    private final ArrayList<Game> searchResultList = new ArrayList<>();
 
     public GameRepository(Application application) {
         this.application = application;
         this.gameLiveData = new MutableLiveData<>();
+        this.searchResultLiveData = new MutableLiveData<>();
     }
 
     public boolean isNotEmptyArrayList(){
@@ -43,6 +46,33 @@ public class GameRepository {
 
     public int getArrayListSize(){
         return arrayList.size();
+    }
+
+    public void sortGameSearch(String name, Boolean alphabetPref, Boolean lengthPref, Boolean startPref, ArrayList<Game> searchList) {
+        arrayList.clear();
+        ArrayList<String> tempList = new ArrayList<>();
+        for (Game game: searchList) {
+            if (tempList.contains(game.getName())){
+                continue;
+            }
+
+            if (startPref){
+                int nameLen = name.length();
+                if (!game.getName().substring(0, nameLen).toLowerCase(Locale.getDefault()).equals(name)){
+                    continue;
+                }
+            }
+
+            arrayList.add(game);
+            tempList.add(game.getName());
+        }
+        if (alphabetPref){
+            Collections.sort(arrayList, (g1, g2) -> g1.getName().compareTo(g2.getName()));
+        }
+        if (lengthPref){
+            Collections.sort(arrayList, (g1, g2) -> g1.getName().length() - g2.getName().length());
+        }
+        gameLiveData.setValue(arrayList);
     }
 
     public void getGameSearch(String name, Boolean alphabetPref, Boolean lengthPref, Boolean startPref){
@@ -297,6 +327,9 @@ public class GameRepository {
                             continue;
                         }
                         */
+                        Game game = new Game(Integer.toString(appId), removeAbles(appName));
+                        searchResultList.add(game);
+
                         if (startPref){
                             int nameLen = name.length();
 
@@ -307,7 +340,7 @@ public class GameRepository {
 
                         Log.i("parseResults-found-contains", appName);
                         Log.i("parseResults-found-contains", Integer.toString(appId));
-                        Game game = new Game(Integer.toString(appId), removeAbles(appName));
+
                         arrayList.add(game);
                         tempList.add(appName);
                     }
@@ -333,6 +366,7 @@ public class GameRepository {
         }
 
         gameLiveData.setValue(arrayList);
+        searchResultLiveData.setValue(searchResultList);
 
     }
 
@@ -344,5 +378,9 @@ public class GameRepository {
 
     public MutableLiveData<ArrayList<Game>> getGameLiveData(){
         return gameLiveData;
+    }
+
+    public MutableLiveData<ArrayList<Game>> getSearchResultLiveData() {
+        return searchResultLiveData;
     }
 }
