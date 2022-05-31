@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class GameDetailsFragment extends Fragment {
     private String detailedDescription;
     public GameDetailsAdapter gameDetailsAdapter;
     NavController navController;
+    private ProgressBar gameDetailsLoading;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -89,6 +91,8 @@ public class GameDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        gameDetailsLoading = view.findViewById(R.id.gameDetailsLoading);
+        gameDetailsLoading.setVisibility(View.VISIBLE);
         //txtGameId = view.findViewById(R.id.txtGameId);
    ///     String detailedDescription = gameDetailsViewModel.getGameLiveData().getValue().get(0).getDetailedDescription();
         //txtGameId.setText(gameId);
@@ -108,7 +112,11 @@ public class GameDetailsFragment extends Fragment {
         if (!gameDetailsViewModel.hasGameDetails()){
             gameDetailsViewModel.getGameDetails(gameId);
         }
-        gameDetailsViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> gameDetailsAdapter.setGameDetailsList(games));
+        gameDetailsViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
+            gameDetailsAdapter.setGameDetailsList(games);
+            requireActivity().setTitle(games.get(0).getName() + " details");
+            gameDetailsLoading.setVisibility(View.GONE);
+        });
     }
 
 

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+//import com.bumptech.glide.Glide;
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
 import com.google.android.material.textfield.TextInputEditText;
