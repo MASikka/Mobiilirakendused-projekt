@@ -26,6 +26,7 @@
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
+    <string name="theme_header">Change color theme</string>
 
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
@@ -48,6 +49,9 @@
     <string name="login_title">Log in</string>
     <string name="register_title">Register User</string>
     <string name="forgot_password_title">Forgot Password</string>
+
+
+    <!-- Details Titles -->
     <string name="genres">GENRES</string>
     <string name="languages">LANGUAGES</string>
     <string name="about_this_game">ABOUT THIS GAME</string>
@@ -55,4 +59,6 @@
     <string name="release_date">RELEASE DATE</string>
     <string name="publisher">PUBLISHER</string>
     <string name="developer">DEVELOPER</string>
+    <string name="initial_price">INITIAL PRICE</string>
+    <string name="final_price">FINAL PRICE</string>
 </resources>

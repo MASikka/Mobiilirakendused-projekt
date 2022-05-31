@@ -150,11 +150,11 @@ public class GameRepository {
             JsonObject priceOverview = data.getAsJsonObject("price_overview");
 
             if (priceOverview.get("initial_formatted") != null){
-                initialPrice = priceOverview.get("initial_formatted").toString();
+                initialPrice = priceOverview.get("initial_formatted").toString().replaceAll("^\"|\"$", "");
             }
 
             if (priceOverview.get("final_formatted") != null){
-                finalPrice = priceOverview.get("final_formatted").toString();
+                finalPrice = priceOverview.get("final_formatted").toString().replaceAll("^\"|\"$", "");
             }
         }
 

@@ -53,6 +53,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         String shortDescription = game.getShortDescription();
         String supportedLanguages = game.getSupportedLanguages();
         String gameName = game.getName();
+        String initialPrice = game.getInitialPrice();
+        String finalPrice = game.getFinalPrice();
         //ArrayList<String> developer = game.getDevelopersList();
         ArrayList<String> publisher = game.getPublishersList();
         String systemReq = game.getRecommendedPCRequirements();
@@ -72,6 +74,14 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.wvSystemReq.loadData(systemReq, "text/html", "UTF-8");
         holder.wvSystemReqMin.loadData(systemReqMin, "text/html", "UTF-8");
         holder.wvReleaseDate.loadData(releaseDate, "text/html", "UTF-8");
+        if (game.getInitialPrice() == "") {
+            holder.wvInitialPrice.loadData("initial price missing", "text/html", "UTF-8");
+        } else {
+            holder.wvInitialPrice.loadData(initialPrice, "text/html", "UTF-8");
+        }
+
+        Log.i("initial: ", game.getInitialPrice());
+        holder.wvFinalPrice.loadData(finalPrice, "text/html", "UTF-8");
 
         //genre layout
         LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -139,6 +149,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final WebView wvSystemReq;
         private final WebView wvSystemReqMin;
         private final WebView wvReleaseDate;
+        private final WebView wvInitialPrice;
+        private final WebView wvFinalPrice;
 
         public GameDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -157,6 +169,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             wvSystemReq = itemView.findViewById(R.id.wvSystemReq);
             wvSystemReqMin = itemView.findViewById(R.id.wvSystemReqMin);
             wvReleaseDate = itemView.findViewById(R.id.wvReleaseDate);
+            wvInitialPrice = itemView.findViewById(R.id.wvInitialPrice);
+            wvFinalPrice = itemView.findViewById(R.id.wvFinalPrice);
 
 
         }
