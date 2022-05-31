@@ -186,6 +186,8 @@ public class GameRepository {
             if (priceOverview.get("final_formatted") != null){
                 finalPrice = priceOverview.get("final_formatted").toString().replaceAll("^\"|\"$", "");
             }
+        } else {
+            initialPrice = "free";
         }
 
 
