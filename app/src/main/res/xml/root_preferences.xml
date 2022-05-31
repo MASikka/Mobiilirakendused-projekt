@@ -33,6 +33,15 @@
             app:key="language"
             app:title="@string/language_title"
             app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:defaultValue="all"
+            app:entries="@array/sorting_entries"
+            app:entryValues="@array/sorting_values"
+            app:key="review_sorting"
+            app:title="@string/sorting_title"
+            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
 </PreferenceScreen>

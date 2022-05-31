@@ -11,6 +11,7 @@ public static final String ALPHABET_PREF_MODE_SWITCH = "alphabet_switch";
 public static final String LANGUAGE_PREF_CHOICE = "language";
 public static final String LENGTH_PREF_MODE_SWITCH="length_switch";
 public static final String STARTING_PREF_MODE_SWITCH="starting_switch";
+public static final String FILTER_PREF_CHOICE = "review_sorting";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

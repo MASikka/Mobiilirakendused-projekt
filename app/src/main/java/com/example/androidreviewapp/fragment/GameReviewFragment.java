@@ -87,6 +87,7 @@ public class GameReviewFragment extends Fragment {
         String langPref = sharedPref.getString(SettingsActivity.LANGUAGE_PREF_CHOICE,"-1");
         String filterPref = sharedPref.getString(SettingsActivity.FILTER_PREF_CHOICE, "-1");
 
+
         gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
         gameReviewViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
             if (loggedOut){
@@ -130,14 +131,14 @@ public class GameReviewFragment extends Fragment {
                     public void onClick(View view) {
                         if (isSteamReviews){
                             isSteamReviews = false;
-                            reviewSwitchButton.setText("Check Steam Reviews");
+                            reviewSwitchButton.setText(getString(R.string.steam_reviews));
                             appRecyclerView.setVisibility(View.VISIBLE);
                             steamRecyclerView.setVisibility(View.GONE);
                             reviewCounterTextView.setText(String.format(getString(R.string.app_reviews_found_count), String.valueOf(appReviewCounter)));
                             requireActivity().setTitle(getString(R.string.app_reviews_title));
                         } else {
                             isSteamReviews = true;
-                            reviewSwitchButton.setText("Check App Reviews");
+                            reviewSwitchButton.setText(getString(R.string.app_reviews));
                             appRecyclerView.setVisibility(View.GONE);
                             steamRecyclerView.setVisibility(View.VISIBLE);
                             reviewCounterTextView.setText(String.format(getString(R.string.steam_reviews_found_count), String.valueOf(steamReviewCounter)));
