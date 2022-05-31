@@ -9,11 +9,11 @@
     <WebView
         android:id="@+id/wvGameName"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <WebView
         android:id="@+id/wvShortDescription"
@@ -24,15 +24,6 @@
         app:layout_constraintTop_toBottomOf="@+id/wvReleaseDate">
 
     </WebView>
-
-    <WebView
-        android:id="@+id/wvPublisher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <WebView
         android:id="@+id/wvDetailedDescription"
@@ -59,7 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="GENRES"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:text="@string/genres"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +63,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="LANGUAGES"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:text="@string/languages"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_genre_recycler" />
@@ -91,7 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtReleaseDate" />
 
     <LinearLayout
         android:id="@+id/linearlayout_genre_recycler"
@@ -108,7 +103,6 @@
             android:id="@+id/recyclerview_game_genres"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_black_border"
             android:layoutDirection="ltr"
             app:reverseLayout="true" />
     </LinearLayout>
@@ -118,7 +112,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="ABOUT THIS GAME"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:text="@string/about_this_game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wvSupportedLanguages" />
@@ -130,7 +126,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toBottomOf="@+id/txtDev">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_game_dev"
@@ -141,11 +137,13 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtSysReq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="SYSTEM REQUIREMENTS"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:text="@string/system_requirements"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
 
@@ -153,35 +151,61 @@
         android:id="@+id/wvSystemReqMin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSysReq" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtReleaseDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         android:paddingTop="8dp"
-        android:text="RELEASE DATE"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:text="@string/release_date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wvPublisher" />
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_game_publisher" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtPublisherHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PUBLISHER"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:text="@string/publisher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_dev_recycler" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtDev"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DEVELOPER"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:text="@string/developer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wvGameName" />
+
+    <LinearLayout
+        android:id="@+id/linearlayout_game_publisher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/txtPublisherHeading"
+        tools:layout_editor_absoluteX="1dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_game_publisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

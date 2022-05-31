@@ -48,4 +48,11 @@
     <string name="login_title">Log in</string>
     <string name="register_title">Register User</string>
     <string name="forgot_password_title">Forgot Password</string>
+    <string name="genres">GENRES</string>
+    <string name="languages">LANGUAGES</string>
+    <string name="about_this_game">ABOUT THIS GAME</string>
+    <string name="system_requirements">SYSTEM REQUIREMENTS</string>
+    <string name="release_date">RELEASE DATE</string>
+    <string name="publisher">PUBLISHER</string>
+    <string name="developer">DEVELOPER</string>
 </resources>
