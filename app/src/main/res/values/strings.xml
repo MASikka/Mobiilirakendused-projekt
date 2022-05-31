@@ -36,6 +36,10 @@
     <string name="alphabet_sort">Sort alphabetically</string>
     <string name="namelength_sort">Sort by name length</string>
     <string name="onlystartwith_sort">Results start with query</string>
+    <string name="sorting_title">Sort reviews by</string>
+    <string name="helpful">Helpful</string>
+    <string name="recent">Recent</string>
+
 
     <!-- Menu  -->
     <string name="menu_reviews">Reviews</string>
