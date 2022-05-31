@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wvReleaseDate">
 
@@ -30,18 +31,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAboutGame">
-
-    </WebView>
-
-    <WebView
-        android:id="@+id/wvSupportedLanguages"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLangugages">
 
     </WebView>
 
@@ -49,24 +41,49 @@
         android:id="@+id/txtGenres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
         android:text="@string/genres"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wvShortDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/wvFinalPrice" />
 
     <TextView
         android:id="@+id/txtLangugages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
         android:text="@string/languages"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
+
+    <WebView
+        android:id="@+id/wvSupportedLanguages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLangugages">
+
+    </WebView>
+
+    <TextView
+        android:id="@+id/txtAboutGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/about_this_game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_genre_recycler" />
 
@@ -107,18 +124,6 @@
             app:reverseLayout="true" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtAboutGame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:text="@string/about_this_game"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wvSupportedLanguages" />
-
     <LinearLayout
         android:id="@+id/linearlayout_dev_recycler"
         android:layout_width="match_parent"
@@ -140,12 +145,13 @@
         android:id="@+id/txtSysReq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
         android:text="@string/system_requirements"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/wvSupportedLanguages" />
 
     <WebView
         android:id="@+id/wvSystemReqMin"
@@ -206,6 +212,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+    <WebView
+        android:id="@+id/wvInitialPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInitialPrice" />
+
+    <WebView
+        android:id="@+id/wvFinalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFinalPrice" />
+
+    <TextView
+        android:id="@+id/txtInitialPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/initial_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wvShortDescription" />
+
+    <TextView
+        android:id="@+id/txtFinalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/final_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wvInitialPrice" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
