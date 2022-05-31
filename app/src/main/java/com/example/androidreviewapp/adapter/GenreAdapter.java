@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidreviewapp.R;
-import com.example.androidreviewapp.model.Genre;
 
 import java.util.ArrayList;
 
