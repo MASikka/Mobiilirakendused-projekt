@@ -3,6 +3,7 @@ package com.example.androidreviewapp.repository;
 import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -115,11 +116,11 @@ public class GameRepository {
         if (data.getAsJsonObject("pc_requirements") != null){
             pcRequirements = data.getAsJsonObject("pc_requirements");
             if (pcRequirements.get("minimum") != null){
-                minimumRequirements = pcRequirements.get("minimum").toString();
+                minimumRequirements = pcRequirements.get("minimum").toString().replaceAll("^\"|\"$", "");
                 minimumRequirements = cleanBackslashes(minimumRequirements);
             }
             if(pcRequirements.get("recommended") != null){
-                recommendedRequirements = pcRequirements.get("recommended").toString();
+                recommendedRequirements = pcRequirements.get("recommended").toString().replaceAll("^\"|\"$", "");
                 recommendedRequirements = cleanBackslashes(recommendedRequirements);
             }
         }
@@ -129,7 +130,8 @@ public class GameRepository {
         if (data.getAsJsonArray("developers") != null){
             JsonArray developers = data.getAsJsonArray("developers");
             for (int i = 0; i < developers.size(); i++){
-                String developer = developers.get(i).toString();
+                String developer = developers.get(i).toString().replaceAll("^\"|\"$", "");
+
                 developersList.add(developer);
             }
         }
@@ -138,7 +140,7 @@ public class GameRepository {
         if (data.getAsJsonArray("publishers") != null){
             JsonArray publishers = data.getAsJsonArray("publishers");
             for (int i = 0; i < publishers.size(); i++){
-                String publisher = publishers.get(i).toString();
+                String publisher = publishers.get(i).toString().replaceAll("^\"|\"$", "");
                 publishersList.add(publisher);
             }
         }
@@ -208,7 +210,7 @@ public class GameRepository {
         }
 
         JsonObject releaseDate = data.getAsJsonObject("release_date");
-        String date = releaseDate.getAsJsonPrimitive("date").toString();
+        String date = releaseDate.getAsJsonPrimitive("date").toString().replaceAll("^\"|\"$", "");
 
         Game game = new Game(gameId, name, type, detailedDescription, shortDescription, aboutTheGame,
                 supportedLanguages, minimumRequirements, recommendedRequirements,
@@ -324,6 +326,7 @@ public class GameRepository {
         //return text;
         return text.substring(1, text.length()-1);
     }
+
 
     public MutableLiveData<ArrayList<Game>> getGameLiveData(){
         return gameLiveData;

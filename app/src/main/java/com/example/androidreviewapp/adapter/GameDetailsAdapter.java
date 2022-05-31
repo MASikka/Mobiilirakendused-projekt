@@ -1,9 +1,11 @@
 package com.example.androidreviewapp.adapter;
 
+import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
     private RecyclerView.RecycledViewPool viewPool =
             new RecyclerView.RecycledViewPool();
 
+    WebView webView;
     public GameDetailsAdapter(){
         this.gameList = new ArrayList<>();
     }
@@ -64,8 +67,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.wvShortDescription.loadData(shortDescription, "text/html", "UTF-8");
         //holder.wvGameGenres.loadData(genresList.get(position), "text/html", "UTF-8");
         holder.wvGameName.loadData(gameName, "text/html", "UTF-8");
-        //holder.wvDeveloper.loadData(String.valueOf(developer), "text/html", "UTF-8");
-        holder.wvPublisher.loadData(String.valueOf(publisher), "text/html", "UTF-8");
+        // holder.wvDeveloper.loadData(String.valueOf(developer), "text/html", "UTF-8");
+        // holder.wvPublisher.loadData(String.valueOf(publisher), "text/html", "UTF-8");
         holder.wvSystemReq.loadData(systemReq, "text/html", "UTF-8");
         holder.wvSystemReqMin.loadData(systemReqMin, "text/html", "UTF-8");
         holder.wvReleaseDate.loadData(releaseDate, "text/html", "UTF-8");
@@ -77,6 +80,9 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         //dev layout
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(
                 holder.devRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        //publisher layout
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(
+                holder.publisherRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
 
 
         //genre
@@ -95,6 +101,13 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.devRecyclerView.setAdapter(developerAdapter);
         holder.devRecyclerView.setRecycledViewPool(viewPool);
 
+        //publishers
+        layoutManager2.setInitialPrefetchItemCount(game.getPublishersList().size());
+        PublisherAdapter publisherAdapter = new PublisherAdapter();
+        publisherAdapter.setPublishersList(game.getPublishersList());
+        holder.publisherRecyclerView.setLayoutManager(layoutManager2);
+        holder.publisherRecyclerView.setAdapter(publisherAdapter);
+        holder.publisherRecyclerView.setRecycledViewPool(viewPool);
 
 
     }
@@ -119,9 +132,10 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         //private final WebView wvGameGenres;
         private final RecyclerView genreRecyclerView;
         private final RecyclerView devRecyclerView;
+        private final RecyclerView publisherRecyclerView;
         private final WebView wvGameName;
-       // private final WebView wvDeveloper;
-        private final WebView wvPublisher;
+        // private final WebView wvDeveloper;
+        // private final WebView wvPublisher;
         private final WebView wvSystemReq;
         private final WebView wvSystemReqMin;
         private final WebView wvReleaseDate;
@@ -136,13 +150,16 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             //wvGameGenres = itemView.findViewById(R.id.wvGameGenres);
             genreRecyclerView = itemView.findViewById(R.id.recyclerview_game_genres);
             devRecyclerView = itemView.findViewById(R.id.recyclerview_game_dev);
+            publisherRecyclerView = itemView.findViewById(R.id.recyclerview_game_publisher);
             wvGameName = itemView.findViewById(R.id.wvGameName);
             //wvDeveloper = itemView.findViewById(R.id.wvDeveloper);
-            wvPublisher = itemView.findViewById(R.id.wvPublisher);
+            //wvPublisher = itemView.findViewById(R.id.wvPublisher);
             wvSystemReq = itemView.findViewById(R.id.wvSystemReq);
             wvSystemReqMin = itemView.findViewById(R.id.wvSystemReqMin);
             wvReleaseDate = itemView.findViewById(R.id.wvReleaseDate);
 
+
         }
     }
+
 }
