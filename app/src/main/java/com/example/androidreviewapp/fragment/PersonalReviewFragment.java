@@ -54,10 +54,10 @@ public class PersonalReviewFragment extends Fragment {
         btnDelete = view.findViewById(R.id.btn_delete_review);
         btnDelete.setOnClickListener(view1 -> {
             if(reviewExists==false){
-                Toast.makeText(getActivity(), "No review to delete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),  getString(R.string.no_review), Toast.LENGTH_SHORT).show();
             }if(reviewExists==true){
             personalReviewViewModel.deleteReview(gameId);
-                Toast.makeText(getActivity(), "Review deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),  getString(R.string.review_deleted), Toast.LENGTH_SHORT).show();
                 reviewExists = false;
                 btnDelete = view.findViewById(R.id.btn_delete_review);
                 btnDelete.setVisibility(View.GONE);
@@ -75,11 +75,11 @@ public class PersonalReviewFragment extends Fragment {
         reviewText = ETReviewText.getText().toString().trim();
         recommended = CBRecommended.isChecked();
         if(TextUtils.isEmpty(reviewText)){
-            Toast.makeText(getActivity(), "Review cannot be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),  getString(R.string.review_not_empty), Toast.LENGTH_SHORT).show();
         }if(TextUtils.isEmpty(userEmail)){
-                Toast.makeText(getActivity(), "Not signed in", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),  getString(R.string.not_signed_in), Toast.LENGTH_SHORT).show();
             }if(TextUtils.isEmpty(gameId)){
-                Toast.makeText(getActivity(), "No game provided", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),  getString(R.string.no_game_provided), Toast.LENGTH_SHORT).show();
             }
         else{
             Review review = new Review(reviewText,recommended,userEmail,gameId);
@@ -97,7 +97,7 @@ public class PersonalReviewFragment extends Fragment {
                             btnDelete = view.findViewById(R.id.btn_delete_review);
                             btnDelete.setVisibility(View.VISIBLE);
                         });
-            Toast.makeText(getActivity(), "Review posted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),  getString(R.string.review_posted), Toast.LENGTH_SHORT).show();
             }
         });
 

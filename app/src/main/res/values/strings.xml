@@ -28,6 +28,13 @@
     <string name="all">All</string>
     <string name="forgot_password">Forgot password</string>
     <string name="send_password">Reset password</string>
+    <string name="password_sent">Password sent to email</string>
+    <string name="no_review">No review to delete</string>
+    <string name="review_deleted">Review deleted</string>
+    <string name="review_not_empty">Review cannot be empty</string>
+    <string name="review_posted">Review posted</string>
+    <string name="not_signed_in">Not signed in</string>
+    <string name="no_game_provided">No game provided</string>
     <!-- Preference Titles -->
     <string name="settings_header">Reviews</string>
     <string name="settings_header2">Game search</string>
