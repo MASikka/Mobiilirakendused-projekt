@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_searchFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -104,5 +107,13 @@
         <action
             android:id="@+id/action_reviewsFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.androidreviewapp.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
 </navigation>
