@@ -32,6 +32,9 @@ public class SteamReviewRepository {
     }
     private String removeAbles(String text) {
         //return text;
+        if (text.length() < 2){
+            return text;
+        }
         return text.substring(1, text.length()-1);
     }
 

@@ -18,6 +18,9 @@
     <string name="user_info">User details</string>
     <string name="logout">Logout</string>
     <string name="search_amount">%1$s apps found</string>
+    <string name="switch_reviews_button">Switch reviews</string>
+    <string name="steam_reviews_found_count">%1$s steam reviews found</string>
+    <string name="app_reviews_found_count">%1$s app reviews found</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Preference Titles -->

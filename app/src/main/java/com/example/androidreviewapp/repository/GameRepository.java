@@ -79,6 +79,7 @@ public class GameRepository {
         JsonObject data = app.getAsJsonObject("data");
         String type = data.get("type").toString();
         String name = data.get("name").toString();
+        name = removeAbles(name);
         Log.i("parseResults-gameDetails", type);
 
         String detailedDescription = "";

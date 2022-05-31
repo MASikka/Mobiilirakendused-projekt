@@ -146,6 +146,7 @@ public class PersonalReviewFragment extends Fragment {
                         .navigate(R.id.action_personalReviewFragment_to_loginFragment);
             }
         });
+        requireActivity().setTitle("My App Review");
     }
 
     @Override
