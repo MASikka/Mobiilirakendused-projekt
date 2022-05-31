@@ -16,6 +16,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -132,10 +133,12 @@ public class SearchFragment extends Fragment {
                         String name;
                         Log.i("gameText", gameText.getText().toString());
                         name = gameText.getText().toString().toLowerCase(Locale.getDefault()).trim();
-
+                        if(TextUtils.isEmpty(name)){
+                            Toast.makeText(getActivity(), "Enter a search query", Toast.LENGTH_SHORT).show();
+                        }else{
                         Bundle args = new Bundle();
                         args.putString("gameName", name);
-                        navController.navigate(R.id.action_searchFragment_self, args);
+                        navController.navigate(R.id.action_searchFragment_self, args);}
                     }
                 }
         );
