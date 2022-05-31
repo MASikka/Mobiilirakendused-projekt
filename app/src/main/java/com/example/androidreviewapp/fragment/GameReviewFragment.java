@@ -69,7 +69,7 @@ public class GameReviewFragment extends Fragment {
 
         isSteamReviews = true;
         reviewSwitchButton = view.findViewById(R.id.btnSwitchReviews);
-        reviewSwitchButton.setText(getString(R.string.app_reviews_title));
+        reviewSwitchButton.setText(getString(R.string.app_reviews));
 
         return view;
     }
