@@ -29,6 +29,11 @@
     <string name="recommends">Soovitab</string>
     <string name="steam_reviews">Vaata Steami arvustusi</string>
     <string name="app_reviews">Vaata äppi arvustusi</string>
+    <string name="all">Kõik</string>
+    <string name="nur">registreeri kasutaja</string>
+    <string name="login">logi sisse</string>
+    <string name="forgot_password">unustasin parooli</string>
+    <string name="send_password">muuda salasõna</string>
     <!-- Preference Titles -->
     <string name="settings_header">Arvustused</string>
     <string name="settings_header2">Otsingutulemused</string>
