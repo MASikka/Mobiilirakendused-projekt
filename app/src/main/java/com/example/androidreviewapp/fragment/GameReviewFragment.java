@@ -7,11 +7,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,6 +27,7 @@ import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.adapter.AppReviewAdapter;
 import com.example.androidreviewapp.model.Review;
 import com.example.androidreviewapp.viewmodel.GameReviewViewModel;
+import com.example.androidreviewapp.viewmodel.PersonalReviewViewModel;
 
 import java.util.ArrayList;
 
@@ -73,6 +78,13 @@ public class GameReviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
+        gameReviewViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
+            if (loggedOut){
+                if (getView() != null) Navigation.findNavController(getView())
+                        .navigate(R.id.action_reviewsFragment_to_loginFragment);
+            }
+        });
         reviewsLoading = view.findViewById(R.id.reviewsLoading);
         reviewsLoading.setVisibility(View.VISIBLE);
 
@@ -125,5 +137,21 @@ public class GameReviewFragment extends Fragment {
                     }
                 }
         );
+    }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.settings:
+            break;
+        case R.id.logout:
+            gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
+            gameReviewViewModel.logOut();
+            break;
+    }
+        return(super.onOptionsItemSelected(item));
     }
 }
