@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class SteamReviewRepository {
 
-    private static final String STEAM_REVIEW_URL = "https://store.steampowered.com/appreviews/%s?json=1&language=all&filter=recent&num_per_page=100";
+    private static final String STEAM_REVIEW_URL = "https://store.steampowered.com/appreviews/%s?json=1&language=%s&filter=recent&num_per_page=100";
     private final Application application;
     private final MutableLiveData<ArrayList<Review>> steamReviewLiveData;
     private final ArrayList<Review> arrayList = new ArrayList<>();
@@ -22,9 +22,9 @@ public class SteamReviewRepository {
         this.steamReviewLiveData = new MutableLiveData<>();
     }
 
-    public void getSteamReviewSearch(String appId){
+    public void getSteamReviewSearch(String appId, String langPref){
         Ion.with(application)
-                .load(String.format(STEAM_REVIEW_URL, appId))
+                .load(String.format(STEAM_REVIEW_URL, appId, langPref))
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     parseResults(result, appId);

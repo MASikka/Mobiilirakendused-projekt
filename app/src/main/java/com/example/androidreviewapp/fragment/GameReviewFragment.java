@@ -3,12 +3,14 @@ package com.example.androidreviewapp.fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -80,6 +82,9 @@ public class GameReviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String langPref = sharedPref.getString(SettingsActivity.LANGUAGE_PREF_CHOICE,"-1");
+
         gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
         gameReviewViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
             if (loggedOut){
@@ -108,7 +113,7 @@ public class GameReviewFragment extends Fragment {
             appReviewCounter = reviews.size();
         });
 
-        gameReviewViewModel.getSteamReviews(gameId);
+        gameReviewViewModel.getSteamReviews(gameId, langPref);
 
         gameReviewViewModel.getSteamReviewsLiveData().observe(getViewLifecycleOwner(), steamReviews -> {
             steamReviewAdapter.setReviewList(steamReviews);

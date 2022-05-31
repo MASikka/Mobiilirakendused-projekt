@@ -97,6 +97,12 @@ public class SearchFragment extends Fragment {
             searchLoading.setVisibility(View.GONE);
         }
 
+        //PreferenceManager.setDefaultValues(getContext(),R.xml.root_preferences,false);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Boolean alphabetPref = sharedPref.getBoolean(SettingsActivity.ALPHABET_PREF_MODE_SWITCH, false);
+        Boolean lengthPref = sharedPref.getBoolean(SettingsActivity.LENGTH_PREF_MODE_SWITCH,false);
+        Boolean startPref = sharedPref.getBoolean(SettingsActivity.STARTING_PREF_MODE_SWITCH, false);
+
 
 
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
@@ -107,7 +113,7 @@ public class SearchFragment extends Fragment {
             }
         });
         if (!searchViewModel.hasGameNames()){
-            searchViewModel.getGameSearch(game);
+            searchViewModel.getGameSearch(game, alphabetPref, lengthPref, startPref);
         }
         searchAmount.setText(String.format(getString(R.string.search_amount), "0"));
         searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
