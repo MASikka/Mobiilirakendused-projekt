@@ -2,6 +2,7 @@ package com.example.androidreviewapp.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidreviewapp.R;
+import com.example.androidreviewapp.SettingsActivity;
 import com.example.androidreviewapp.model.Review;
 import com.example.androidreviewapp.viewmodel.PersonalReviewViewModel;
 import com.example.androidreviewapp.viewmodel.SearchViewModel;
@@ -154,7 +156,8 @@ public class PersonalReviewFragment extends Fragment {
 
 
         case R.id.settings:
-
+            Intent intent = new Intent(this.getContext(), SettingsActivity.class);
+            startActivity(intent);
             break;
 
         case R.id.logout:

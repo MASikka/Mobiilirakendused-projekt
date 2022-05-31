@@ -2,6 +2,8 @@ package com.example.androidreviewapp.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 
@@ -10,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +28,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidreviewapp.SettingsActivity;
 import com.example.androidreviewapp.adapter.GameAdapter;
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.repository.FirebaseRepository;
@@ -35,6 +39,14 @@ import java.util.Locale;
 
 public class SearchFragment extends Fragment {
 
+    /* SETTINGS VALUES
+        PreferenceManager.setDefaultValues(getContext(),R.xml.root_preferences,false);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String langPref = sharedPref.getString(SettingsActivity.LANGUAGE_PREF_CHOICE,"-1");
+        Boolean alphabetPref = sharedPref.getBoolean(SettingsActivity.ALPHABET_PREF_MODE_SWITCH, false);
+        Boolean lengthPref = sharedPref.getBoolean(SettingsActivity.LENGTH_PREF_MODE_SWITCH,false);
+        Boolean startPref = sharedPref.getBoolean(SettingsActivity.STARTING_PREF_MODE_SWITCH, false);
+     */
     String game;
     NavController navController;
     TextInputEditText gameText;
@@ -72,7 +84,6 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         gameText = view.findViewById(R.id.etGameNameInput);
         searchAmount = view.findViewById(R.id.txtSearchAmount);
         searchLoading = view.findViewById(R.id.searchLoading);
@@ -137,7 +148,13 @@ public class SearchFragment extends Fragment {
         if (getArguments() != null){
             game = getArguments().getString("gameName");
             Log.i("SearchFragment", game);
-        } else Toast.makeText(getActivity(), "No game name provided, arguments null", Toast.LENGTH_SHORT).show();
+        }
+
+        /*
+        Toast.makeText(getActivity(),"lang"+ langPref,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(),"alphabet"+ alphabetPref.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "length"+lengthPref.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "start"+startPref.toString(),Toast.LENGTH_SHORT).show();*/
 
         /*
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
@@ -159,7 +176,8 @@ public class SearchFragment extends Fragment {
 
 
         case R.id.settings:
-
+            Intent intent = new Intent(this.getContext(),SettingsActivity.class);
+            startActivity(intent);
             break;
 
         case R.id.logout:

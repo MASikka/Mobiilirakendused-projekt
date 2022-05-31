@@ -2,6 +2,7 @@ package com.example.androidreviewapp.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidreviewapp.SettingsActivity;
 import com.example.androidreviewapp.adapter.GameDetailsAdapter;
 import com.example.androidreviewapp.viewmodel.GameDetailsViewModel;
 import com.example.androidreviewapp.R;
@@ -136,6 +138,8 @@ public class GameDetailsFragment extends Fragment {
             navController.navigate(R.id.action_gameDetails2Fragment_to_reviewsFragment, arguments);
             break;
         case R.id.settings:
+            Intent intent = new Intent(this.getContext(), SettingsActivity.class);
+            startActivity(intent);
             break;
         case R.id.logout:
             GameDetailsViewModel gameDetailsViewModel1 = new ViewModelProvider(this).get(GameDetailsViewModel.class);
