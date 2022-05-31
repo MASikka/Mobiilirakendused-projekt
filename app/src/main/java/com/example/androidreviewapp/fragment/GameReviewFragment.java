@@ -87,6 +87,7 @@ public class GameReviewFragment extends Fragment {
         String langPref = sharedPref.getString(SettingsActivity.LANGUAGE_PREF_CHOICE,"-1");
         String filterPref = sharedPref.getString(SettingsActivity.FILTER_PREF_CHOICE, "-1");
 
+
         gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
         gameReviewViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
             if (loggedOut){
