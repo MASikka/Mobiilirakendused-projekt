@@ -44,8 +44,8 @@ public class GameReviewViewModel extends AndroidViewModel {
     public void getReviews(String gameId){
         reviewRepository.GetReviews(gameId);
     }
-    public void getSteamReviews(String gameId, String langPref) {
-        steamReviewRepository.getSteamReviewSearch(gameId, langPref);
+    public void getSteamReviews(String gameId, String langPref, String filterPref) {
+        steamReviewRepository.getSteamReviewSearch(gameId, langPref, filterPref);
     }
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
         return userMutableLiveData;
