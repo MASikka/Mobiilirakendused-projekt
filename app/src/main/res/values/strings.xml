@@ -75,5 +75,9 @@
     <string name="final_price">FINAL PRICE</string>
     <string name="not_recommended">Not recommended:</string>
     <string name="recommended">Recommended:</string>
+    <string name="isLinuxSupported">isLinuxSupported</string>
+    <string name="isMacSupported">isMacSupported</string>
+    <string name="isWindowsSupported">isWindowsSupported</string>
+    <string name="metacritic">metacritic</string>
 
 </resources>

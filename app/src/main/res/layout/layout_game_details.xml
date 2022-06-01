@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRelease">
+        app:layout_constraintTop_toBottomOf="@+id/txtRelease"
+        tools:ignore="WebViewLayout">
 
     </WebView>
 
@@ -30,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAboutGame">
+        app:layout_constraintTop_toBottomOf="@+id/txtAboutGame"
+        tools:ignore="WebViewLayout">
 
     </WebView>
 
@@ -72,7 +74,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLangugages">
+        app:layout_constraintTop_toBottomOf="@+id/txtLangugages"
+        tools:ignore="WebViewLayout">
 
     </WebView>
 
@@ -100,7 +103,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wvSystemReqMin" />
+        app:layout_constraintTop_toBottomOf="@+id/wvSystemReqMin"
+        tools:ignore="WebViewLayout" />
 
     <LinearLayout
         android:id="@+id/linearlayout_genre_recycler"
@@ -142,12 +146,11 @@
         android:id="@+id/txtSysReq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:textSize="18sp"
         android:text="@string/system_requirements"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wvSupportedLanguages" />
 
@@ -160,8 +163,10 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSysReq" />
+        app:layout_constraintTop_toBottomOf="@+id/isLinuxSupported"
+        tools:ignore="WebViewLayout" />
 
     <TextView
         android:id="@+id/txtReleaseDate"
@@ -326,7 +331,7 @@
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:text="metacritic"
+        android:text="@string/metacritic"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -347,6 +352,41 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/isWindowsSupported"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:text="@string/isWindowsSupported"
+        android:textColor="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSysReq" />
+
+    <TextView
+        android:id="@+id/isMacSupported"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:text="@string/isMacSupported"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isWindowsSupported" />
+
+    <TextView
+        android:id="@+id/isLinuxSupported"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/isLinuxSupported"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isMacSupported" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
