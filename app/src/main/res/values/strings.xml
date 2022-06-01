@@ -75,5 +75,7 @@
     <string name="developer">DEVELOPER</string>
     <string name="initial_price">INITIAL PRICE</string>
     <string name="final_price">FINAL PRICE</string>
+    <string name="not_recommended">Not recommended:</string>
+    <string name="recommended">Recommended:</string>
 
 </resources>
