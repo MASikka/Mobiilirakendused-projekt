@@ -108,7 +108,7 @@ public class GameRepository {
         Log.i("parseResults-gameDetails", gameId);
         JsonObject app = result.getAsJsonObject(gameId);
         JsonObject data = app.getAsJsonObject("data");
-        String type = data.get("type").toString();
+        String type = data.get("type").toString().replaceAll("^\"|\"$", "");
         String name = data.get("name").toString();
         name = removeAbles(name);
         Log.i("parseResults-gameDetails", type);
@@ -226,6 +226,7 @@ public class GameRepository {
             for (int i = 0; i < screenshots.size(); i++){
                 JsonObject screenshot = (JsonObject) screenshots.get(i);
                 String screenshotLink = screenshot.get("path_full").toString();
+                screenshotLink = removeAbles(screenshotLink);
                 screenshotsList.add(screenshotLink);
             }
         }

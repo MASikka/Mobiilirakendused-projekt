@@ -1,24 +1,27 @@
 package com.example.androidreviewapp.adapter;
 
-import android.content.res.Resources;
+import android.media.Image;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
+import com.squareup.picasso.Picasso;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
 
 public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.GameDetailsViewHolder>{
 
@@ -55,40 +58,54 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         String shortDescription = game.getShortDescription();
         String supportedLanguages = game.getSupportedLanguages();
         String gameName = game.getName();
+        String gameType = game.getType();
         String initialPrice = "none";
         if (game.getInitialPrice() != null){
             initialPrice = game.getInitialPrice();
         }
         String finalPrice = game.getFinalPrice();
-        //ArrayList<String> developer = game.getDevelopersList();
-        ArrayList<String> publisher = game.getPublishersList();
+        String metaScore = game.getMetacriticScore();
         String systemReq = game.getRecommendedPCRequirements();
         String systemReqMin = game.getMinimumPCRequirements();
         String releaseDate = game.getReleaseDate();
         ArrayList<String> genresList = game.getGenresList();
         Log.i("Tags: ", String.valueOf(genresList));
-        //holder.txtDetailedDescription.setText(detailedDescription);
-        //holder.txtShortDescription.setText(shortDescription);
-        holder.wvSupportedLanguages.loadData(supportedLanguages, "text/html", "UTF-8");
+
+
+        // detailed description
+        holder.wvDetailedDescription.getSettings().setLoadWithOverviewMode(true);
+        holder.wvDetailedDescription.getSettings().setUseWideViewPort(true);
+        holder.wvDetailedDescription.getSettings().setDefaultFontSize(40);
         holder.wvDetailedDescription.loadData(detailedDescription, "text/html", "UTF-8");
+
+        // short description
+        holder.wvShortDescription.getSettings().setLoadWithOverviewMode(true);
+        holder.wvShortDescription.getSettings().setUseWideViewPort(true);
+        holder.wvShortDescription.getSettings().setDefaultFontSize(40);
         holder.wvShortDescription.loadData(shortDescription, "text/html", "UTF-8");
-        //holder.wvGameGenres.loadData(genresList.get(position), "text/html", "UTF-8");
-        holder.wvGameName.loadData(gameName, "text/html", "UTF-8");
-        // holder.wvDeveloper.loadData(String.valueOf(developer), "text/html", "UTF-8");
-        // holder.wvPublisher.loadData(String.valueOf(publisher), "text/html", "UTF-8");
+
+        // supported languages
+        holder.wvSupportedLanguages.getSettings().setLoadWithOverviewMode(true);
+        holder.wvSupportedLanguages.getSettings().setUseWideViewPort(true);
+        holder.wvSupportedLanguages.getSettings().setDefaultFontSize(40);
+        holder.wvSupportedLanguages.loadData(supportedLanguages, "text/html", "UTF-8");
+
+        // recommended requirements
+        holder.wvSystemReq.getSettings().setLoadWithOverviewMode(true);
+        holder.wvSystemReq.getSettings().setUseWideViewPort(true);
+        holder.wvSystemReq.getSettings().setDefaultFontSize(40);
         holder.wvSystemReq.loadData(systemReq, "text/html", "UTF-8");
+
+        // minimum requirements
+        holder.wvSystemReqMin.getSettings().setLoadWithOverviewMode(true);
+        holder.wvSystemReqMin.getSettings().setUseWideViewPort(true);
+        holder.wvSystemReqMin.getSettings().setDefaultFontSize(40);
         holder.wvSystemReqMin.loadData(systemReqMin, "text/html", "UTF-8");
-        holder.wvReleaseDate.loadData(releaseDate, "text/html", "UTF-8");
-        if (game.getInitialPrice() == "") {
-            holder.wvInitialPrice.loadData("initial price missing", "text/html", "UTF-8");
-        } else {
-            holder.wvInitialPrice.loadData(initialPrice, "text/html", "UTF-8");
-        }
+
 
 
 
         Log.i("initial: ", game.getInitialPrice());
-        holder.wvFinalPrice.loadData(finalPrice, "text/html", "UTF-8");
 
         //genre layout
         LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -100,6 +117,10 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         //publisher layout
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(
                 holder.publisherRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
+
+        //screenshot layout
+        LinearLayoutManager layoutManager3 = new LinearLayoutManager(
+                holder.screenshotRecyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
 
 
         //genre
@@ -126,6 +147,29 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.publisherRecyclerView.setAdapter(publisherAdapter);
         holder.publisherRecyclerView.setRecycledViewPool(viewPool);
 
+        //screenshots
+        layoutManager3.setInitialPrefetchItemCount(game.getScreenshotsList().size());
+        ScreenshotAdapter screenshotAdapter = new ScreenshotAdapter();
+        screenshotAdapter.setScreenshotsList(game.getScreenshotsList());
+        holder.screenshotRecyclerView.setLayoutManager(layoutManager3);
+        holder.screenshotRecyclerView.setAdapter(screenshotAdapter);
+        holder.screenshotRecyclerView.setRecycledViewPool(viewPool);
+
+
+        //textview
+        holder.txtGameName.setText("App type: " + gameType);
+        Log.i("Init: ", initialPrice);
+        if(initialPrice == ":" || TextUtils.isEmpty(initialPrice)) {
+            holder.txtInitialPrice.setText("Initial price not available");
+        } else {
+            holder.txtInitialPrice.setText(initialPrice);
+        }
+        //holder.txtInitialPrice.setText(initialPrice);
+        holder.txtFinalPrice.setText(finalPrice);
+        holder.txtReleaseDate.setText(releaseDate);
+        holder.txtMetaScore.setText(metaScore);
+
+
 
     }
 
@@ -141,45 +185,37 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
 
     static class GameDetailsViewHolder extends RecyclerView.ViewHolder{
 
-        //private final TextView txtDetailedDescription;
-        //private final TextView txtShortDescription;
         private final WebView wvSupportedLanguages;
         private final WebView wvDetailedDescription;
         private final WebView wvShortDescription;
-        //private final WebView wvGameGenres;
         private final RecyclerView genreRecyclerView;
         private final RecyclerView devRecyclerView;
         private final RecyclerView publisherRecyclerView;
-        private final WebView wvGameName;
-        // private final WebView wvDeveloper;
-        // private final WebView wvPublisher;
+        private final RecyclerView screenshotRecyclerView;
         private final WebView wvSystemReq;
         private final WebView wvSystemReqMin;
-        private final WebView wvReleaseDate;
-        private final WebView wvInitialPrice;
-        private final WebView wvFinalPrice;
+        private final TextView txtGameName;
+        private final TextView txtInitialPrice;
+        private final TextView txtFinalPrice;
+        private final TextView txtReleaseDate;
+        private final TextView txtMetaScore;
 
         public GameDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
-            //txtDetailedDescription = itemView.findViewById(R.id.txtDetailedDescription);
-            //txtShortDescription = itemView.findViewById(R.id.txtShortDescription);
             wvSupportedLanguages = itemView.findViewById(R.id.wvSupportedLanguages);
             wvDetailedDescription = itemView.findViewById(R.id.wvDetailedDescription);
             wvShortDescription = itemView.findViewById(R.id.wvShortDescription);
-            //wvGameGenres = itemView.findViewById(R.id.wvGameGenres);
             genreRecyclerView = itemView.findViewById(R.id.recyclerview_game_genres);
             devRecyclerView = itemView.findViewById(R.id.recyclerview_game_dev);
             publisherRecyclerView = itemView.findViewById(R.id.recyclerview_game_publisher);
-            wvGameName = itemView.findViewById(R.id.wvGameName);
-            //wvDeveloper = itemView.findViewById(R.id.wvDeveloper);
-            //wvPublisher = itemView.findViewById(R.id.wvPublisher);
+            screenshotRecyclerView = itemView.findViewById(R.id.recyclerview_game_screenshots);
             wvSystemReq = itemView.findViewById(R.id.wvSystemReq);
             wvSystemReqMin = itemView.findViewById(R.id.wvSystemReqMin);
-            wvReleaseDate = itemView.findViewById(R.id.wvReleaseDate);
-            wvInitialPrice = itemView.findViewById(R.id.wvInitialPrice);
-            wvFinalPrice = itemView.findViewById(R.id.wvFinalPrice);
-
-
+            txtGameName = itemView.findViewById(R.id.txtGameName);
+            txtInitialPrice = itemView.findViewById(R.id.txtInitial);
+            txtFinalPrice = itemView.findViewById(R.id.txtFinal);
+            txtReleaseDate = itemView.findViewById(R.id.txtRelease);
+            txtMetaScore = itemView.findViewById(R.id.txtMetaScore);
         }
     }
 
