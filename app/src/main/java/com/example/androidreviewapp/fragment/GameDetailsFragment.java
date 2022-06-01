@@ -115,6 +115,14 @@ public class GameDetailsFragment extends Fragment {
             gameDetailsViewModel.getGameDetails(gameId);
         }
         gameDetailsViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
+            if (games.get(0).getType().equals("empty")){
+                Toast.makeText(getActivity(), "This app has no details, going back to search!", Toast.LENGTH_SHORT).show();
+                //getActivity().finish();
+                //getActivity().getSupportFragmentManager().popBackStack();
+                getActivity().onBackPressed();
+
+
+            }
             gameDetailsAdapter.setGameDetailsList(games);
             requireActivity().setTitle(String.format(getString(R.string.details_view_title), games.get(0).getName()));
             gameDetailsLoading.setVisibility(View.GONE);
