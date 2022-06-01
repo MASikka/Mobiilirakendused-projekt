@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 
@@ -82,6 +84,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         } else {
             holder.wvInitialPrice.loadData(initialPrice, "text/html", "UTF-8");
         }
+
+
 
         Log.i("initial: ", game.getInitialPrice());
         holder.wvFinalPrice.loadData(finalPrice, "text/html", "UTF-8");

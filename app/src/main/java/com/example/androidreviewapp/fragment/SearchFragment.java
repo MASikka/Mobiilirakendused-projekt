@@ -107,7 +107,6 @@ public class SearchFragment extends Fragment {
         Boolean startPref = sharedPref.getBoolean(SettingsActivity.STARTING_PREF_MODE_SWITCH, false);
 
 
-
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         searchViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
             if (loggedOut){
@@ -125,6 +124,7 @@ public class SearchFragment extends Fragment {
             searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(games.size())));
             searchLoading.setVisibility(View.GONE);
         });
+
         searchButton = view.findViewById(R.id.btnSearch);
 
         searchButton.setOnClickListener(
