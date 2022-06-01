@@ -80,4 +80,14 @@
     <string name="isWindowsSupported">isWindowsSupported</string>
     <string name="metacritic">metacritic</string>
 
+    <!-- OS requirements -->
+    <string name="windows_supported">Windows supported</string>
+    <string name="windows_not_supported">Windows not supported</string>
+    <string name="Mac_supported">MacOS supported</string>
+    <string name="mac_no_supported">MacOS not supported</string>
+    <string name="linux_supported">Linux supported</string>
+    <string name="linux_not_supported">Linux not supported</string>
+    <string name="initialprice_unavailable">Initial price not available</string>
+    <string name="app_type">\"App type: \"</string>
+
 </resources>

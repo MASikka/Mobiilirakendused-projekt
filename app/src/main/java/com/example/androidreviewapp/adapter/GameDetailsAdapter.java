@@ -161,31 +161,39 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         //textview
         holder.txtGameName.setText("App type: " + gameType);
         Log.i("Init: ", initialPrice);
-        if(initialPrice == ":" || TextUtils.isEmpty(initialPrice)) {
-            holder.txtInitialPrice.setText("Initial price not available");
+        if(initialPrice.equals(":") || TextUtils.isEmpty(initialPrice)) {
+            holder.txtInitialPrice.setText(R.string.initialprice_unavailable);
         } else {
             holder.txtInitialPrice.setText(initialPrice);
         }
         //holder.txtInitialPrice.setText(initialPrice);
         holder.txtFinalPrice.setText(finalPrice);
         holder.txtReleaseDate.setText(releaseDate);
-        holder.txtMetaScore.setText(metaScore);
+
+        Log.i("Meta: ", metaScore);
+
+        if (metaScore.equals("")) {
+            holder.txtMetaScore.setVisibility(View.GONE);
+            holder.txtMetaCritic.setVisibility(View.GONE);
+        } else {
+            holder.txtMetaScore.setText(metaScore);
+        }
 
         if(isWindowsSupported){
-            holder.isWindowsSupported.setText("Windows supported");
+            holder.isWindowsSupported.setText(R.string.windows_supported);
         } else {
-            holder.isWindowsSupported.setText("Windows not supported");
+            holder.isWindowsSupported.setText(R.string.windows_not_supported);
         }
         if(isMacSupported){
-            holder.isMacSupported.setText("MacOS supported");
+            holder.isMacSupported.setText(R.string.Mac_supported);
         } else {
-            holder.isMacSupported.setText("MacOS not supported");
+            holder.isMacSupported.setText(R.string.mac_no_supported);
         }
         if(isLinuxSupported){
-            holder.isLinuxSupported.setText("Linux supported");
+            holder.isLinuxSupported.setText(R.string.linux_supported);
 
         } else {
-            holder.isLinuxSupported.setText("Linux not supported");
+            holder.isLinuxSupported.setText(R.string.linux_not_supported);
         }
 
 
@@ -221,6 +229,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final TextView isWindowsSupported;
         private final TextView isLinuxSupported;
         private final TextView isMacSupported;
+        private final TextView txtMetaCritic;
 
 
         public GameDetailsViewHolder(@NonNull View itemView) {
@@ -242,6 +251,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             isWindowsSupported = itemView.findViewById(R.id.isWindowsSupported);
             isMacSupported = itemView.findViewById(R.id.isMacSupported);
             isLinuxSupported = itemView.findViewById(R.id.isLinuxSupported);
+            txtMetaCritic = itemView.findViewById(R.id.txtMetacritic);
         }
     }
 
