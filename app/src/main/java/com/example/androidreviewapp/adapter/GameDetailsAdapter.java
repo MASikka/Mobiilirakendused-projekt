@@ -20,6 +20,7 @@ import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
 import com.squareup.picasso.Picasso;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.GameDetailsViewHolder>{
@@ -100,6 +101,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.wvSystemReqMin.getSettings().setUseWideViewPort(true);
         holder.wvSystemReqMin.getSettings().setDefaultFontSize(40);
         holder.wvSystemReqMin.loadData(systemReqMin, "text/html", "UTF-8");
+
+
 
 
         Log.i("initial: ", game.getInitialPrice());

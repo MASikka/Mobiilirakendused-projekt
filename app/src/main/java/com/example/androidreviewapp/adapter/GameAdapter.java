@@ -46,7 +46,6 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
         Game game = gameList.get(position);
         String gameId = game.getId();
-
         Log.i("onbindviewholder", "teeb onbindviewholderit");
 
         Bundle args = new Bundle();
