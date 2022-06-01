@@ -50,6 +50,8 @@ public class GameReviewFragment extends Fragment {
     private int steamReviewCounter;
     private int appReviewCounter;
     private ProgressBar reviewsLoading;
+    private TextView positiveRecommended;
+    private TextView negativeRecommended;
 
 
     @Override
@@ -124,6 +126,8 @@ public class GameReviewFragment extends Fragment {
             reviewCounterTextView.setText(String.format(getString(R.string.steam_reviews_found_count), String.valueOf(steamReviewCounter)));
             reviewsLoading.setVisibility(View.GONE);
         });
+
+        positiveRecommended = view.findViewById(R.id.positiveRecommendation);
 
         reviewSwitchButton.setOnClickListener(
                 new View.OnClickListener() {
