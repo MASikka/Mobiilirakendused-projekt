@@ -178,7 +178,7 @@ public class GameRepository {
                     minimumRequirements = "";
                     recommendedRequirements = "";
                 }
-            } else if (type.equals("game")){
+            } else if (type.equals("game") || type.equals("dlc")){
                 Object pcRequirementsObject = data.get("pc_requirements");
                 if (pcRequirementsObject instanceof JsonObject){
                     if (data.getAsJsonObject("pc_requirements") != null){
