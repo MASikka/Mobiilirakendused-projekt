@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AndroidReviewApp</string>
+    <string name="app_name">AndroidArvustusteÄpp</string>
     <string name="search">Otsi</string>
     <string name="search_helper">nt Half-Life</string>
     <string name="search_hint">Sisesta mängu nimi</string>
@@ -23,10 +23,10 @@
     <string name="personal_review_title">Minu äppi arvustus</string>
     <string name="login_title">Logi sisse</string>
     <string name="register_title">Registreeri kasutaja</string>
-    <string name="forgot_password_title">Unustasin salasõna</string>
+    <string name="forgot_password_title">Unustasin parooli</string>
     <string name="reg_user">Registreeri</string>
     <string name="settings">Seaded</string>
-    <string name="recommends">Soovitab</string>
+    <string name="recommends">Soovitatud</string>
     <string name="steam_reviews">Vaata Steami arvustusi</string>
     <string name="app_reviews">Vaata äppi arvustusi</string>
     <string name="all">Kõik</string>
@@ -34,8 +34,8 @@
     <string name="login">logi sisse</string>
     <string name="forgot_password">unustasin parool</string>
     <string name="send_password">muuda parooli</string>
-    <string name="missing">Täida kõik väljad</string>
-    <string name="password_sent">Parooli muudatus saadetud</string>
+    <string name="missing">Täida kõik väljad!</string>
+    <string name="password_sent">Parooli muudatus saadetud meilile</string>
     <string name="no_review">Arvustus puudub</string>
     <string name="review_deleted">Arvustus kustutatud</string>
     <string name="review_not_empty">Arvustus ei saa olla tühi</string>
@@ -58,4 +58,29 @@
     <string name="menu_reviews">Arvustused</string>
     <string name="menu_my_review">Minu arvustus</string>
     <string name="menu_logout">Logi välja</string>
+    <string name="logout">Logi välja</string>
+    <string name="recommend">Soovita</string>
+    <string name="submit">Postita</string>
+    <string name="delete">Eemalda</string>
+    <string name="personal_review_helper">Kirjuta arvustus siin...</string>
+    <string name="genres">ŽANRID</string>
+    <string name="languages">KEELED</string>
+    <string name="about_this_game">SELLEST MÄNGUST</string>
+    <string name="system_requirements">SÜSTEEMI NÕUDED</string>
+    <string name="release_date">VÄLJALASKE KUUPÄEV</string>
+    <string name="publishers">KIRJASTAJAD</string>
+    <string name="developers">ARENDAJAD</string>
+    <string name="initial_price">ALGNE HIND</string>
+    <string name="final_price">LÕPLIK HIND</string>
+    <string name="not_recommended">Mitte soovitatud: %1$s</string>
+    <string name="recommended">Soovitatud: %1$s</string>
+    <string name="app_type">ÄPPI TÜÜP</string>
+    <string name="metacritic">Metacritic</string>
+    <string name="windows_supported">Windows\'l toetatud</string>
+    <string name="windows_not_supported">Windows\'l mitte toetatud</string>
+    <string name="Mac_supported">MacOS\'l toetatud</string>
+    <string name="mac_no_supported">MacOS\'l mitte toetatud</string>
+    <string name="linux_supported">Linux\'l toetatud</string>
+    <string name="linux_not_supported">Linux\'l mitte toetatud</string>
+    <string name="initialprice_unavailable">Algne hind pole kättesaadav</string>
 </resources>
