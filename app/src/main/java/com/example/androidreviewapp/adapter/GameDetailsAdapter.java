@@ -43,7 +43,6 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
     public GameDetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_game_details, parent, false);
 
-
         return new GameDetailsViewHolder(view);
 
 
@@ -134,6 +133,15 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.genreRecyclerView.setAdapter(genreAdapter);
         holder.genreRecyclerView.setRecycledViewPool(viewPool);
 
+
+
+        //if(gameType.equals("episode")) {
+        //            holder.txtDev.setText("");
+        //        } else {
+        //
+        //        }
+
+
         //developers
         layoutManager1.setInitialPrefetchItemCount(game.getDevelopersList().size());
         DeveloperAdapter developerAdapter = new DeveloperAdapter();
@@ -141,6 +149,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.devRecyclerView.setLayoutManager(layoutManager1);
         holder.devRecyclerView.setAdapter(developerAdapter);
         holder.devRecyclerView.setRecycledViewPool(viewPool);
+
 
         //publishers
         layoutManager2.setInitialPrefetchItemCount(game.getPublishersList().size());
@@ -160,7 +169,9 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
 
 
         //textview
-        holder.txtGameName.setText("App type: " + gameType);
+
+        holder.txtGameType.setText(R.string.app_type);
+        holder.txtAppType.setText(gameType);
         Log.i("Init: ", initialPrice);
         if(initialPrice.equals(":") || TextUtils.isEmpty(initialPrice)) {
             holder.txtInitialPrice.setText(R.string.initialprice_unavailable);
@@ -222,7 +233,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final RecyclerView screenshotRecyclerView;
         private final WebView wvSystemReq;
         private final WebView wvSystemReqMin;
-        private final TextView txtGameName;
+        private final TextView txtGameType;
         private final TextView txtInitialPrice;
         private final TextView txtFinalPrice;
         private final TextView txtReleaseDate;
@@ -232,6 +243,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final TextView isMacSupported;
         private final TextView txtSysReq;
         private final TextView txtMetaCritic;
+        private final TextView txtAppType;
 
 
         public GameDetailsViewHolder(@NonNull View itemView) {
@@ -245,7 +257,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             screenshotRecyclerView = itemView.findViewById(R.id.recyclerview_game_screenshots);
             wvSystemReq = itemView.findViewById(R.id.wvSystemReq);
             wvSystemReqMin = itemView.findViewById(R.id.wvSystemReqMin);
-            txtGameName = itemView.findViewById(R.id.txtGameName);
+            txtGameType = itemView.findViewById(R.id.txtGameName);
             txtInitialPrice = itemView.findViewById(R.id.txtInitial);
             txtFinalPrice = itemView.findViewById(R.id.txtFinal);
             txtReleaseDate = itemView.findViewById(R.id.txtRelease);
@@ -255,6 +267,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             isLinuxSupported = itemView.findViewById(R.id.isLinuxSupported);
             txtSysReq = itemView.findViewById(R.id.txtSysReq);
             txtMetaCritic = itemView.findViewById(R.id.txtMetacritic);
+            txtAppType = itemView.findViewById(R.id.txtGameType);
         }
     }
 

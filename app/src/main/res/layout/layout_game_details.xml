@@ -187,8 +187,8 @@
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:text="@string/publishers"
         android:textSize="18sp"
-        android:text="@string/publisher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_dev_recycler" />
 
@@ -199,10 +199,10 @@
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:text="@string/developers"
         android:textSize="18sp"
-        android:text="@string/developer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtGameName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtGameType" />
 
     <LinearLayout
         android:id="@+id/linearlayout_game_publisher"
@@ -258,8 +258,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="16dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -388,6 +387,20 @@
         android:text="@string/isLinuxSupported"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/isMacSupported" />
+
+    <TextView
+        android:id="@+id/txtGameType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtGameName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
