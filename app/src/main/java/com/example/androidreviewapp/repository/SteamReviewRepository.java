@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.androidreviewapp.model.Review;
+import com.example.androidreviewapp.model.ReviewScore;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
@@ -16,10 +17,13 @@ public class SteamReviewRepository {
     private final Application application;
     private final MutableLiveData<ArrayList<Review>> steamReviewLiveData;
     private final ArrayList<Review> arrayList = new ArrayList<>();
+    private final ArrayList<ReviewScore> reviewScoreArrayList = new ArrayList<>();
+    private final MutableLiveData<ArrayList<ReviewScore>> reviewScoreLiveData;
 
     public SteamReviewRepository(Application application) {
         this.application = application;
         this.steamReviewLiveData = new MutableLiveData<>();
+        this.reviewScoreLiveData = new MutableLiveData<>();
     }
 
     public void getSteamReviewSearch(String appId, String langPref, String filterPref){
@@ -30,6 +34,28 @@ public class SteamReviewRepository {
                     parseResults(result, appId);
                 });
     }
+
+    public void getSteamReviewScores(String appId){
+        Ion.with(application)
+                .load(String.format(STEAM_REVIEW_URL, appId, "all", "all"))
+                .asJsonObject()
+                .setCallback((e, result) -> {
+                    parseScores(result);
+                });
+    }
+
+    private void parseScores(JsonObject result) {
+        reviewScoreArrayList.clear();
+        JsonObject querySummary = result.getAsJsonObject("query_summary");
+        int totalPositiveInt = querySummary.getAsJsonPrimitive("total_positive").getAsInt();
+        int totalNegativeInt = querySummary.getAsJsonPrimitive("total_negative").getAsInt();
+        String totalPositive = String.valueOf(totalPositiveInt);
+        String totalNegative = String.valueOf(totalNegativeInt);
+        ReviewScore reviewScore = new ReviewScore(totalPositive, totalNegative);
+        reviewScoreArrayList.add(reviewScore);
+        reviewScoreLiveData.setValue(reviewScoreArrayList);
+    }
+
     private String removeAbles(String text) {
         //return text;
         if (text.length() < 2){
@@ -56,5 +82,9 @@ public class SteamReviewRepository {
 
     public MutableLiveData<ArrayList<Review>> getSteamReviewLiveData(){
         return steamReviewLiveData;
+    }
+
+    public MutableLiveData<ArrayList<ReviewScore>> getReviewScoreLiveData(){
+        return reviewScoreLiveData;
     }
 }
