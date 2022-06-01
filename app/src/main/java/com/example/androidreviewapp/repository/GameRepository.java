@@ -179,17 +179,21 @@ public class GameRepository {
                     recommendedRequirements = "";
                 }
             } else if (type.equals("game")){
-                if (data.getAsJsonObject("pc_requirements") != null){
-                    pcRequirements = data.getAsJsonObject("pc_requirements");
-                    if (pcRequirements.get("minimum") != null){
-                        minimumRequirements = pcRequirements.get("minimum").toString().replaceAll("^\"|\"$", "");
-                        minimumRequirements = cleanBackslashes(minimumRequirements);
-                    }
-                    if(pcRequirements.get("recommended") != null){
-                        recommendedRequirements = pcRequirements.get("recommended").toString().replaceAll("^\"|\"$", "");
-                        recommendedRequirements = cleanBackslashes(recommendedRequirements);
+                Object pcRequirementsObject = data.get("pc_requirements");
+                if (pcRequirementsObject instanceof JsonObject){
+                    if (data.getAsJsonObject("pc_requirements") != null){
+                        pcRequirements = data.getAsJsonObject("pc_requirements");
+                        if (pcRequirements.get("minimum") != null){
+                            minimumRequirements = pcRequirements.get("minimum").toString().replaceAll("^\"|\"$", "");
+                            minimumRequirements = cleanBackslashes(minimumRequirements);
+                        }
+                        if(pcRequirements.get("recommended") != null){
+                            recommendedRequirements = pcRequirements.get("recommended").toString().replaceAll("^\"|\"$", "");
+                            recommendedRequirements = cleanBackslashes(recommendedRequirements);
+                        }
                     }
                 }
+
             } else {
                 minimumRequirements = "something else";
                 recommendedRequirements = "something else";
