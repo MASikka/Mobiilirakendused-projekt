@@ -107,143 +107,177 @@ public class GameRepository {
         arrayList.clear();
         Log.i("parseResults-gameDetails", gameId);
         JsonObject app = result.getAsJsonObject(gameId);
-        JsonObject data = app.getAsJsonObject("data");
-        String type = data.get("type").toString().replaceAll("^\"|\"$", "");
-        String name = data.get("name").toString();
-        name = removeAbles(name);
-        Log.i("parseResults-gameDetails", type);
 
+        String type = "";
+        String name = "";
         String detailedDescription = "";
-        if (data.get("detailed_description") != null){
-            detailedDescription = data.get("detailed_description").toString();
-            detailedDescription = removeAbles(detailedDescription);
-            detailedDescription = cleanBackslashes(detailedDescription);
-        }
-
         String shortDescription = "";
-        if (data.get("short_description") != null){
-            shortDescription = data.get("short_description").toString();
-            shortDescription = removeAbles(shortDescription);
-            shortDescription = cleanBackslashes(shortDescription);
-        }
-
         String aboutTheGame = "";
-        if (data.get("about_the_game") != null){
-            aboutTheGame = data.get("about_the_game").toString();
-            aboutTheGame = removeAbles(aboutTheGame);
-            aboutTheGame = cleanBackslashes(aboutTheGame);
-        }
-
         String supportedLanguages = "";
-        if (data.get("supported_languages") != null){
-            supportedLanguages = data.get("supported_languages").toString();
-            supportedLanguages = removeAbles(supportedLanguages);
-        }
-
         JsonObject pcRequirements = null;
-        String minimumRequirements = null;
-        String recommendedRequirements = null;
-        if (data.getAsJsonObject("pc_requirements") != null){
-            pcRequirements = data.getAsJsonObject("pc_requirements");
-            if (pcRequirements.get("minimum") != null){
-                minimumRequirements = pcRequirements.get("minimum").toString().replaceAll("^\"|\"$", "");
-                minimumRequirements = cleanBackslashes(minimumRequirements);
-            }
-            if(pcRequirements.get("recommended") != null){
-                recommendedRequirements = pcRequirements.get("recommended").toString().replaceAll("^\"|\"$", "");
-                recommendedRequirements = cleanBackslashes(recommendedRequirements);
-            }
-        }
-
-
-        ArrayList<String> developersList = new ArrayList<>();
-        if (data.getAsJsonArray("developers") != null){
-            JsonArray developers = data.getAsJsonArray("developers");
-            for (int i = 0; i < developers.size(); i++){
-                String developer = developers.get(i).toString().replaceAll("^\"|\"$", "");
-
-                developersList.add(developer);
-            }
-        }
-
-        ArrayList<String> publishersList = new ArrayList<>();
-        if (data.getAsJsonArray("publishers") != null){
-            JsonArray publishers = data.getAsJsonArray("publishers");
-            for (int i = 0; i < publishers.size(); i++){
-                String publisher = publishers.get(i).toString().replaceAll("^\"|\"$", "");
-                publishersList.add(publisher);
-            }
-        }
+        String minimumRequirements = "";
+        String recommendedRequirements = "";
+        String developer = "";
+        String publisher = "";
         String initialPrice = "";
         String finalPrice = "";
-        if (data.getAsJsonObject("price_overview") != null){
-            JsonObject priceOverview = data.getAsJsonObject("price_overview");
+        JsonObject priceOverview = null;
+        boolean isWindows = false;
+        boolean isMac = false;
+        boolean isLinux = false;
+        JsonObject platforms = null;
+        String metacriticScore = "";
+        String genreName = "";
+        String screenshotLink = "";
+        String movieLink = "";
+        String date = "";
+        JsonObject data = null;
+        ArrayList<String> publishersList = new ArrayList<>();
+        ArrayList<String> genresList = new ArrayList<>();
+        ArrayList<String> developersList = new ArrayList<>();
+        ArrayList<String> screenshotsList = new ArrayList<>();
+        ArrayList<String> moviesList = new ArrayList<>();
 
-            if (priceOverview.get("initial_formatted") != null){
-                initialPrice = priceOverview.get("initial_formatted").toString().replaceAll("^\"|\"$", "");
+        if (app.getAsJsonObject("data") != null){
+            data = app.getAsJsonObject("data");
+            if (data.get("type") != null){
+                type = data.get("type").toString();
+            }
+            //type = data.get("type").toString();
+            type = removeAbles(type);
+
+            name = data.get("name").toString();
+            name = removeAbles(name);
+            Log.i("parseResults-gameDetails", type);
+
+            if (data.get("detailed_description") != null){
+                detailedDescription = data.get("detailed_description").toString();
+                detailedDescription = removeAbles(detailedDescription);
+                detailedDescription = cleanBackslashes(detailedDescription);
             }
 
-            if (priceOverview.get("final_formatted") != null){
-                finalPrice = priceOverview.get("final_formatted").toString().replaceAll("^\"|\"$", "");
+            if (data.get("short_description") != null){
+                shortDescription = data.get("short_description").toString();
+                shortDescription = removeAbles(shortDescription);
+                shortDescription = cleanBackslashes(shortDescription);
+            }
+
+            if (data.get("about_the_game") != null){
+                aboutTheGame = data.get("about_the_game").toString();
+                aboutTheGame = removeAbles(aboutTheGame);
+                aboutTheGame = cleanBackslashes(aboutTheGame);
+            }
+
+            if (data.get("supported_languages") != null){
+                supportedLanguages = data.get("supported_languages").toString();
+                supportedLanguages = removeAbles(supportedLanguages);
+            }
+
+            if (data.getAsJsonObject("pc_requirements") != null){
+                pcRequirements = data.getAsJsonObject("pc_requirements");
+                if (pcRequirements.get("minimum") != null){
+                    minimumRequirements = pcRequirements.get("minimum").toString().replaceAll("^\"|\"$", "");
+                    minimumRequirements = cleanBackslashes(minimumRequirements);
+                }
+                if(pcRequirements.get("recommended") != null){
+                    recommendedRequirements = pcRequirements.get("recommended").toString().replaceAll("^\"|\"$", "");
+                    recommendedRequirements = cleanBackslashes(recommendedRequirements);
+                }
+            }
+
+
+
+            if (data.getAsJsonArray("developers") != null){
+                JsonArray developers = data.getAsJsonArray("developers");
+                for (int i = 0; i < developers.size(); i++){
+                    developer = developers.get(i).toString().replaceAll("^\"|\"$", "");
+                    developersList.add(developer);
+                }
+            }
+
+
+            if (data.getAsJsonArray("publishers") != null){
+                JsonArray publishers = data.getAsJsonArray("publishers");
+                for (int i = 0; i < publishers.size(); i++){
+                    publisher = publishers.get(i).toString().replaceAll("^\"|\"$", "");
+                    publishersList.add(publisher);
+                }
+            }
+
+            if (data.getAsJsonObject("price_overview") != null){
+                priceOverview = data.getAsJsonObject("price_overview");
+
+                if (priceOverview.get("initial_formatted") != null){
+                    initialPrice = priceOverview.get("initial_formatted").toString().replaceAll("^\"|\"$", "");
+                }
+
+                if (priceOverview.get("final_formatted") != null){
+                    finalPrice = priceOverview.get("final_formatted").toString().replaceAll("^\"|\"$", "");
+                }
+            } else {
+                initialPrice = "free";
+            }
+
+            if (data.getAsJsonObject("platforms") != null) {
+                platforms = data.getAsJsonObject("platforms");
+                if (platforms.get("windows") != null){
+                    isWindows = platforms.get("windows").getAsBoolean();
+                }
+                if (platforms.get("mac") != null){
+                    isMac = platforms.get("mac").getAsBoolean();
+                }
+                if (platforms.get("linux") != null){
+                    isLinux = platforms.get("linux").getAsBoolean();
+                }
+            }
+
+            if (data.getAsJsonObject("metacritic") != null){
+                JsonObject metacritic = data.getAsJsonObject("metacritic");
+                metacriticScore = metacritic.get("score").toString();
+            }
+
+
+
+            if (data.getAsJsonArray("genres") != null){
+                JsonArray genres = data.getAsJsonArray("genres");
+                for (int i = 0; i < genres.size(); i++){
+                    JsonObject genre = (JsonObject) genres.get(i);
+                    genreName = genre.get("description").toString();
+                    genreName = removeAbles(genreName);
+                    genresList.add(genreName);
+                }
+            }
+
+
+
+            if (data.getAsJsonArray("screenshots") != null){
+                JsonArray screenshots = data.getAsJsonArray("screenshots");
+                for (int i = 0; i < screenshots.size(); i++){
+                    JsonObject screenshot = (JsonObject) screenshots.get(i);
+                    screenshotLink = screenshot.get("path_full").toString();
+                    screenshotLink = removeAbles(screenshotLink);
+                    screenshotsList.add(screenshotLink);
+                }
+            }
+
+
+            if (data.getAsJsonArray("movies") != null){
+                JsonArray movies = data.getAsJsonArray("movies");
+                for (int i = 0; i < movies.size(); i++){
+                    JsonObject movie = (JsonObject) movies.get(i);
+                    JsonObject webm = movie.getAsJsonObject("webm");
+                    movieLink = webm.get("max").toString();
+                    moviesList.add(movieLink);
+                }
+            }
+
+            if (data.getAsJsonObject("release_date") != null){
+                JsonObject releaseDate = data.getAsJsonObject("release_date");
+                date = releaseDate.getAsJsonPrimitive("date").toString().replaceAll("^\"|\"$", "");
             }
         } else {
-            initialPrice = "free";
+            type = "empty";
         }
-
-
-        JsonObject platforms = data.getAsJsonObject("platforms");
-        Boolean isWindows = false;
-        Boolean isMac = false;
-        Boolean isLinux = false;
-        if (platforms.get("windows") != null){
-            isWindows = platforms.get("windows").getAsBoolean();
-        }
-        if (platforms.get("mac") != null){
-            isMac = platforms.get("mac").getAsBoolean();
-        }
-        if (platforms.get("linux") != null){
-            isLinux = platforms.get("linux").getAsBoolean();
-        }
-
-        String metacriticScore = null;
-        if (data.getAsJsonObject("metacritic") != null){
-            JsonObject metacritic = data.getAsJsonObject("metacritic");
-            metacriticScore = metacritic.get("score").toString();
-        }
-
-        ArrayList<String> genresList = new ArrayList<>();
-        JsonArray genres = data.getAsJsonArray("genres");
-        for (int i = 0; i < genres.size(); i++){
-            JsonObject genre = (JsonObject) genres.get(i);
-            String genreName = genre.get("description").toString();
-            genreName = removeAbles(genreName);
-            genresList.add(genreName);
-        }
-
-        ArrayList<String> screenshotsList = new ArrayList<>();
-        if (data.getAsJsonArray("screenshots") != null){
-            JsonArray screenshots = data.getAsJsonArray("screenshots");
-            for (int i = 0; i < screenshots.size(); i++){
-                JsonObject screenshot = (JsonObject) screenshots.get(i);
-                String screenshotLink = screenshot.get("path_full").toString();
-                screenshotLink = removeAbles(screenshotLink);
-                screenshotsList.add(screenshotLink);
-            }
-        }
-
-        ArrayList<String> moviesList = new ArrayList<>();
-        if (data.getAsJsonArray("movies") != null){
-            JsonArray movies = data.getAsJsonArray("movies");
-            for (int i = 0; i < movies.size(); i++){
-                JsonObject movie = (JsonObject) movies.get(i);
-                JsonObject webm = movie.getAsJsonObject("webm");
-                String movieLink = webm.get("max").toString();
-                moviesList.add(movieLink);
-            }
-        }
-
-        JsonObject releaseDate = data.getAsJsonObject("release_date");
-        String date = releaseDate.getAsJsonPrimitive("date").toString().replaceAll("^\"|\"$", "");
 
         Game game = new Game(gameId, name, type, detailedDescription, shortDescription, aboutTheGame,
                 supportedLanguages, minimumRequirements, recommendedRequirements,
@@ -276,9 +310,9 @@ public class GameRepository {
         if (finalPrice != null){
             Log.i("gameDetails-final-price", finalPrice);
         }
-        Log.i("gameDetails-is-windows", isWindows.toString());
-        Log.i("gameDetails-is-mac", isMac.toString());
-        Log.i("gameDetails-is-linux", isLinux.toString());
+        //Log.i("gameDetails-is-windows", isWindows.toString());
+        //Log.i("gameDetails-is-mac", isMac.toString());
+        //Log.i("gameDetails-is-linux", isLinux.toString());
         if (metacriticScore != null){
             Log.i("gameDetails-metacritic-score", metacriticScore);
         }
