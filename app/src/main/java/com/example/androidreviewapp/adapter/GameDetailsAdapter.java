@@ -98,6 +98,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.wvSystemReq.getSettings().setDefaultFontSize(40);
         holder.wvSystemReq.loadData(systemReq, "text/html", "UTF-8");
 
+
         // minimum requirements
         holder.wvSystemReqMin.getSettings().setLoadWithOverviewMode(true);
         holder.wvSystemReqMin.getSettings().setUseWideViewPort(true);
@@ -221,6 +222,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final TextView isWindowsSupported;
         private final TextView isLinuxSupported;
         private final TextView isMacSupported;
+        private final TextView txtSysReq;
 
 
         public GameDetailsViewHolder(@NonNull View itemView) {
@@ -242,6 +244,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             isWindowsSupported = itemView.findViewById(R.id.isWindowsSupported);
             isMacSupported = itemView.findViewById(R.id.isMacSupported);
             isLinuxSupported = itemView.findViewById(R.id.isLinuxSupported);
+            txtSysReq = itemView.findViewById(R.id.txtSysReq);
         }
     }
 
