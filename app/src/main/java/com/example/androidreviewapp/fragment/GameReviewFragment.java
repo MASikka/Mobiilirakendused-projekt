@@ -89,6 +89,11 @@ public class GameReviewFragment extends Fragment {
         String langPref = sharedPref.getString(SettingsActivity.LANGUAGE_PREF_CHOICE,"-1");
         String filterPref = sharedPref.getString(SettingsActivity.FILTER_PREF_CHOICE, "-1");
 
+        positiveRecommended = view.findViewById(R.id.positiveRecommendation);
+        negativeRecommended = view.findViewById(R.id.negativeRecommendations);
+        positiveRecommended.setText(String.format(getString(R.string.recommended), "0"));
+        negativeRecommended.setText(String.format(getString(R.string.not_recommended), "0"));
+
 
         gameReviewViewModel = new ViewModelProvider(this).get(GameReviewViewModel.class);
         gameReviewViewModel.getLoggedOutMutableLiveData().observe(getViewLifecycleOwner(), loggedOut -> {
@@ -127,7 +132,11 @@ public class GameReviewFragment extends Fragment {
             reviewsLoading.setVisibility(View.GONE);
         });
 
-        positiveRecommended = view.findViewById(R.id.positiveRecommendation);
+        gameReviewViewModel.getSteamReviewScores(gameId);
+        gameReviewViewModel.getReviewScoreLiveData().observe(getViewLifecycleOwner(), reviewScores -> {
+            positiveRecommended.setText(String.format(getString(R.string.recommended), reviewScores.get(0).getTotalPositives()));
+            negativeRecommended.setText(String.format(getString(R.string.not_recommended), reviewScores.get(0).getTotalNegatives()));
+        });
 
         reviewSwitchButton.setOnClickListener(
                 new View.OnClickListener() {
