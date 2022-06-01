@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
         android:paddingRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -172,11 +172,10 @@
         android:id="@+id/txtReleaseDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:paddingLeft="8dp"
-        android:textSize="18sp"
+        android:paddingTop="8dp"
         android:text="@string/release_date"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_game_publisher" />
 
@@ -186,7 +185,6 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:text="@string/publishers"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -208,9 +206,8 @@
         android:id="@+id/linearlayout_game_publisher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:orientation="horizontal"
+        android:paddingTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/txtPublisherHeading"
         tools:layout_editor_absoluteX="1dp">
 
@@ -225,11 +222,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
-        android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:paddingBottom="8dp"
-        android:textSize="18sp"
         android:text="@string/initial_price"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -256,7 +252,6 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:text="TextView"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -270,10 +265,10 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:textSize="18sp"
-        android:textColor="@color/black"
+        android:paddingBottom="16dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReleaseDate" />
@@ -343,6 +338,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wvShortDescription">
 
@@ -360,7 +356,7 @@
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingRight="8dp"
-        android:text="@string/isWindowsSupported"
+        android:text="TextView"
         android:textColor="#757575"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSysReq" />
@@ -372,7 +368,7 @@
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingRight="8dp"
-        android:text="@string/isMacSupported"
+        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/isWindowsSupported" />
 
@@ -384,7 +380,7 @@
         android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:paddingBottom="8dp"
-        android:text="@string/isLinuxSupported"
+        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/isMacSupported" />
 
@@ -394,10 +390,9 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:text="TextView"
-        android:textSize="16sp"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtGameName" />

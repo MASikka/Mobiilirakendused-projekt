@@ -73,11 +73,10 @@
     <string name="developers">DEVELOPERS</string>
     <string name="initial_price">INITIAL PRICE</string>
     <string name="final_price">FINAL PRICE</string>
+    <string name="not_recommended">Not recommended:</string>
+    <string name="recommended">Recommended:</string>
     <string name="not_recommended">Not recommended: %1$s</string>
     <string name="recommended">Recommended: %1$s</string>
-    <string name="isLinuxSupported">isLinuxSupported</string>
-    <string name="isMacSupported">isMacSupported</string>
-    <string name="isWindowsSupported">isWindowsSupported</string>
     <string name="app_type">APP TYPE</string>
     <string name="metacritic">metacritic</string>
 
