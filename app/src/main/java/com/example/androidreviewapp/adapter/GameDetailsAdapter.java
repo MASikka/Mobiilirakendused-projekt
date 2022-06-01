@@ -67,6 +67,9 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         String systemReq = game.getRecommendedPCRequirements();
         String systemReqMin = game.getMinimumPCRequirements();
         String releaseDate = game.getReleaseDate();
+        Boolean isWindowsSupported = game.isWindows();
+        Boolean isMacSupported = game.isMac();
+        Boolean isLinuxSupported = game.isLinux();
         ArrayList<String> genresList = game.getGenresList();
         Log.i("Tags: ", String.valueOf(genresList));
 
@@ -168,6 +171,23 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.txtReleaseDate.setText(releaseDate);
         holder.txtMetaScore.setText(metaScore);
 
+        if(isWindowsSupported){
+            holder.isWindowsSupported.setText("Windows supported");
+        } else {
+            holder.isWindowsSupported.setText("Windows not supported");
+        }
+        if(isMacSupported){
+            holder.isMacSupported.setText("MacOS supported");
+        } else {
+            holder.isMacSupported.setText("MacOS not supported");
+        }
+        if(isLinuxSupported){
+            holder.isLinuxSupported.setText("Linux supported");
+
+        } else {
+            holder.isLinuxSupported.setText("Linux not supported");
+        }
+
 
 
     }
@@ -198,6 +218,10 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final TextView txtFinalPrice;
         private final TextView txtReleaseDate;
         private final TextView txtMetaScore;
+        private final TextView isWindowsSupported;
+        private final TextView isLinuxSupported;
+        private final TextView isMacSupported;
+
 
         public GameDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -215,6 +239,9 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             txtFinalPrice = itemView.findViewById(R.id.txtFinal);
             txtReleaseDate = itemView.findViewById(R.id.txtRelease);
             txtMetaScore = itemView.findViewById(R.id.txtMetaScore);
+            isWindowsSupported = itemView.findViewById(R.id.isWindowsSupported);
+            isMacSupported = itemView.findViewById(R.id.isMacSupported);
+            isLinuxSupported = itemView.findViewById(R.id.isLinuxSupported);
         }
     }
 
