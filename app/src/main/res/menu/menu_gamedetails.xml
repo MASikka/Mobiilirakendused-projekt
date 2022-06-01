@@ -3,16 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item
-        android:id="@+id/allreviews"  app:showAsAction="never" android:title="Reviews">
-    </item>
-    <item
-        android:id="@+id/personalreview"
-        android:title="My Review"
+        android:id="@+id/allreviews"
+        android:title="@string/menu_reviews"
         app:showAsAction="never"></item>
     <item
-        android:id="@+id/settings" android:icon="@android:drawable/ic_dialog_info" app:showAsAction="never" android:title="Settings">
-    </item>
+        android:id="@+id/personalreview"
+        android:title="@string/menu_my_review"
+        app:showAsAction="never"></item>
     <item
-        android:id="@+id/logout"  app:showAsAction="never" android:title="Log Out">
-    </item>
+        android:id="@+id/settings"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="@string/settings"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/logout"
+        android:title="@string/menu_logout"
+        app:showAsAction="never"></item>
 </menu>

@@ -18,6 +18,7 @@ public class SearchViewModel extends AndroidViewModel {
 
     private final GameRepository gameRepository;
     private final MutableLiveData<ArrayList<Game>> gameLiveData;
+    private final MutableLiveData<ArrayList<Game>> searchResultLiveData;
 
     private FirebaseRepository firebaseRepository;
     private final MutableLiveData<FirebaseUser> userMutableLiveData;
@@ -27,6 +28,7 @@ public class SearchViewModel extends AndroidViewModel {
         super(application);
         gameRepository = new GameRepository(application);
         gameLiveData = gameRepository.getGameLiveData();
+        searchResultLiveData = gameRepository.getSearchResultLiveData();
 
         firebaseRepository = new FirebaseRepository(application);
         userMutableLiveData = firebaseRepository.getUserMutableLiveData();
@@ -37,8 +39,8 @@ public class SearchViewModel extends AndroidViewModel {
         return gameLiveData;
     }
 
-    public void getGameSearch(String name) {
-        gameRepository.getGameSearch(name);
+    public void getGameSearch(String name, Boolean alphabetPref, Boolean lengthPref, Boolean startPref) {
+        gameRepository.getGameSearch(name, alphabetPref, lengthPref, startPref);
     }
     public void logOut(){firebaseRepository.logout();}
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
@@ -53,5 +55,13 @@ public class SearchViewModel extends AndroidViewModel {
         return gameRepository.getArrayListSize();
     }
     public MutableLiveData<Boolean> getLoggedOutMutableLiveData() { return loggedOutMutableLiveData;}
+
+    public void sortGameSearch(String name, Boolean alphabetPref, Boolean lengthPref, Boolean startPref, ArrayList<Game> searchList) {
+        gameRepository.sortGameSearch(name, alphabetPref, lengthPref, startPref, searchList);
+    }
+
+    public MutableLiveData<ArrayList<Game>> getSearchResultLiveData(){
+        return searchResultLiveData;
+    }
 
 }

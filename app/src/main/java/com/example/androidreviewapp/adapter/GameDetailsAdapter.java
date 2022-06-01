@@ -58,7 +58,10 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         String supportedLanguages = game.getSupportedLanguages();
         String gameName = game.getName();
         String gameType = game.getType();
-        String initialPrice = game.getInitialPrice();
+        String initialPrice = "none";
+        if (game.getInitialPrice() != null){
+            initialPrice = game.getInitialPrice();
+        }
         String finalPrice = game.getFinalPrice();
         String metaScore = game.getMetacriticScore();
         String systemReq = game.getRecommendedPCRequirements();

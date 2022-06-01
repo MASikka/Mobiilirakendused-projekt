@@ -2,6 +2,8 @@ package com.example.androidreviewapp.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 
@@ -10,9 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,16 +29,28 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidreviewapp.SettingsActivity;
 import com.example.androidreviewapp.adapter.GameAdapter;
 import com.example.androidreviewapp.R;
+import com.example.androidreviewapp.model.Game;
 import com.example.androidreviewapp.repository.FirebaseRepository;
+import com.example.androidreviewapp.viewmodel.GameReviewViewModel;
 import com.example.androidreviewapp.viewmodel.SearchViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class SearchFragment extends Fragment {
 
+    /* SETTINGS VALUES
+        PreferenceManager.setDefaultValues(getContext(),R.xml.root_preferences,false);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String langPref = sharedPref.getString(SettingsActivity.LANGUAGE_PREF_CHOICE,"-1");
+        Boolean alphabetPref = sharedPref.getBoolean(SettingsActivity.ALPHABET_PREF_MODE_SWITCH, false);
+        Boolean lengthPref = sharedPref.getBoolean(SettingsActivity.LENGTH_PREF_MODE_SWITCH,false);
+        Boolean startPref = sharedPref.getBoolean(SettingsActivity.STARTING_PREF_MODE_SWITCH, false);
+     */
     String game;
     NavController navController;
     TextInputEditText gameText;
@@ -72,7 +88,6 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         gameText = view.findViewById(R.id.etGameNameInput);
         searchAmount = view.findViewById(R.id.txtSearchAmount);
         searchLoading = view.findViewById(R.id.searchLoading);
@@ -85,6 +100,12 @@ public class SearchFragment extends Fragment {
             searchLoading.setVisibility(View.GONE);
         }
 
+        //PreferenceManager.setDefaultValues(getContext(),R.xml.root_preferences,false);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Boolean alphabetPref = sharedPref.getBoolean(SettingsActivity.ALPHABET_PREF_MODE_SWITCH, false);
+        Boolean lengthPref = sharedPref.getBoolean(SettingsActivity.LENGTH_PREF_MODE_SWITCH,false);
+        Boolean startPref = sharedPref.getBoolean(SettingsActivity.STARTING_PREF_MODE_SWITCH, false);
+
 
 
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
@@ -95,7 +116,7 @@ public class SearchFragment extends Fragment {
             }
         });
         if (!searchViewModel.hasGameNames()){
-            searchViewModel.getGameSearch(game);
+            searchViewModel.getGameSearch(game, alphabetPref, lengthPref, startPref);
         }
         searchAmount.setText(String.format(getString(R.string.search_amount), "0"));
         searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
@@ -115,13 +136,41 @@ public class SearchFragment extends Fragment {
                         String name;
                         Log.i("gameText", gameText.getText().toString());
                         name = gameText.getText().toString().toLowerCase(Locale.getDefault()).trim();
-
+                        if(TextUtils.isEmpty(name)){
+                            Toast.makeText(getActivity(), "Enter a search query", Toast.LENGTH_SHORT).show();
+                        }else{
                         Bundle args = new Bundle();
                         args.putString("gameName", name);
-                        navController.navigate(R.id.action_searchFragment_self, args);
+                        navController.navigate(R.id.action_searchFragment_self, args);}
                     }
                 }
         );
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Boolean alphabetPref = sharedPref.getBoolean(SettingsActivity.ALPHABET_PREF_MODE_SWITCH, false);
+        Boolean lengthPref = sharedPref.getBoolean(SettingsActivity.LENGTH_PREF_MODE_SWITCH,false);
+        Boolean startPref = sharedPref.getBoolean(SettingsActivity.STARTING_PREF_MODE_SWITCH, false);
+
+        SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+
+        //searchViewModel.getGameSearch(game, alphabetPref, lengthPref, startPref);
+        searchViewModel.getSearchResultLiveData().observe(getViewLifecycleOwner(), searches -> {
+            searchViewModel.sortGameSearch(game, alphabetPref, lengthPref, startPref, searches);
+
+            searchViewModel.getGameLiveData().observe(getViewLifecycleOwner(), games -> {
+                Log.i("observe", "game search");
+                gameAdapter.setGameList(games);
+                searchAmount.setText(String.format(getString(R.string.search_amount), String.valueOf(games.size())));
+                searchLoading.setVisibility(View.GONE);
+            });
+        });
+
+
+
     }
 
     @Override
@@ -137,7 +186,13 @@ public class SearchFragment extends Fragment {
         if (getArguments() != null){
             game = getArguments().getString("gameName");
             Log.i("SearchFragment", game);
-        } else Toast.makeText(getActivity(), "No game name provided, arguments null", Toast.LENGTH_SHORT).show();
+        }
+
+        /*
+        Toast.makeText(getActivity(),"lang"+ langPref,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(),"alphabet"+ alphabetPref.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "length"+lengthPref.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "start"+startPref.toString(),Toast.LENGTH_SHORT).show();*/
 
         /*
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
@@ -159,7 +214,8 @@ public class SearchFragment extends Fragment {
 
 
         case R.id.settings:
-
+            Intent intent = new Intent(this.getContext(),SettingsActivity.class);
+            startActivity(intent);
             break;
 
         case R.id.logout:

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class SteamReviewRepository {
 
-    private static final String STEAM_REVIEW_URL = "https://store.steampowered.com/appreviews/%s?json=1&language=all&filter=recent&num_per_page=100";
+    private static final String STEAM_REVIEW_URL = "https://store.steampowered.com/appreviews/%s?json=1&language=%s&filter=%s&num_per_page=100";
     private final Application application;
     private final MutableLiveData<ArrayList<Review>> steamReviewLiveData;
     private final ArrayList<Review> arrayList = new ArrayList<>();
@@ -22,9 +22,9 @@ public class SteamReviewRepository {
         this.steamReviewLiveData = new MutableLiveData<>();
     }
 
-    public void getSteamReviewSearch(String appId){
+    public void getSteamReviewSearch(String appId, String langPref, String filterPref){
         Ion.with(application)
-                .load(String.format(STEAM_REVIEW_URL, appId))
+                .load(String.format(STEAM_REVIEW_URL, appId, langPref, filterPref))
                 .asJsonObject()
                 .setCallback((e, result) -> {
                     parseResults(result, appId);
@@ -47,7 +47,8 @@ public class SteamReviewRepository {
             String reviewerId = author.getAsJsonPrimitive("steamid").getAsString();
             String reviewText = review.getAsJsonPrimitive("review").getAsString();
             Boolean recommendation = review.getAsJsonPrimitive("voted_up").getAsBoolean();
-            Review newReview = new Review(removeAbles(reviewText), recommendation, removeAbles(reviewerId), appId);
+            //Review newReview = new Review(removeAbles(reviewText), recommendation, removeAbles(reviewerId), appId);
+            Review newReview = new Review(reviewText, recommendation, reviewerId, appId);
             arrayList.add(newReview);
         }
         steamReviewLiveData.setValue(arrayList);

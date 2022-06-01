@@ -25,4 +25,37 @@
     <string name="register_title">Registreeri kasutaja</string>
     <string name="forgot_password_title">Unustasin salasõna</string>
     <string name="reg_user">Registreeri</string>
+    <string name="settings">Seaded</string>
+    <string name="recommends">Soovitab</string>
+    <string name="steam_reviews">Vaata Steami arvustusi</string>
+    <string name="app_reviews">Vaata äppi arvustusi</string>
+    <string name="all">Kõik</string>
+    <string name="nur">registreeri kasutaja</string>
+    <string name="login">logi sisse</string>
+    <string name="forgot_password">unustasin parool</string>
+    <string name="send_password">muuda parooli</string>
+    <string name="missing">Täida kõik väljad</string>
+    <string name="password_sent">Parooli muudatus saadetud</string>
+    <string name="no_review">Arvustus puudub</string>
+    <string name="review_deleted">Arvustus kustutatud</string>
+    <string name="review_not_empty">Arvustus ei saa olla tühi</string>
+    <string name="review_posted">Arvustus postitatud</string>
+    <string name="not_signed_in">Pole sisse logitud</string>
+    <string name="no_game_provided">Mäng puudub</string>
+    <!-- Preference Titles -->
+    <string name="settings_header">Arvustused</string>
+    <string name="settings_header2">Otsingutulemused</string>
+    <!-- Preferences -->
+    <string name="language_title">Arvustuse keel</string>
+    <string name="alphabet_sort">Tähestiku järjekorras</string>
+    <string name="namelength_sort">Nime pikkuse järjekorras</string>
+    <string name="onlystartwith_sort">Algab otsinguterminiga</string>
+    <string name="sorting_title">Sorteeri arvustused</string>
+    <string name="helpful">Kasulikud</string>
+    <string name="recent">Hiljutised</string>
+
+    <!-- Menu  -->
+    <string name="menu_reviews">Arvustused</string>
+    <string name="menu_my_review">Minu arvustus</string>
+    <string name="menu_logout">Logi välja</string>
 </resources>

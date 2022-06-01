@@ -27,14 +27,12 @@ public class AppReviewAdapter extends RecyclerView.Adapter<AppReviewAdapter.AppR
     @Override
     public AppReviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_app_reviews, parent, false);
-        Log.i("TAG","oncreateviewholder");
         return new AppReviewViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull AppReviewViewHolder holder, int position) {
-        Log.i("onbindviewholder", "teeb onbindviewholderit");
         Review review = reviewList.get(position);
         holder.email.setText(review.getUserEmail());
         holder.review.setText(review.getReviewText());

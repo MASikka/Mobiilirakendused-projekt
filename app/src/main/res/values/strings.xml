@@ -12,8 +12,8 @@
     <string name="enter_password">Enter password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="ex_password">qwerty123</string>
-    <string name="login">login</string>
-    <string name="nur">new user registration</string>
+    <string name="login">Login</string>
+    <string name="nur">New user registration</string>
     <string name="reg_user">Register</string>
     <string name="user_info">User details</string>
     <string name="logout">Logout</string>
@@ -21,23 +21,37 @@
     <string name="switch_reviews_button">Switch reviews</string>
     <string name="steam_reviews_found_count">%1$s Steam reviews found</string>
     <string name="app_reviews_found_count">%1$s app reviews found</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings">Settings</string>
+    <string name="recommends">Recommends</string>
+    <string name="steam_reviews">Check Steam Reviews</string>
+    <string name="app_reviews">Check App Reviews</string>
+    <string name="all">All</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="send_password">Reset password</string>
+    <string name="password_sent">Password sent to email</string>
+    <string name="no_review">No review to delete</string>
+    <string name="review_deleted">Review deleted</string>
+    <string name="review_not_empty">Review cannot be empty</string>
+    <string name="review_posted">Review posted</string>
+    <string name="not_signed_in">Not signed in</string>
+    <string name="no_game_provided">No game provided</string>
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-    <string name="theme_header">Change color theme</string>
+    <string name="settings_header">Reviews</string>
+    <string name="settings_header2">Game search</string>
+    <!-- Preferences -->
+    <string name="language_title">Review language</string>
+    <string name="alphabet_sort">Sort alphabetically</string>
+    <string name="namelength_sort">Sort by name length</string>
+    <string name="onlystartwith_sort">Results start with query</string>
+    <string name="sorting_title">Sort reviews by</string>
+    <string name="helpful">Helpful</string>
+    <string name="recent">Recent</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- Menu  -->
+    <string name="menu_reviews">Reviews</string>
+    <string name="menu_my_review">My Review</string>
+    <string name="menu_logout">Log Out</string>
 
     <!-- View Titles -->
     <string name="search_view_title">Games Search</string>
@@ -61,4 +75,5 @@
     <string name="developer">DEVELOPER</string>
     <string name="initial_price">INITIAL PRICE</string>
     <string name="final_price">FINAL PRICE</string>
+
 </resources>
