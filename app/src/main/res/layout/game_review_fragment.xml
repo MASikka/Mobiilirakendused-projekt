@@ -9,10 +9,13 @@
 
     <Button
         android:id="@+id/btnSwitchReviews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/app_reviews"
+        android:layout_width="170dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/negativeRecommendations"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.854"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,10 +23,11 @@
         android:id="@+id/txtReviewCounter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/steam_reviews_found_count"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSwitchReviews" />
 
@@ -31,14 +35,13 @@
         android:id="@+id/recyclerview_steam_reviews"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReviewCounter"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/txtReviewCounter" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_app_reviews"
@@ -65,4 +68,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReviewCounter" />
+
+    <TextView
+        android:id="@+id/negativeRecommendations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="@string/not_recommended"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/positiveRecommendation" />
+
+    <TextView
+        android:id="@+id/positiveRecommendation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:paddingTop="4dp"
+        android:text="@string/recommended"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
