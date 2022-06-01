@@ -10,9 +10,9 @@
     <Button
         android:id="@+id/btnSwitchReviews"
         android:layout_width="170dp"
-        android:layout_height="51dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="@string/switch_reviews_button"
+        android:text="@string/app_reviews"
         app:layout_constraintBottom_toBottomOf="@+id/negativeRecommendations"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.854"

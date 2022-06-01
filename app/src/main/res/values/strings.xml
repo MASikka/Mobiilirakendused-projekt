@@ -15,10 +15,8 @@
     <string name="login">Login</string>
     <string name="nur">New user registration</string>
     <string name="reg_user">Register</string>
-    <string name="user_info">User details</string>
     <string name="logout">Logout</string>
     <string name="search_amount">%1$s apps found</string>
-    <string name="switch_reviews_button">Switch reviews</string>
     <string name="steam_reviews_found_count">%1$s Steam reviews found</string>
     <string name="app_reviews_found_count">%1$s app reviews found</string>
     <string name="settings">Settings</string>
@@ -77,6 +75,8 @@
     <string name="final_price">FINAL PRICE</string>
     <string name="not_recommended">Not recommended:</string>
     <string name="recommended">Recommended:</string>
+    <string name="not_recommended">Not recommended: %1$s</string>
+    <string name="recommended">Recommended: %1$s</string>
     <string name="app_type">APP TYPE</string>
     <string name="metacritic">metacritic</string>
 

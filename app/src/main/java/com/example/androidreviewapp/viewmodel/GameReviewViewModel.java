@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.androidreviewapp.model.Game;
 import com.example.androidreviewapp.model.Review;
+import com.example.androidreviewapp.model.ReviewScore;
 import com.example.androidreviewapp.repository.FirebaseRepository;
 import com.example.androidreviewapp.repository.ReviewRepository;
 import com.example.androidreviewapp.repository.SteamReviewRepository;
@@ -22,6 +23,7 @@ public class GameReviewViewModel extends AndroidViewModel {
     private final MutableLiveData<Boolean> loggedOutMutableLiveData;
     private final MutableLiveData<ArrayList<Review>> reviewsLiveData;
     private final MutableLiveData<ArrayList<Review>> steamReviewsLiveData;
+    private final MutableLiveData<ArrayList<ReviewScore>> reviewScoreLiveData;
 
     public GameReviewViewModel(@NonNull Application application) {
         super(application);
@@ -30,6 +32,7 @@ public class GameReviewViewModel extends AndroidViewModel {
         firebaseRepository = new FirebaseRepository(application);
         reviewsLiveData = reviewRepository.getReviewsLiveData();
         steamReviewsLiveData = steamReviewRepository.getSteamReviewLiveData();
+        reviewScoreLiveData = steamReviewRepository.getReviewScoreLiveData();
 
         userMutableLiveData = firebaseRepository.getUserMutableLiveData();
         loggedOutMutableLiveData = firebaseRepository.getLoggedOutMutableLiveData();
@@ -40,12 +43,18 @@ public class GameReviewViewModel extends AndroidViewModel {
     public MutableLiveData<ArrayList<Review>> getSteamReviewsLiveData(){
         return steamReviewsLiveData;
     }
+    public MutableLiveData<ArrayList<ReviewScore>> getReviewScoreLiveData(){
+        return reviewScoreLiveData;
+    }
     public void logOut(){firebaseRepository.logout();}
     public void getReviews(String gameId){
         reviewRepository.GetReviews(gameId);
     }
     public void getSteamReviews(String gameId, String langPref, String filterPref) {
         steamReviewRepository.getSteamReviewSearch(gameId, langPref, filterPref);
+    }
+    public void getSteamReviewScores(String gameId){
+        steamReviewRepository.getSteamReviewScores(gameId);
     }
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
         return userMutableLiveData;
