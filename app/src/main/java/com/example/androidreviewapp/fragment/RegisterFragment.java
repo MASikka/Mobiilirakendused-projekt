@@ -79,7 +79,8 @@ public class RegisterFragment extends Fragment {
                 }else{
                     if (password.equals(confirm)){
                         registerViewModel.userRegistration(email,password);
-                        registerViewModel.logOut();
+                        Navigation.findNavController(getView())
+                                .navigate(R.id.action_registerFragment_to_loginFragment);
 
                     }else{
                         Snackbar.make(contained,getString(R.string.noMatch),Snackbar.LENGTH_SHORT).show();
