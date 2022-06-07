@@ -72,10 +72,10 @@ public class RegisterFragment extends Fragment {
             String confirm = confirm_password.getText().toString().trim();
 
             if (isAnyStringNullOrEmpty(email,password,confirm)){
-                Snackbar.make(contained,getString(R.string.missing),Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(contained,getString(R.string.missing),Snackbar.LENGTH_LONG).show();
             }else{
                 if (password.length() < 6 || confirm.length() < 6){
-                    Snackbar.make(contained,getString(R.string.passLength),Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(contained,getString(R.string.passLength),Snackbar.LENGTH_LONG).show();
                 }else{
                     if (password.equals(confirm)){
                         registerViewModel.userRegistration(email,password);
@@ -83,7 +83,7 @@ public class RegisterFragment extends Fragment {
                                 .navigate(R.id.action_registerFragment_to_loginFragment);
 
                     }else{
-                        Snackbar.make(contained,getString(R.string.noMatch),Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(contained,getString(R.string.noMatch),Snackbar.LENGTH_LONG).show();
                     }
                 }
             }

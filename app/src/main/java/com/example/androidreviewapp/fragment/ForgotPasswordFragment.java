@@ -57,9 +57,9 @@ public class ForgotPasswordFragment extends Fragment {
 
                                     Navigation.findNavController(getView())
                                             .navigate(R.id.action_forgotPasswordFragment_to_loginFragment);
-                                    Toast.makeText(getActivity(), getString(R.string.password_sent), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), getString(R.string.password_sent), Toast.LENGTH_LONG).show();
                                 } else {
-                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             }
                         });}

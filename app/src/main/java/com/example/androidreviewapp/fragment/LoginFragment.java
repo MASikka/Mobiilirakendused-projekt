@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment {
                 loginViewModel.login(email,password);
             } else {
                 Snackbar.make(view.findViewById(R.id.login_coordinator),
-                        getString(R.string.missing),Snackbar.LENGTH_SHORT).show();
+                        getString(R.string.missing),Snackbar.LENGTH_LONG).show();
             }
         });
         view.findViewById(R.id.btnRegisterUser).setOnClickListener(view1 -> {

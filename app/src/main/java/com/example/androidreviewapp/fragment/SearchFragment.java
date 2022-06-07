@@ -137,7 +137,7 @@ public class SearchFragment extends Fragment {
                         Log.i("gameText", gameText.getText().toString());
                         name = gameText.getText().toString().toLowerCase(Locale.getDefault()).trim();
                         if(TextUtils.isEmpty(name)){
-                            Toast.makeText(getActivity(), "Enter a search query", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Enter a search query", Toast.LENGTH_LONG).show();
                         }else{
                         Bundle args = new Bundle();
                         args.putString("gameName", name);

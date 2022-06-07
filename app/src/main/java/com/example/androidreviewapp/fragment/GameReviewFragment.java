@@ -114,7 +114,7 @@ public class GameReviewFragment extends Fragment {
 
         if (getArguments() != null){
             gameId = getArguments().getString("gameId");
-        } else Toast.makeText(getActivity(), "No game id provided, arguments null", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(getActivity(), "No game id provided, arguments null", Toast.LENGTH_LONG).show();
         Log.i("onviewcreate",gameId);
             gameReviewViewModel.getReviews(gameId);
 
