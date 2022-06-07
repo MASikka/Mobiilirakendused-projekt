@@ -90,6 +90,7 @@
     <string name="linux_supported">Linux supported</string>
     <string name="linux_not_supported">Linux not supported</string>
     <string name="initialprice_unavailable">Initial price not available</string>
+    <string name="short_description">SHORT DESCRIPTION</string>
 
 
 </resources>

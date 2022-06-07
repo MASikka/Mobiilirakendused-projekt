@@ -294,6 +294,17 @@ public class GameRepository {
             type = "empty";
         }
 
+        if (type.equals("game")) {
+
+            type = "Game";
+        } else if (type.equals("dlc")) {
+            type = "DLC";
+        } else if (type.equals("movie")) {
+            type = "Movie";
+        } else if (type.equals("episode")) {
+            type = "Episode";
+        }
+
         Game game = new Game(gameId, name, type, detailedDescription, shortDescription, aboutTheGame,
                 supportedLanguages, minimumRequirements, recommendedRequirements,
                 developersList, publishersList, initialPrice, finalPrice,
@@ -347,6 +358,8 @@ public class GameRepository {
         Log.i("gameDetails-release-date", date);
 
 
+
+
         arrayList.add(game);
         gameLiveData.setValue(arrayList);
     }
@@ -379,6 +392,9 @@ public class GameRepository {
                             continue;
                         }
                         */
+
+
+
                         Game game = new Game(Integer.toString(appId), removeAbles(appName));
                         searchResultList.add(game);
 
