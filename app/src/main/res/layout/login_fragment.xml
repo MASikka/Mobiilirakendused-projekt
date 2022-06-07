@@ -17,12 +17,13 @@
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="@string/forgot_password"
             app:iconGravity="start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLoginUser" />
+            app:layout_constraintTop_toBottomOf="@+id/btnRegisterUser" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
