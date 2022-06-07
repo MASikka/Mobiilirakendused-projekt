@@ -57,7 +57,7 @@ public class FirebaseRepository {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(application, "Check your email for verification", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(application, "Check your email for verification", Toast.LENGTH_LONG).show();
                                     if (firebaseAuth.getCurrentUser() != null) {
                                         String userId = firebaseAuth.getCurrentUser().getUid();
                                         DocumentReference documentReference = db.collection("users").document(userId);
@@ -68,10 +68,10 @@ public class FirebaseRepository {
                                                 .addOnFailureListener(e -> Log.i(TAG, "onFailure: ERROR writing db document", e));
                                         userMutableLiveData.postValue(firebaseAuth.getCurrentUser());
                                     } else {
-                                        Toast.makeText(application, application.getString(R.string.error, task.getException()), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(application, application.getString(R.string.error, task.getException()), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Toast.makeText(application,  task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(application,  task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -88,7 +88,7 @@ public class FirebaseRepository {
                         userMutableLiveData.postValue(firebaseAuth.getCurrentUser());
                     }else{
                         Toast.makeText(application, application.getString(R.string.error,task.getException().getMessage())
-                                , Toast.LENGTH_SHORT).show();
+                                , Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -111,7 +111,7 @@ public class FirebaseRepository {
             }).addOnFailureListener(
                     e ->{
                         Toast.makeText(application, application.getString(R.string.error,e.getMessage())
-                                , Toast.LENGTH_SHORT).show();
+                                , Toast.LENGTH_LONG).show();
                     }
             );
         }
