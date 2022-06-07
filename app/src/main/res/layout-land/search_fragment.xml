@@ -71,13 +71,12 @@
 
     <View
         android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="406dp"
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/recyclerview_search"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
