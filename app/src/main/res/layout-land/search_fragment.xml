@@ -30,6 +30,7 @@
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="@string/search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -71,8 +72,9 @@
 
     <View
         android:id="@+id/divider2"
-        android:layout_width="2dp"
+        android:layout_width="1dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/recyclerview_search"
