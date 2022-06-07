@@ -15,6 +15,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/yellow"
         android:text="Button"
+        android:textAlignment="textStart"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
