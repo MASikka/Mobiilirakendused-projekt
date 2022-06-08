@@ -14,8 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.androidreviewapp.LinePagerIndicatorDecoration;
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
 import com.squareup.picasso.Picasso;
@@ -166,6 +168,11 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         holder.screenshotRecyclerView.setLayoutManager(layoutManager3);
         holder.screenshotRecyclerView.setAdapter(screenshotAdapter);
         holder.screenshotRecyclerView.setRecycledViewPool(viewPool);
+
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(holder.screenshotRecyclerView);
+
+        holder.screenshotRecyclerView.addItemDecoration(new LinePagerIndicatorDecoration());
 
 
         //textview
