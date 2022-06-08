@@ -48,7 +48,8 @@ public class GameDetailsFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_game_details);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setHasFixedSize(true);
-        gameDetailsAdapter = new GameDetailsAdapter();
+        //gameDetailsAdapter = new GameDetailsAdapter();
+        gameDetailsAdapter = new GameDetailsAdapter(this.getContext());
 
         recyclerView.setAdapter(gameDetailsAdapter);
 

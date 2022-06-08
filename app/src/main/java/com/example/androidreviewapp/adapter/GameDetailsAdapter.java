@@ -1,5 +1,7 @@
 package com.example.androidreviewapp.adapter;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +31,13 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
     WebView webView;
     public GameDetailsAdapter(){
         this.gameList = new ArrayList<>();
+    }
+
+
+    private Context context;
+    public GameDetailsAdapter(Context context){
+        this.gameList = new ArrayList<>();
+        this.context = context;
     }
 
 
@@ -72,32 +81,57 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         // detailed description
         holder.wvDetailedDescription.getSettings().setLoadWithOverviewMode(true);
         holder.wvDetailedDescription.getSettings().setUseWideViewPort(true);
-        holder.wvDetailedDescription.getSettings().setDefaultFontSize(40);
+        if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            holder.wvDetailedDescription.getSettings().setDefaultFontSize(40);
+        } else {
+            holder.wvDetailedDescription.getSettings().setDefaultFontSize(20);
+        }
+
         holder.wvDetailedDescription.loadData(detailedDescription, "text/html", "UTF-8");
 
         // short description
         holder.wvShortDescription.getSettings().setLoadWithOverviewMode(true);
         holder.wvShortDescription.getSettings().setUseWideViewPort(true);
-        holder.wvShortDescription.getSettings().setDefaultFontSize(40);
+        if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            holder.wvShortDescription.getSettings().setDefaultFontSize(40);
+        } else {
+            holder.wvShortDescription.getSettings().setDefaultFontSize(20);
+        }
+
         holder.wvShortDescription.loadData(shortDescription, "text/html", "UTF-8");
 
         // supported languages
         holder.wvSupportedLanguages.getSettings().setLoadWithOverviewMode(true);
         holder.wvSupportedLanguages.getSettings().setUseWideViewPort(true);
-        holder.wvSupportedLanguages.getSettings().setDefaultFontSize(40);
+        if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            holder.wvSupportedLanguages.getSettings().setDefaultFontSize(40);
+        } else {
+            holder.wvSupportedLanguages.getSettings().setDefaultFontSize(20);
+        }
+
         holder.wvSupportedLanguages.loadData(supportedLanguages, "text/html", "UTF-8");
 
         // recommended requirements
         holder.wvSystemReq.getSettings().setLoadWithOverviewMode(true);
         holder.wvSystemReq.getSettings().setUseWideViewPort(true);
-        holder.wvSystemReq.getSettings().setDefaultFontSize(40);
+        if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            holder.wvSystemReq.getSettings().setDefaultFontSize(40);
+        } else{
+            holder.wvSystemReq.getSettings().setDefaultFontSize(20);
+        }
+
         holder.wvSystemReq.loadData(systemReq, "text/html", "UTF-8");
 
 
         // minimum requirements
         holder.wvSystemReqMin.getSettings().setLoadWithOverviewMode(true);
         holder.wvSystemReqMin.getSettings().setUseWideViewPort(true);
-        holder.wvSystemReqMin.getSettings().setDefaultFontSize(40);
+        if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            holder.wvSystemReqMin.getSettings().setDefaultFontSize(40);
+        } else {
+            holder.wvSystemReqMin.getSettings().setDefaultFontSize(20);
+        }
+
         holder.wvSystemReqMin.loadData(systemReqMin, "text/html", "UTF-8");
 
 
