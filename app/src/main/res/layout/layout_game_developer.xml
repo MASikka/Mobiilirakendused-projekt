@@ -11,8 +11,8 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="developer"
-        android:textSize="16dp"
         android:textColor="@color/black"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

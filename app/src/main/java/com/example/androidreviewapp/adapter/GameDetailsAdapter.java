@@ -1,18 +1,14 @@
 package com.example.androidreviewapp.adapter;
 
-import android.media.Image;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,9 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.androidreviewapp.LinePagerIndicatorDecoration;
 import com.example.androidreviewapp.R;
 import com.example.androidreviewapp.model.Game;
-import com.squareup.picasso.Picasso;
 
-import java.net.URL;
 import java.util.ArrayList;
 
 public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.GameDetailsViewHolder>{
@@ -192,10 +186,25 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         Log.i("Meta: ", metaScore);
 
         if (metaScore.equals("")) {
-            holder.txtMetaScore.setVisibility(View.GONE);
+            holder.txtMetaScoreGreen.setVisibility(View.GONE);
+            holder.txtMetaScoreYellow.setVisibility(View.GONE);
+            holder.txtMetaScoreRed.setVisibility(View.GONE);
             holder.txtMetaCritic.setVisibility(View.GONE);
         } else {
-            holder.txtMetaScore.setText(metaScore);
+            //holder.txtMetaScoreGreen.setText(metaScore);
+            if (Integer.parseInt(metaScore) > 74){
+                holder.txtMetaScoreGreen.setText(metaScore);
+                holder.txtMetaScoreYellow.setVisibility(View.GONE);
+                holder.txtMetaScoreRed.setVisibility(View.GONE);
+            } else if (Integer.parseInt(metaScore) > 50 && Integer.parseInt(metaScore) <= 74){
+                holder.txtMetaScoreYellow.setText(metaScore);
+                holder.txtMetaScoreGreen.setVisibility(View.GONE);
+                holder.txtMetaScoreRed.setVisibility(View.GONE);
+            } else {
+                holder.txtMetaScoreRed.setText(metaScore);
+                holder.txtMetaScoreYellow.setVisibility(View.GONE);
+                holder.txtMetaScoreGreen.setVisibility(View.GONE);
+            }
         }
 
         if(isWindowsSupported){
@@ -244,7 +253,9 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final TextView txtInitialPrice;
         private final TextView txtFinalPrice;
         private final TextView txtReleaseDate;
-        private final TextView txtMetaScore;
+        private final TextView txtMetaScoreGreen;
+        private final TextView txtMetaScoreYellow;
+        private final TextView txtMetaScoreRed;
         private final TextView isWindowsSupported;
         private final TextView isLinuxSupported;
         private final TextView isMacSupported;
@@ -268,7 +279,9 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             txtInitialPrice = itemView.findViewById(R.id.txtInitial);
             txtFinalPrice = itemView.findViewById(R.id.txtFinal);
             txtReleaseDate = itemView.findViewById(R.id.txtRelease);
-            txtMetaScore = itemView.findViewById(R.id.txtMetaScore);
+            txtMetaScoreGreen = itemView.findViewById(R.id.txtMetaScoreGreen);
+            txtMetaScoreYellow = itemView.findViewById(R.id.txtMetaScoreYellow);
+            txtMetaScoreRed = itemView.findViewById(R.id.txtMetaScoreRed);
             isWindowsSupported = itemView.findViewById(R.id.isWindowsSupported);
             isMacSupported = itemView.findViewById(R.id.isMacSupported);
             isLinuxSupported = itemView.findViewById(R.id.isLinuxSupported);

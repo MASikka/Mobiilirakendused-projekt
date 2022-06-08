@@ -7,5 +7,5 @@
         android:icon="@drawable/ic_done"
         android:iconTint="@color/white"
         android:title="@string/reg_user"
-        app:showAsAction="ifRoom|withText" />
+        app:showAsAction="ifRoom" />
 </menu>

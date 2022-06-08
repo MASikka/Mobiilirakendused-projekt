@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">АндроидОтзывыПриложение</string>
     <string name="ex_password">qwerty123</string>
-    <string name="metacritic">Metacritic</string>
+    <string name="metacritic">METACRITIC</string>
     <string name="personal_review_helper">Введите текст отзыва здесь…</string>
     <string name="recommend">Рекомендовать</string>
     <string name="submit">ОПУБЛИКОВАТЬ</string>

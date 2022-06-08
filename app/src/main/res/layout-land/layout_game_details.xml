@@ -57,12 +57,12 @@
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:textSize="18sp"
         android:text="@string/languages"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMetaScore" />
+        app:layout_constraintTop_toBottomOf="@id/txtMetacritic" />
 
     <WebView
         android:id="@+id/wvSupportedLanguages"
@@ -303,10 +303,9 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFinalPrice" />
 
     <TextView
-        android:id="@+id/txtMetaScore"
+        android:id="@+id/txtMetaScoreGreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:background="@drawable/green_square"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
@@ -315,22 +314,49 @@
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtMetacritic"
+        app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
+
+    <TextView
+        android:id="@+id/txtMetaScoreYellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/yellow_square"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/txtMetacritic"
+        app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
+
+    <TextView
+        android:id="@+id/txtMetaScoreRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/red_square"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/txtMetacritic"
         app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
 
     <TextView
         android:id="@+id/txtMetacritic"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginEnd="206dp"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:text="@string/metacritic"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/txtMetaScore"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
 
     <LinearLayout

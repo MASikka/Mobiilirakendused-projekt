@@ -80,7 +80,7 @@
     <string name="not_recommended">Not recommended: %1$s</string>
     <string name="recommended">Recommended: %1$s</string>
     <string name="app_type">APP TYPE</string>
-    <string name="metacritic">Metacritic</string>
+    <string name="metacritic">METACRITIC</string>
 
     <!-- OS requirements -->
     <string name="windows_supported">Windows supported</string>
