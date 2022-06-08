@@ -81,6 +81,8 @@
     <string name="recommended">Recommended: %1$s</string>
     <string name="app_type">APP TYPE</string>
     <string name="metacritic">METACRITIC</string>
+    <string name="game_name">APP NAME</string>
+
 
     <!-- OS requirements -->
     <string name="windows_supported">Windows supported</string>
