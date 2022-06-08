@@ -10,6 +10,10 @@
         android:id="@+id/txt_personal_review"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_black_border_thin"
         android:gravity="top"
         android:hint="@string/personal_review_helper"
         android:inputType="text|textMultiLine"
@@ -21,26 +25,30 @@
         android:id="@+id/btn_submit_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_personal_review" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_recommend" />
 
     <Button
         android:id="@+id/btn_delete_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/delete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_personal_review" />
 
     <CheckBox
         android:id="@+id/checkBox_recommend"
-        android:layout_width="146dp"
+        android:layout_width="wrap_content"
         android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:paddingEnd="8dp"
         android:text="@string/recommend"
-        app:layout_constraintEnd_toStartOf="@+id/btn_submit_review"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_personal_review" />
 
 

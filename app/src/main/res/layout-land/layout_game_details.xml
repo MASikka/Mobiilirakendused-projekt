@@ -16,8 +16,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRelease"
-        tools:ignore="WebViewLayout">
+        app:layout_constraintTop_toBottomOf="@+id/txtShortDescription"
+        tools:ignore="WebViewLayout"
+        tools:layout_editor_absoluteY="610dp">
 
     </WebView>
 
@@ -381,6 +382,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtShortDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="8dp"
+        android:text="@string/short_description"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRelease" />
 
     <TextView
         android:id="@+id/isWindowsSupported"
