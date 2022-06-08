@@ -79,4 +79,5 @@
     <string name="search_hint">Введите имя игры</string>
     <string name="search_helper">Например, Half-Life</string>
     <string name="search">Искать</string>
+    <string name="short_description">КОРОТКОЕ ОПИСАНИЕ</string>
 </resources>
