@@ -165,7 +165,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/isLinuxSupported"
+        app:layout_constraintTop_toBottomOf="@id/txtSysReq"
         tools:ignore="WebViewLayout" />
 
     <TextView
@@ -306,6 +306,7 @@
         android:id="@+id/txtMetaScoreGreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:background="@drawable/green_square"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
@@ -321,6 +322,7 @@
         android:id="@+id/txtMetaScoreYellow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:background="@drawable/yellow_square"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
@@ -336,6 +338,7 @@
         android:id="@+id/txtMetaScoreRed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:background="@drawable/red_square"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
@@ -363,6 +366,10 @@
         android:id="@+id/linearlayout_img_screenshot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/light_blue"
+        android:paddingStart="128dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="128dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -383,9 +390,9 @@
         android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:text="TextView"
-        android:textColor="#757575"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSysReq" />
+        app:layout_constraintTop_toBottomOf="@id/wvSystemReq" />
 
     <TextView
         android:id="@+id/isMacSupported"
@@ -395,6 +402,7 @@
         android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/isWindowsSupported" />
 
@@ -407,6 +415,7 @@
         android:paddingRight="8dp"
         android:paddingBottom="8dp"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/isMacSupported" />
 
