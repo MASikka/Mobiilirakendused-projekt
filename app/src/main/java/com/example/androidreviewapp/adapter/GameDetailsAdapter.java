@@ -62,6 +62,7 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         String shortDescription = game.getShortDescription();
         String supportedLanguages = game.getSupportedLanguages();
         String gameType = game.getType();
+        String gameName = game.getName();
         String initialPrice = "none";
         if (game.getInitialPrice() != null){
             initialPrice = game.getInitialPrice();
@@ -207,6 +208,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
 
         holder.txtGameType.setText(R.string.app_type);
         holder.txtAppType.setText(gameType);
+        holder.txtGameName.setText(gameName);
+        holder.txtGameNameHeading.setText(R.string.game_name);
         Log.i("Init: ", initialPrice);
         if(initialPrice.equals(":") || TextUtils.isEmpty(initialPrice)) {
             holder.txtInitialPrice.setText(R.string.initialprice_unavailable);
@@ -296,6 +299,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
         private final TextView txtSysReq;
         private final TextView txtMetaCritic;
         private final TextView txtAppType;
+        private final TextView txtGameName;
+        private final TextView txtGameNameHeading;
 
 
         public GameDetailsViewHolder(@NonNull View itemView) {
@@ -322,6 +327,8 @@ public class GameDetailsAdapter extends RecyclerView.Adapter<GameDetailsAdapter.
             txtSysReq = itemView.findViewById(R.id.txtSysReq);
             txtMetaCritic = itemView.findViewById(R.id.txtMetacritic);
             txtAppType = itemView.findViewById(R.id.txtGameType);
+            txtGameName = itemView.findViewById(R.id.txtGameName1);
+            txtGameNameHeading = itemView.findViewById(R.id.txtGameName2);
         }
     }
 
