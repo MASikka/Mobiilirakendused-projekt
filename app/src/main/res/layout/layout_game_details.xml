@@ -10,8 +10,8 @@
         android:id="@+id/wvShortDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:paddingStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingStart="0dp"
         android:paddingRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,6 +28,7 @@
         android:layout_marginStart="8dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
+        android:paddingBottom="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,14 +56,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
-        android:paddingTop="8dp"
+        android:paddingTop="16dp"
         android:paddingBottom="8dp"
-        android:textSize="18sp"
         android:text="@string/languages"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMetaScore" />
+        app:layout_constraintTop_toBottomOf="@id/txtMetacritic" />
 
     <WebView
         android:id="@+id/wvSupportedLanguages"
@@ -84,10 +85,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
-        android:paddingTop="8dp"
+        android:paddingTop="16dp"
         android:paddingBottom="8dp"
-        android:textSize="18sp"
         android:text="@string/about_this_game"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,6 +131,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDev">
@@ -147,7 +149,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
-        android:paddingTop="8dp"
+        android:paddingTop="16dp"
         android:paddingBottom="8dp"
         android:text="@string/system_requirements"
         android:textSize="18sp"
@@ -165,7 +167,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/isLinuxSupported"
+        app:layout_constraintTop_toBottomOf="@id/txtSysReq"
         tools:ignore="WebViewLayout" />
 
     <TextView
@@ -208,6 +210,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPublisherHeading">
@@ -223,8 +226,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
+        android:paddingTop="16dp"
         android:paddingRight="8dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="0dp"
         android:text="@string/initial_price"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -239,9 +243,9 @@
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingRight="8dp"
-        android:paddingBottom="8dp"
-        android:textSize="18sp"
+        android:paddingBottom="0dp"
         android:text="@string/final_price"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -266,7 +270,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="8dp"
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -304,10 +308,11 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFinalPrice" />
 
     <TextView
-        android:id="@+id/txtMetaScore"
+        android:id="@+id/txtMetaScoreGreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/green_square"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
@@ -316,30 +321,64 @@
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtMetacritic"
+        app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
+
+    <TextView
+        android:id="@+id/txtMetaScoreYellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/yellow_square"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/txtMetacritic"
+        app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
+
+    <TextView
+        android:id="@+id/txtMetaScoreRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/red_square"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/txtMetacritic"
         app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
 
     <TextView
         android:id="@+id/txtMetacritic"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginEnd="206dp"
+        android:layout_marginTop="8dp"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:text="@string/metacritic"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/txtMetaScore"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wvDetailedDescription" />
 
     <LinearLayout
         android:id="@+id/linearlayout_img_screenshot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/yellow"
+        android:layout_marginTop="16dp"
+        android:background="@color/light_blue"
         android:paddingStart="8dp"
+        android:paddingTop="8dp"
         android:paddingEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -362,9 +401,9 @@
         android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:text="TextView"
-        android:textColor="#757575"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSysReq" />
+        app:layout_constraintTop_toBottomOf="@id/wvSystemReq" />
 
     <TextView
         android:id="@+id/isMacSupported"
@@ -374,6 +413,7 @@
         android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/isWindowsSupported" />
 
@@ -386,6 +426,7 @@
         android:paddingRight="8dp"
         android:paddingBottom="8dp"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/isMacSupported" />
 
@@ -395,6 +436,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -408,6 +450,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="@string/short_description"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

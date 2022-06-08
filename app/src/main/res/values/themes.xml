@@ -18,6 +18,6 @@
 
     </style>
     <style name="Button.Yellow" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/yellow</item>
+        <item name="colorAccent">@color/light_blue</item>
     </style>
 </resources>
